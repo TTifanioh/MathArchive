@@ -1,0 +1,271 @@
+/* =====================
+   VARIABLES GLOBALES
+===================== */
+:root {
+  --primary: #2563eb;
+  --primary-dark: #1e40af;
+
+  --bg-light: #f8fafc;
+  --bg-dark: #374151;
+
+  --card: #ffffff;
+  --text-dark: #0f172a;
+  --text-light: #ffffff;
+  --muted: #64748b;
+  --border: #e2e8f0;
+
+  --radius: 14px;
+  --max-width: 1200px;
+}
+
+/* =====================
+   RESET / BASE
+===================== */
+* {
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  margin: 0;
+  color: var(--text-dark);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* =====================
+   NAVBAR
+===================== */
+header {
+  background: #fff;
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav {
+  max-width: var(--max-width);
+  margin: auto;
+  padding: 16px 24px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: 1.4rem;
+  font-weight: 800;
+}
+
+.logo span {
+  color: var(--primary);
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 28px;
+  margin: 0;
+  padding: 0;
+}
+
+nav a {
+  text-decoration: none;
+  color: #334155;
+  font-weight: 500;
+  position: relative;
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0;
+  height: 2px;
+  background: var(--primary);
+  transition: width 0.2s;
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+/* =====================
+   HERO / ACCUEIL
+===================== */
+.hero {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #475569, var(--bg-dark));
+  color: var(--text-light);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  padding: 40px 24px;
+}
+
+.hero-content {
+  max-width: 760px;
+}
+
+.hero h1 {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 800;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 1.1rem;
+  color: #cbd5f5;
+  margin-bottom: 36px;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: white;
+  padding: 14px 28px;
+  border-radius: var(--radius);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.btn-secondary {
+  border: 1px solid rgba(255,255,255,0.4);
+  color: white;
+  padding: 14px 28px;
+  border-radius: var(--radius);
+  text-decoration: none;
+}
+
+/* =====================
+   CONTACT (DESIGN INCHANGÉ)
+===================== */
+.contact-wrapper {
+  background: linear-gradient(135deg, #eef2ff, #f8fafc);
+  padding: 80px 24px;
+}
+
+.container {
+  max-width: 920px;
+  width: 100%;
+
+  margin: auto;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+  padding: 40px;
+}
+
+.info h1 {
+  margin: 0 0 12px;
+  font-size: 2rem;
+}
+
+.info p {
+  margin: 0 0 24px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.contact-item {
+  margin-bottom: 12px;
+  font-size: 0.95rem;
+}
+
+.info a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.info a:hover {
+  text-decoration: underline;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+label {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  font-size: 0.95rem;
+  outline: none;
+  transition: border 0.2s, box-shadow 0.2s;
+}
+
+input:focus,
+textarea:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+button {
+  margin-top: 8px;
+  padding: 14px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+footer {
+  grid-column: 1 / -1;
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-top: 16px;
+}
+
+/* =====================
+   RESPONSIVE
+===================== */
+@media (max-width: 768px) {
+  .container {
+    grid-template-columns: 1fr;
+    padding: 28px;
+  }
+
+  nav ul {
+    gap: 18px;
+  }
+}
