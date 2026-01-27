@@ -1,0 +1,186 @@
+\documentclass[a4paper, 12pt, french]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=2cm]{geometry}
+\usepackage{amsfonts}
+\usepackage{babel}
+
+\date{}
+\author{}
+\title{ÉSPACES QUOTIENTS}
+
+\begin{document}
+    \maketitle
+\section{Généralité}
+Soit $A,B,C$ trois ensembles et $f : A \rightarrow{B}, g : A \rightarrow{C}$ deux applications.\\
+Le problème qui se pose est de savoir si on peut trouver une application $h : C \rightarrow{B}$ tel que $f = h \circ g$.\\ 
+Pour cela, on considère la condition 
+\begin{equation}
+    \forall x,y \in A, \; (g(x)=g(y) \Rightarrow f(x)=f(y)).
+\end{equation}
+On a la propposition suivante 
+
+\subsection{Proposition}
+Si f et g verifie la condition $(1)$, alors h existe et vice-versa. \\ \\
+\textit{Demonstration :} \\
+Supposons que $(1)$ soit verifiee. Soit $t \in C$.\\
+Si $t$ est egale a un certain $g(x)$ avec $x \in A$, necessairement $h(t) = h(g(x))=f(x)$.
+Montrons que $h(t)$ ne depend pas de $x$ choisie. Soit $y \in A$ tel que $t = g(y)$. Par hypothese, $h(t)=h(g(y))=f(y)=f(x)$.
+Donc $h(t)$ est bien definie si $t \in g(A)$.
+Supposons maintenant que $t \not\in g(A)$. Choisissons un element $b \in B$ et posons $h(t)=b$. 
+$h$ est ainsi defini est bien une application de $C$ vers $B$ verifiant $h \circ g(x)=f(x)$ pour tout $x \in A$.\\
+Supposons maintenant que $h$ existe et montrons que $f$ et $g$ vereifient la condition (1). Soit $x,y \in A$ tel que $g(x)=g(y)$. On a $h(g(x))=h(g(y))$ ou encore $f(x)=f(y)$.\\ D'ou $(1)$. 
+
+\subsection{Corollaire}
+Si $f$ et $g$ verifient $(1)$ et $g$ surjective, h est unique.
+
+\subsection{Proposition}
+Supposons que $f$ et $g$ vérifient la condition $(1)$
+\begin{equation}
+    \forall x,y \in A,\; (g(x)=g(y) \Leftrightarrow f(x)=f(y)).
+\end{equation}
+Soit $i$ l'injection canonique de $f(A)$ vers $B$, c-à-d, pour tout $u \in f(A),\; i(u)=u$. Alors, il existe une bijection $\bar{h}$ de $g(A)$ vers $f(A)$ et une seule telle que $f\;=\;i \circ \bar{h} \circ g$.\\ \\
+\textit{Démonstration :} \\
+Considerons les applications $f_{1}: A \mapsto f(A),x \mapsto f_{1}(x)=f(x)$ et $g_{1}: A \mapsto f(A),x \mapsto g_{1}(x)=g(x)$. \\
+Soit $x,y \in A$ tels que $g_{1}(x)=g(y)$. On a $g(x)=g(y)$. D'apres l'hypothese, $f(x)=f(y)$ et par suite, $f_{1}(x)=f_{1}(y)$. $f_{1}$ et $g_{1}$ verifient donc la condition $(1)$. Ainsi, d'apres prop 1.1, il existe une application $h_{1}: g(A) \mapsto f(A)$ telle que $f_{1}=h_{1}\circ g_{1}$. 
+Comme $f = i \circ f_{1}$, alors $\forall x \in A, f(x)=i\circ h_{1}\circ g_{1}=i \circ h_{1} \circ g(x)$, ou encore $f=i \circ h_{1} \circ g$. De plus, comme $g_{1}$ est surjective, le corollaire 1.2 implique que $h_{1}$ est unique.\\
+Montrons enfin que $h_{1}$ est bijective.
+\begin{itemize}
+    \item[-]Soit $u \in f(A). \; \exists x \in A$ tel que $u=f(x)$. Posons $t=g(x)$. On a $h_{1}(t)=f(x)=u$. Donc $h_{1}$ est surjective.
+    \item[-]D'autre part, soit $t,t^{'} \in g(A)$ tels que $h_{1}(t)=h_{1}(t^{'})$. Soit $x,x^{'} \in A$ tel que $t = g(x)$ et $ t^{'} = g(x^{'})$. D'apres ce qui precede, $f(x)=h_{1}(t)$ et $f(x^{'})=h_{1}(t^{'})$. Donc $f(x)=f(x^{'})$. 
+    D'apres $(2), g(x)=g(x^{'})$ ou encore $t=t^{'}$. $h_{1}$ est donc injective. Donc $\bar{h}=h_{1}$.
+\end{itemize}
+
+\section{Quotient d'un groupe par un sous groupe}
+Soit $G$ un groupe (suppose additif) non nécessairement abélien et $H$ un sous groupe de $G$. On définit une rélation $\equiv$ sur $G$ par $$\forall x,y \in G, \; x \equiv y \; \Leftrightarrow -x+y \in H$$.
+\textbf{Remarque}: Si la loi utilisée est multiplicative, $\equiv$ est défini par $$\forall x,y \in G, x \equiv y \Leftrightarrow x^{-1}y \in H$$.
+
+\subsection{Proposition}
+$\equiv$ est une rélation d'équivalence ayant les propriétés suivantes : \\
+\begin{itemize}
+    \item[(1)]$\bar{x}=x+H$:=$\{x+h \;|\; h \in H\}$;
+    \item[(2)]Pour tout $x,y \in G$, $(x+y)+H \; = \; x+(y+H)$;
+    \item[(3)]Pour tout $h \in H, \; h + H = H $ 
+\end{itemize}
+On note $G/H$ l'ensembles des classes d'équivalences de $\equiv$. \\ \\
+\textit{Démonstration:} \\
+Montrons d'abord que $\equiv$ est une rélation d'équivalence.\\ $\forall \; x \in G, \; on a -x\;+\;x=0 \in H$. donc $x \equiv x$.\\D'autre part, soit $x,y \in G$ tels que $x \equiv y$. On a $-x\;+\;y \in H$. \\
+Par suite $-(-x\;+\;y) = -y \; +\; y \in H$ tels que $x \equiv y$, c-a-d, $y \equiv x$. \\Enfin, soit$x,y,z \in G$ tel que $x \equiv y$ et $y \equiv x$. Alors $-x+z=(-x+y)-(y-z) \in H$ ou encore $x \equiv z$. \\
+On en conclut que $\equiv$ est une relation d'equivalence.\\ \\
+Soit maintenant $x,y \in G$. Alors $$ y \in \bar{x} \Leftrightarrow x \equiv y \Leftrightarrow -x+y \in H \Leftrightarrow \exists h \in H, -x+y=h \Leftrightarrow y \in x+H.$$
+D'où $\bar{x}=x+H$.\\De plus, pour tout $z$, 
+$$ \begin{array}{ccc}
+	z \in (x+y)+H & \Leftrightarrow & -(x+y)+z \in H \Leftrightarrow (-y-x)+z \in H \\
+			& \Leftrightarrow & -y+(-x+z) \in H \Leftrightarrow -x+z \in y+H \\
+			& \Leftrightarrow & z \in x + (y+H).
+    \end{array}$$
+Enfin, soit $h \in H$. Pour tout $w$, $$ w \in H \Leftrightarrow -h+w \in H \Leftrightarrow w \in h+H.$$  Ce qui prouve que $h+H=H$.
+\subsection{Définition}
+Une rélation d'équivalence $\mathit{R}$ est compatible avec la loi de $G$ si $$\forall x,y,x^{'},y{'} \in G, (x\mathit{R} y \; et \; x^{'}\mathit{R}y^{'} \Rightarrow (x+x^{'})\mathit{R}({y+y^{'}}))$$.
+
+\subsection{Définition}
+On dit que $H$ est distingué dans $G$ si $\forall x \in G, x+H-x \subset H$.\\
+En particulier, tout sous groupes d'un groupe abélien est distingué.
+
+\subsection{Lemme}
+Soit $A$ et $B$ 2 partie (non nécessairement des sous groupes) de $G$ et $x \in G$. Alors $$ A \subset B \Leftrightarrow x+A \subset x+B \Leftrightarrow A+x \subset B+x$$. \\ \\
+\textit{Démonstration :} \\
+L'implication $A \subset B \Rightarrow x+A \subset x+B$ est évidente. Supposons que $x+A \subset x+B$ et soit $a \in A$. Alors il existe $b \in B$ tel que $x+A=x+B$. En ajoutant à gauche par $-x$, on a $a = b$. Donc $A \subset B$. 
+Ce qui nous donne la premier équivalence. On fait de même pour $A \subset B \Rightarrow A+x \subset B+x$.
+
+\subsection{Proposition}
+$\equiv$ est compatible avec la loi de $G$ \textit{ssi} $H$ est distingué.\\ \\
+\textit{Démonstration :} \\
+Supposons que $\equiv$ soit compatible avec la loi de $G$. Soit $x \in G$ et $y \in x+H-x$. On a $y+x \in x+H$ ou encore $y+x \equiv x$. Comme $-x \equiv -x$, alors $y+x-x \equiv x-x$. donc $y \equiv 0$, c-à-d, $y \in H$.\\
+Reciproquement, supposons que H soit distingué. Soit $x,y,x^{'},y^{'} \in G$ tel que $x \equiv y$ et $x^{'} \equiv y^{'}$. On a $y+y^{'} \in (x+H)+(x^{'}+H)=(x+(x^{'}+H))+H=(x+x^{'})+H$.\\ Donc $y+y^{'}\equiv x+x^{'}$.
+
+\subsection{Proposition}
+On a les équivalence:\\
+$$ H \; \mbox{distingué} \; dans \; G \Leftrightarrow \forall x \in G, x+H=H+x \Leftrightarrow \forall x \in G,x+H-x=H$$.
+\textit{Démonstration :}
+En appliquant le lemme, on a: \\
+$$\begin{array}{ccc}
+    H \; \mbox{distingué} \; dans \; G & \Leftrightarrow & \forall x \in G,x+H-x \subset \; et \; -x+H+x \subset H \\
+                                & \Leftrightarrow & \forall x \in G,x+H \subset H+x \; et \; H+x \subset x+H \\
+                                & \Leftrightarrow & \forall H+x=x+H \\
+                                & \Leftrightarrow & \forall H=x+H-x
+\end{array}$$ 
+\subsection{Proposition}
+Si $H$ est distingué, la loi défini par $\forall x,y \in G, \bar{x}+\bar{y}=\overline{x+y}$ est bien définie sur $G/H$ appelée loi quotient. Muni de cette loi quotient, $G/H$ a une structure de groupe appelée groupe quotient.\\ \\
+\textit{Démonstration :} \\
+Soit $x,y,x^{'}.y^{'} \in G$ tels que $\bar{x}=\bar{x^{'}}$ et $\bar{y}=\bar{y^{'}}$. Pour que la loi soit définie, il faut que $\overline{x^{'}+y^{'}}=\overline{x+y}$. Or, d'après la propposition précèdente, $\equiv$ est compatible avec la loi de $G$. Donc $x^{'}+y{'} \equiv x+y$, c-a-d, $\overline{x^{'}+y{'}}=\overline{x+y}$. \\
+On peut vérifier facilement que $G/H$ muni de cette loi est un groupe.
+
+\subsection{Définition}
+Soit $G$ et $G^{'}$ deux groupes et $f$ une application de $G$ vers $G^{'}$. On dit que $f$ est un morphisme de groupe si $\forall x,y \in G,f(x+y)=f(x)+f(y)$. Si de plus $f$ est bijective, on dit que $f$ est une isomorphisme de groupes. Si un tel isomorphisme existe, on dit que $G$ et $G^{'}$ sont isomorphismes.
+
+\subsection{Proposition}
+Si $H$ est un sous groupe distingué de $G$, alors l'application $\pi : G \mapsto G/H, x \mapsto \bar{x}=x+H$ est un morphisme de groupe appelée surjection canonique.
+
+\subsection{Proposition}
+Soit $f$ un morphisme du groupe $G$ vers un groupe $G^{'}$, alors $G/H Ker\,f$ et $Im\,f$ sont isomorphisme. \\ \\
+\textit{Démonstration :} \\
+D'abord, comme $Ker\,f$ est un sous groupe distingué de $G$, alors $G/Ker\,f$ est un sous groupe. Considérons alors la surjection canonique $\pi$ de $G$ sur $G/Ker\,f$. Soit $x,y \in G$. On a : $$ \pi (x) = \pi (y) \Leftrightarrow -x+y \in Ker\,f \Leftrightarrow f(-x+y)=0 \Leftrightarrow f(x)=f(y)$$.
+D'après la prop 1.3, il existe une bijection $\bar{f}$ de $\pi (G)=G/Ker\,f$ sur $Im\,f$, définie par $$\forall \bar{x} \in G/Ker\,f,\bar{f}(\bar{x}) =f(x)$$.
+De plus, $\forall \bar{x},\bar{y} \in G/Ker\,f$, $$\bar{f}({\bar{x}+\bar{y})}=\bar{f}(\overline{x+y})=f(x+y)=f(x)+f(y)=\bar{f}(\bar{x})+\bar{f}(\bar{y})$$.
+Donc $\bar{f}$ est un isomorphisme de groupes car $Im\,f$ est un sous groupe de $G^{'}$. 
+
+\section{Quotient d'un anneau par un idéal}
+Soit $(A,+,\cdot)$ un anneau et I un sous groupe de $(A,+)$. Puisque $(A,+)$ est abélien, I est distingué dans A et on peut donc considérée la groupe quotient $A/I = \{\bar{a}=a+I;a \in A\}$ muni de la loi quotient $\bar{a}+\bar{b}=\overline{a+b}$.
+
+\subsection{Définition}
+On dit que I est un idéal à gauche (resp. à droite) de $A$ si $\forall a \in A,aI \subset I \, (resp. Ia \subset I)$. C'est un idéal bilatère s'il est à la fois idéal à gauche et idéal à droite.
+
+\subsection{Définition}
+Si I est un idéal bilatère, la loi défini par $\forall x,y \in A, \bar{x}.\bar{y}=\overline{xy}$ est bien défini sur $A/I$ appelée produit quotient. De plus $(A/I,+,\cdot)$ est un anneau appelée anneau quotient.
+
+\subsection{Définition}
+Soit $A$ et $A^{'}$ deux anneaux et $f$ une application de $A$ vers $A^{'}$. On dit que $f$ est un morphisme d'anneaux si $$\forall x,y \in A, f(x)+f(y)=f(x+y) \; et \; f(x)f(y)=f(xy)$$.
+
+\subsection{Proposition}
+Si $f$ est un idéal bilatère de $A$, alors l'application $\pi : A \mapsto A/I, x \mapsto \bar{x}=x+I$ est un morphisme d'anneaux appelée surjection canonique.\\
+Si $f$ est un morphisme d'anneaux de $A$ vers $A^{'}$, on peut vérifier facilement que $Ker\,f$ est idéal bilatère de $A$.
+
+\subsection{Proposition}
+Soit $f : A \mapsto A^{'}$ un morphisme d'anneaux. Alors il existe un isomorphisme d'anneaux $f : A/Ker\,f \mapsto Im\,f$. En d'autres termes, les anneaux $A/Ker\,f \; et \; Im\,f$ sont isomorphes.
+
+\section{Quotient d'un éspace véctoriel par un sous éspace véctoriel}
+Considérons un éspace véctoriel $(E,+,\times)$ sur un corps $\mathbb K$ et $F$ un sous groupe de $(E,+)$, $F$ étant un sous groupe distingué du groupe abélien $(E,+)$, on peut considérée le groupe quotient $E/F = {\bar{x}=x+F; \;x \in E}$ muni de la loi quotient $\bar{x}+\bar{y}=\overline{x+y}$.
+
+\subsection{Proposition}
+Si $F$ est un sous éspace véctoriel de $E$, la loi défini par $\forall \lambda \in \mathbb K, \forall x \in E, \lambda \times \bar{x} = \overline{\lambda \times x}$ est bien une loi externe sue $ E/F$. De plus, $(E/F,+,\times)$ est bien un éspace véctoriel sur $\mathbb K$ appelée éspace véctoriel quotient.
+
+\subsection{Définition}
+On suppose $E$ de dimension $n$ et $F$ un $sev$ de $E$. On appelle codimension de F l'entier $codim\,F=n-dim\,F$.
+
+\subsection{Proposition}
+Si $E$ est de dimension finie, $dim(E/F)=codim\,F$.
+
+\subsection{Proposition}
+Soit $E$ et $F$ deux $\mathbb K ev$ et $f$ une application linéaire de $E$ vers $F$. L'application $f : E/Ker\,f \mapsto Im\,f,\bar{x} \mapsto f(x)$ est un isomorphisme d'ev.
+
+\section{Morphismes d'algèbre}
+\subsection{Définition}
+Une $\mathbb K-algebre$ est quadruplet $(A,+,\cdot,\times)$ tel que
+\begin{itemize}
+    \item[-] $(A,+,\cdot)$ est un anneau;
+    \item[-] $(A,+,\times)$ est $\mathbb K$ev.
+\end{itemize}
+
+Soit $A$ et $A^{'}$ deux algèbres et $f$ un morphisme d'algèbre de $A$ vers $A^{'}$, c-à-d, $$\forall x,y,z \in A, \forall \lambda \in \mathbb K,f(xy + \lambda z)=f(x)f(y)+\lambda f(z).$$
+Comme dans les sections précèdentes, on a la propriété suivante
+
+\subsection{Proposition}
+L'application $\bar{f} : A/Ker\,f \mapsto Im\,f,\bar{x} \mapsto f(x)$ est un isomorphisme d'algèbre vérifiant la rélation $f = i \circ \bar{f} \circ \pi$ où $\pi$ est la surjection canonique de $A$ sur $A /ker\,f$ et $i$ l'injection canonique de $Im\,f$ dans $A^{'}$.
+
+\section{Quotient par un polynôme}
+Soit $\mathbb K$ un corps commutatif et $\mathbb K[X]$ l'anneau des polynômes de var X. Soit $P \in \mathbb K[X]$, de dégré d (d > 0). L'ensemble $(P)=P\mathbb K[X]$ est un idéal de $\mathbb K[X]$. Donc $\mathbb K[X]/(P)$ noté tout simplement $\mathbb K[X]/P$ est un anneau quotient. En notant $\bar{A}$ la classe d'un polynôme $A$, 
+on a $$ \bar{A}=\bar{B} \Leftrightarrow P | (A-B)$$
+
+\subsection{Proposition}
+$\mathbb K[X]/P$ est une $\mathbb K-algebre$ de dimension d de base canonique $(1,\bar{X},\cdots,\bar{X^{d-1}})$. On a en particulier $\mathbb K[X]/P \simeq \mathbb K^{d}$.\\ \\
+\textit{Démonstration :} \\
+Soit $\bar{A} \in \mathbb K[X]/P$ et $R=a_{0}+a_{1}X+\cdots+a_{d-1}X^{d-1}$ le reste de la division euclidienne de $A$ par $P$. On a $\bar{A}=\bar{R}=a_{0}\bar{1}+a_{1}\bar{X}+\cdots+a_{d-1}\overline{X^{d-1}}$. Ce qui prouve que $\bar{1},\bar{X},\cdots,\overline{X^{d-1}}$ engedre $\mathbb K[X]/P$. 
+D'autre part, soit $a_{0}\bar{1}+a_{1}\bar{X}+\cdots+a_{d-1}\overline{X^{d-1}}=0$. Alors $P$ divise $a_{0}+a_{1}X+\cdots+a_{d-1}x^{d-1}$. Comme deg$P$=d, alors $a_{0}+a_{1}X+\cdots+a_{d-1}X^{d-1}=0$. Par consequent, $a_{i}=0$ pour tout $i$. Ainsi $(\bar{1},\bar{X},\cdots,\overline{X^{d-1}})$ est une base de $\mathbb K[X]/P$.
+\end{document}

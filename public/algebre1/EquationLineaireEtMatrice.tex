@@ -1,0 +1,365 @@
+\documentclass[a4paper,12pt,french]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=2cm]{geometry}
+\usepackage{amsfonts}
+\usepackage[frenc]{babel}
+
+\begin{document}
+\section{Equations Linéaires et Matrices}
+\subsection{Vecteurs : Introduction}
+Avant de définir en general ce que c’est qu’un espace vectoriel, nous nous proposons dans cette section de traiter la notion de vecteur. Ceci nous fournit un exemple concret d’espace vectoriel et en même temps une motivation pour l’ étude abstraite des espaces vectoriels plus tard.
+Dans tout ce qui suivra R et C sont respectivement l’ensemble des nombres réels et l’ensemble des nombres complexes.
+
+\subsection{Vecteurs dans $\mathbb{R}^{n}$}
+\subsubsection*{Généralités}
+L’ensemble de tous les n-tuples ordonnés de nombres réels est noté $R^{n}$ et est appelé espace à n dimensions. Tout élément $u = (u_{1} , u_{2} ,\cdots, u_{n} ) \in R^{n}$ (écriture en ligne) est appelé vecteur (ou point)et les $u_{i}$ sont appelés les \emph{composantes ou coordonnées de $u$}. 
+Graphiquement, pour $n = 2$ ou $n = 3$, un vecteur $u = (u_{1} , u_{2} ,\cdots, u_{n} $) est représenté dans le plan $R^{n}$ par une flêche qui part de l’origine 1
+0 = (0, 0, · · · , 0) et qui a pour sommet le point de coordonnées $(u_{1} , u_{2} ,\cdots,u_{n} )$. PRENEZ GARDE à ne pas confondre avec la notion de vecteur AB introduit en classe de 3eme , où $A$ et $B$ sont deux points quelconque, et qui est représenté graphiquement par une flêche qui part de $A$ vers $B$.
+Dans toute la suite, on développera la théorie dans le cas général où $n \in \mathbb{N}$ est un entier naturel fixé au préalable. Il est tout de même préférable d’avoir à notre disposition des interprétations graphiques sur lesquelles nos intuitions puissent se reposer. 
+Ce qui est seulement possible quand $n = 2$ ou $n = 3$. On adoptera donc la convention suivante : \\ \\
+\textbf{Les interprétations graphiques se feront dans le cas n = 2, i.e. dans le plan $\mathbb{R}^{2}.$}
+\subsubsection{Définition(Opérations sur les vecteurs)} 
+Etant donnés deux vecteurs $u = (u_{1} , u_{2} ,\cdots, u_{n})$ et
+$v = (v_{1} , v_{2} ,\cdots, v_{n}) \in  \mathbb{R}^{n}$, et un élément $k \in \mathbb{R}$, on définit les opérations suivantes :
+\begin{itemize}
+    \item[-] Addition : $u + v = (u_{1} + v_{1} , u_{2} + v_{2} ,\cdots, u_{n} + v_{n})$.
+    \item[-] Multiplication par un scalaire : $k{u} = (ku_{1} , ku_{2} , · · · , ku_{n})$.
+\end{itemize}
+Dans ce cas, l’élément $k \in \mathbb{R}$ est appelé un scalaire.
+On verra plus tard que $(\mathbb{R}^{n} , +, ·) $ où $\cdot$ représente la multiplication par un scalaire, forme une structure qu’on appelle espace vectoriel. Plus précisément, $(\mathbb{R}^{n} , +, ·)$ est un espace vectoriel sur $\mathbb{R}$ ou un $\mathbb{R}$-espace vectoriel où le $\mathbb{R}$ se réfère au corps des scalaires (on définira plus tard ce qu’est un corps).
+On dit que l’addition el la multiplication par un scalaire se font composante par composante.
+
+\subsubsection{Définition (Combinaison linéaire)}
+Etant donnés $r$ vecteurs $u_{1} , u_{2} ,\cdots, u_{r}$ , une combinaison linéaire de $u_{1} , u_{2} ,\cdots, u_{2}$ est une somme de la forme $k_{1} u_{1} + k_{2} u_{2} +\cdots+ k_{r} u_{r}$ où les $k_{i}$ sont des scalaires.
+
+\subsubsection{Exemples}
+Considérons le cas $n = 2$. On a $(1, 3) + (0, 2) = (1 + 0, 3 + 2) = (1, 5) \mbox{ et } \pi (1, 3) = (\pi, 3\pi ).$ Le vecteur $\frac{1}{2}(1, 3) + (-2)(0, 2) = ( \frac{1}{2} , \frac{3}{2} ) + (0, -4) = (\frac{1}{2} , \frac{5}{2})$ est une combinaison linéaire des vecteurs $(1, 3)$ et $(0, 2)$.
+
+\textbf{Interprétations graphique}
+\begin{itemize}
+    \item[-] La somme $u + v$ est représenté par la flêche qui part de l’origine et dont le sommet forme un parallélogramme avec l’origine et les sommets de $u$ et $v$.
+    \item[-] L’ensemble des points $ku$ où $u$ est un vecteur et $k$ parcours $\mathbb{R}$ est la droite dirigée par le vecteur $u$.
+    \item[-] Etant donnés deux vecteurs non nulls $u$ et $v$ de $\mathbb{R}^{2}$. Quelle est l’ensemble de toutes les combinaisons linéaires $cu + dv$ de $u$ et $v$ ? Si $u$ et $v$ sont parallèles c’est une droite, sinon c’est tout le plan $\mathbb{R}^{2}$. 
+    Qu’en est-il de l’ensemble des combinaisons linéaires de trois vecteurs, quatre vecteurs, etc ? On verra que deux vecteurs suffisent pour ”générer” $\mathbb{R}^{2}$ .
+\end{itemize}
+Le théorème suivant nous fournit les propriétés essentielles des opérations dans $\mathbb{R}^{n}$. Ce sont les propriétes que nous allons abstraire quand on étudiera les espaces vectoriels de manière abstraites.
+
+\subsubsection{Théorème}
+Quels que soient les vecteurs $u, v, w \in \mathbb{R}^{n}$ et quels que soient les scalaires $k, l \in  \mathbb{R}$, on a:
+\begin{itemize}
+    \item[(i)] $(u + v) + w = u + (v + w)$ (Associativité de l’addition)
+    \item[(ii)] $u + v = v + u$ (Commutativité de l’addition)
+    \item[(iii)] $u + 0 = u$ (0 est l’ élément neutre de l’addition)
+    \item[(iv)] $u + (-u) = 0$ ($-u$ est l’inverse additive de $u$)
+    \item[(v)] $k(u + v) = ku + kv$ (Distributivité de la multiplication par un scalaire par rapport à l’addition)
+    \item[(vi)] $(k + l )u = ku + lu$ (La première addition est l’addition dans $\mathbb{R}$ tandis que la seconde est celle dans $\mathbb{R}^{n}$ )
+    \item[(vii)] $(kl )u = k (lu)$
+    \item[(viii)] $1u = u$.
+\end{itemize}
+
+\subsubsection{Produit Scalaire, Norme et Distance}
+\subsubsection{Définition (Produit scalaire)}
+Soient $u = (u_{1} , u_{2} ,\cdots, u_{n})$ et $v = (v_{1} , v_{2} ,\cdots, v_{n})$ deux vecteurs de $\mathbb{R}^{n}$. Le produit scalaire de u et v est le scalaire défini par $u \cdot v = u_{1} v_{1} + u_{2} v_{2} + \cdots + u_{n} v_{n}$.
+
+\subsubsection{Définition}
+Deux vecteurs $u$ et $v$ sont dits orthogonaux ou perpendiculaires si $u \cdot v = 0$. En effet, graphiquement, pour $n = 2$ ou $n = 3$, deux vecteurs non nulls sont orthogonaux si et seulement si leur produit scalaire est null. La notion d’orthogonalité n’ est donc qu’une généralisation en dimension supérieure de la notion usuelle de perpendicularité.
+
+\subsubsection{Exemples}
+Les vecteurs $i = (1, 0)$ et $j = (0, 1)$ sont orthogonaux car $i \cdots j = 0 + 0 = 0$. Nous donnons ensuite les propriétés remarquables du produit scalaire dans $\mathbb{R}^{n}$.
+
+\subsubsection{Théorème}
+Soient $u, v, w \in \mathbb{R}^{n}$ et soit $k \in \mathbb{R}$.
+\begin{itemize}
+    \item[(i)] $(u + v) \cdot w = u \cdot w + v \cdot w$
+    \item[(ii)] $(ku) \cdot v = k (u \cdot v)$
+    \item[(iii)] $u \cdot v = v \cdot u$
+    \item [(iv)] $u \cdot u \geq 0$
+    \item[(v)] $u \cdot u = 0$ si et seulement si $u = 0$.
+\end{itemize}
+On dit que l’espace vectoriel $\mathbb{R}^{n}$ muni du produit scalaire est un espace euclidien de dimension n.
+
+\subsubsection{Définition}
+Soient deux vecteurs $u = (u_{1} ,\cdots, u_{n})$ et $v = (v_{1} ,\cdots, v_{n}) \in \mathbb{R}^{n}.$ La distance entre $u$ et $v$ est définie par $d(u, v) = \sqrt{(u_{1} - v_{1})^{2} + \cdots + (u_{n} - v_{n} )^{2}}$. La norme (ou longueur) du vecteur $u$ est définie par $\|u\| = \sqrt{u \cdot u} = \sqrt{u_{1}^{2} + · · · + u_{n}^{2}}$. 
+Un vecteur $w$ appelé un vecteur unitaire si $\|w\| = 1$.\\ On observe que $d(u, v) = \|u - v\|$ et que pour tout vecteur $w \not= 0$, le vecteur $\frac{w}{\|w\|}$ est unitaire et de  même direction que $w$. On rappelle que le cercle centré à l’origine et de rayon de longueur 1 est appelé le \emph{cercle unité}.\\
+En dimension 2, si nous considérons deux vecteurs $p = (a, b)$ et $q = (c, d)$, on voit facilement que $\|p\| = \sqrt{a^{2} + b^{2}}$ représente la longueur de la flêche représentant le vecteur $p$ et $d(p, q) = \sqrt{(a - c)^{2} + (b - d)^{2}}$ représente la distance euclidienne qui sépare les pointes des flêches représentant
+$p$ et $q$ respectivement. On invite le lecteur à réfléchir sur le cas de la dimension 3
+
+\subsubsection{Exemples}
+Les vecteurs $i$ et $j$ sont unitaires. Compte tenu de la relation $\cos^{2} \theta_{0} + \sin^{2} \theta_{0} = 1$ pour tout $\theta_{0} \in \mathbb{R}$, tout vecteur unitaire du plan xy s’écrit sous la forme $(\cos \theta, \sin \theta )$ où $\theta$ est l’angle
+que fait le vecteur par rapport à l’axe des $x$.
+Le vecteur $u = (2, 2, 1)$ est de longueur 3 et $\frac{u}{\|u\|} = ( \frac{2}{3} , \frac{2}{3} , \frac{1}{3})$ est unitaire.
+Soit $v = ( \frac{1}{2} , \frac{1}{2} , \frac{1}{2} , \frac{1}{2} )$. On a $v \cdot v = \frac{1}{4} + \frac{1}{4} + \frac{1}{4} + \frac{1}{4} = 1$. Soit $w = (1, 1, 1, 1)$, on a $\|w\| = 2$ donc $v = \frac{w}{\|w\|}$.
+
+
+\subsubsection{Proposition}
+Si $u$ et $v \in \mathbb{R}^{n}$ son orthogonaux, alors $\|u\|^{2} + \|v\|^{2} = \|u - v\|^{2}$.\\
+Le théorème suivant nous fournit une inégalité fondamentale reliant le produit scalaire et la norme.
+
+\subsubsection{Théorème (Cauchy-Schwarz)}
+Quels que soient les vecteurs $u = (u_{1} , \cdots , u_{n})$ et $v = (v_{1} , \cdots , v_{n})$ de $\mathbb{R}^{n}$, on a : $$|u \cdot v| \leq \|u\| \|v\|.$$ \\ Le Théorème de Cauchy-Schwarz entraine que $-1 \leq \frac{u.v}{\|u\| \|v\|} \leq 1$ donc il existe un unique $\theta \in [0, \pi]$ tel que $\cos \theta = \frac{u.v}{\|u\| \|v\|}$. Ceci nous permet de généraliser la notion d’angle entre deux vecteurs de $\mathbb{R}^{2}$.
+
+\subsubsection{Définition}
+On définit l’angle $\theta$ entre deux vecteurs non null $u$ et $v \in \mathbb{R}^{n}$ par : $$\cos \theta = \frac{u.v}{\|u\| \|v\|}$$ Vérifiez qu’en dimension 2, $\theta$ est bien l’angle entre $u$ et $v$.
+
+\subsubsection{Proposition}
+Quels que soient les vecteurs $u, v \in \mathbb{R}^{n}$ et quel que soit le scalaire $k \in \mathbb{R}$, la norme dans $\mathbb{R}^{n}$ satisfait les propriétés suivantes :
+\begin{itemize}
+    \item[(i)] $\|u\| \geq 0$.
+    \item[(ii)] $\|u\| = 0$ si et seulement si $u = 0$.
+    \item[(iii)] $\|ku\| = |k|\|u\|$.
+    \item[(iv)] $\|u + v\| \leq \|u\| + \|v\|$ (Inégalité triangulaire).
+\end{itemize}
+
+\subsection{Vecteurs dans $\mathbb{C}^{n}$}
+On rappelle qu’un nombre complexe $z \in \mathbb{C}$ est un nombre de la forme $a + ib$ où $a, b \in \mathbb{R}$ (la partie réelle et la partie imaginaire de $z$ respectivement) et $i$ vérifie $i^{2} = -1$.
+Le conjugué de z est le nombre complexe $\bar{z} = a - ib$. Le module de $z$ est le nombre réel positif $|z| = \sqrt{z\bar{z}} = \sqrt{a^{2} + b^{2}}$. Tout comme les nombres réels qui sont représentés par les points d’une droite, les nombres complexes peuvent être représentés dans le plan. En particulier, $z = a + ib$ est représenté par le point $(a, b)$ du plan et le module $|z|$ est la distance du point $z$ à l’origine.\\
+Nous rappellons les propriétés élémentaires suivantes.
+
+\subsubsection{Proposition}
+Quels que soient $z, w \in \mathbb{C}$, on a :
+\begin{itemize}
+    \item[(i)] $\overline{z + w} = \bar{z} + \bar{w}$.
+    \item[(ii)] $\overline{zw} = \bar{z} \bar{w}$.
+    \item[(iii)] $\bar{\bar{z}} = z$.
+    \item[(iv)] $|zw| = |z||w|$.
+    \item[(v)] $|z + w| \leq |z| + |w| $.
+\end{itemize}
+Nous allons maintenant rapidement refaire ce qu’on a fait dans la section précédente. Dans toute la suite $\mathbb{K} = \mathbb{R}$ ou $\mathbb{C}$, l’espace complexe à n dimensions $\mathbb{C}^{n}$ est en effet à la fois un espace vectoriel sur $\mathbb{R}$ et un espace vectoriel sur $\mathbb{C}$.
+Bien que l’ensemble sous-jacent soit le même, on verra plus tard qu’il y a des différences entre les structures d’espace vectoriel sur $\mathbb{R}$ et sur $\mathbb{C}$. Comme dans le cas réel, les éléments de $\mathbb{C}^{n}$ sont appelés vecteurs (ou points) et les éléments de $\mathbb{K}$ sont appelés scalaires. 
+L’addition de deux vecteurs et la multiplication par un scalaire se font composante par composante comme dans le cas réel. Dans le cas complexe, le produit scalaire et la norme se définissent d’une manière légèrement différente du cas réel.
+
+\subsubsection{Définition (Produit scalaire)}
+Soient $z = (z_{1} , \cdots , z_{n} )$ et $w= (w_{1} , \cdots , w_{n} )$ deux vecteurs de $\mathbb{C}^{n}$ . On définit le produit scalaire de $z$ et $w$ par : $z \cdot w = z_{1} w_{1} + \cdots + z_{n} w_{n}$ .
+Il est facile de voir qu’avec cette définition $z \cdot z$ est un nombre réel positif, ce qui permet de définir la norme.
+
+\subsubsection{Définition (Norme)}
+Soit $z = (z_{1} , \cdots , z_{n}) \in \mathbb{C}^{n}$, la norme de $z$ est définie par : $$\| z \| = \sqrt{z \cdot z} =\sqrt{| z_{1} |^{2} + \cdots + | z_{n} |^{2}}.$$
+Les notions d’orthogonalité et de distance se définissent de la même manière que dans le cas réel.\\ Résoudre des systèmes d’équations linéaires est l’un des problèmes les plus importants en algèbre. Dans cette section, on développera une méthode générale en utilisant des objets qui seront au centre de notre cours : Les Matrices.
+Pour commencer, considérons le système d’équations, qu’on va résoudre dans $\mathbb{R}^{2}$, suivant :
+$$\left\{ \begin{array}{ccc} 2x - y & = & 5 \\ 3x + 2y & = & 4\end{array}\right.$$
+On peut voir ce système de deux manières différentes :\\
+\underline{\textbf{{1er point de vue :}}}
+Ce système représente deux droites dans $\mathbb{R}^{2}$ d’équations respectives :
+$$ 2x - y - 5 =0, \; 3x +2y - 4 =0 $$
+Les deux droites ne sont pas parallèles, la solution est donc les coordonnées du point d’intersection qui est ( x = 2, y = -1).\\
+\underline{\textbf{2e point de vue :}}
+Résoudre ce système est équivalent à répondre à la question suivante : Trouver la combinaison linéaire des vecteurs $\left(\begin{array}{c} 2 \\ 3 \end{array}\right)$ et $\left(\begin{array}{c} -1\\ 2 \end{array}\right)$ qui donne le vecteur $\left(\begin{array}{c} 5 \\ 4 \end{array}\right)$, i.e, trouver x et y, nombres réels, tels que :
+$x\left(\begin{array}{c} 2 \\ 3 \end{array}\right) + y\left(\begin{array}{c} -1 \\ 2 \end{array}\right) = \left(\begin{array}{c} 5 \\ 4 \end{array}\right)$\\ C’est dans ce deuxième point de vue qu’on va voir les choses  la plus part du temps.
+
+\subsection{Matrices}
+Considérons les trois vecteurs de $\mathbb{R}^{3}$ suivants : $$ u = \left(\begin{array}{c} 1 \\ -1 \\ 0\end{array}\right), \; v = \left(\begin{array}{c}0 \\ 1 \\ -1\end{array}\right) \; w = \left(\begin{array}{c} 0 \\ 0 \\ 1\end{array}\right).$$ Une combinaison linéaire de ces trois vecteurs est de la forme : $$ x_{1}u + x_{2}v + x_{3}w = \left(\begin{array}{c} x_{1} \\ x_{2}-x_{1} \\ x_{3}-x_{2}\end{array}\right)$$ où $x_{1} , x_{2} \mbox{ et } x_{3}$ sont des scalaires.\\
+Maintenant, on va réecrire cette combinaison en utilisant l’un des plus importants objets en algèbre linéaire : Les Matrices.\\ On va mettre les trois vecteurs dans les colonnes de la matrice A comme suit : $$ A:=(u \; v \; w)=\left(\begin{array}{ccc}1 & 0 & 0 \\ -1 & 1 & 0 \\ 0 & -1 & 1\end{array}\right)$$ Posons $ x = \left(\begin{array}{c} x_{1} \\ x_{2} \\ x_{3}\end{array}\right) \in \mathbb{R}^{3}$. Ainsi on definit le produit $A.x$ (noté par $Ax$) comme suit : $$Ax = \left(\begin{array}{ccc}1 & 0 & 0 \\ -1 & 1 & 0 \\ 0 & -1 & 1\end{array}\right) \left(\begin{array}{c}x_{1} \\ x_{2} \\ x_{3}\end{array}\right) = x_{1}u + x_{2}v + x_{3}w = \left(\begin{array}{c} x_{1} \\ x_{2}-x_{1} \\ x_{3}-x_{2}\end{array}\right)$$
+Par conséquent, $Ax$ est un vecteur de $\mathbb{R}^{3}$ qui est une combinaison linéaire des vecteurs $u$, $v$ et $w$. De plus, si $b = \left(\begin{array}{c} b_{1} \\ b_{2} \\ b_{3}\end{array}\right)$ est un vecteur de $\mathbb{R}^{3}$, l’équation linéaire $$Ax = b$$ est un système de trois équations linéaires. La solution de ce système est : $$\left\{\begin{array}{ccc} x_{1} & = & b_{1} \\ x_{2} & = & b_{1}+x_{2}+x_{3} \\ x_{3} & = & b_{1}+b_{2}+b_{3}\end{array}\right.$$
+Ainsi, $$ x = b_{1}\left(\begin{array}{c} 1 \\ 1 \\ 1\end{array}\right)+b_{2}\left(\begin{array}{c} 0 \\ 1 \\ 1 \end{array}\right)+b_{3}\left(\begin{array}{c} 0 \\ 0 \\ 1\end{array}\right)= Sb,$$ où $$ S = \left(\begin{array}{ccc} 1 & 0 & 0 \\ 1 & 1 & 0 \\ 1 & 1 & 1\end{array}\right) $$
+
+\subsubsection{Remarque}
+Considérons l’équation linéaire dans $\mathbb{R}$ : $$ax = b$$ où $a$ et $b$ sont donnés et $x$ est l’inconnu. La solution est : $$ x = \frac{b}{a} = a^{-1}b $$ si a est non nul.\\ De la même manière, pour résoudre l’équation $Ax = b$, on suggère de trouver une méthode pour trouver $A^{-1}$ . On verra plus tard les conditions d’existence de la matrice $A^{-1}$ . Ici, $A^{-1} = S.$
+Et, on dit dans ce cas que $S$ est l’inverse de $A$. Par analogie, $A$ est l’inverse de $S$. Notons par $u^{'} , v^{'} \mbox{ et } w^{'}$ les vecteurs colonnes de la matrice $S$. On a : $$ Au^{'}=\left(\begin{array}{c} 1 \\ 0 \\ 0\end{array}\right), \; Av^{'}=\left(\begin{array}{c} 0 \\ 1 \\ 0\end{array}\right), \; Aw^{'}\left(\begin{array}{c} 0 \\ 0 \\ 1\end{array}\right)$$
+Ainsi, on obtient la matrice : $$ I_{3} = (Au^{'} \; Av^{'} \; Aw^{'}) = \left(\begin{array}{ccc} 1 & 0 & 0 \\ 0  & 1 & 0 \\ 0 & 0 & 1 \end{array}\right)$$
+Pour tout vecteur $x$ de $\mathbb{R}^{3}$ , on a : $$I_{3} x = x$$.
+On appellera la matrice $I_{3}$ , la matrice identité de dimension 3. Cela nous donne une idée assez clair sur comment on va faire la multiplication de deux matrices. Dans notre exemple, on a : $$AS = (u \; v \; w)(u^{'} \; v^{'} \; w^{'}) = (Au^{'} \; Av^{'} \; Aw^{'}) = I_{3}$$ et $$SA = (u^{'} \; v^{'} \; w^{'})(u \; v \; w) = (Su \; Sv \; Sw) = I_{3}$$
+Avant de décrire les règles d’opérations sur les matrices, noter bien aussi la remarque suivante :
+
+\subsubsection{Remarque}
+Jusqu’à maintenant, on n’a adopté que le deuxième point de vue : ”Le point de vue des colonnes”. Bien évidemment, on peut voir aussi les matrices sur les lignes (Le premier point de vue). Posons : $$x = (1, 0, 0), \; y = (-1, 1, 0), \; z = (0, -1, 1).$$
+On a : $$ A = (u \; v \; w) = \left(\begin{array}{c} x \\ y \\ z \end{array}\right).$$Ainsi, $$ Ax = \left(\begin{array}{c} x.(x_{1},x_{2},x_{3}) \\ y.(x_{1},x_{2},x_{3}) \\ z.(x_{1},x_{2},x_{3})\end{array}\right) = \left(\begin{array}{c} x_{1} \\ x_{2} - x_{1} \\ x_{3} - x_{1}\end{array}\right).$$ Cela nous donne une deuxième façon de calculer $A \left(\begin{array}{c} x_{1} \\ x_{2} \\ x_{3}\end{array}\right)$, ainsi que le produit de deux matrices. 
+
+\subsubsection{Règles des Opérations pour les Matrices}
+Dans toute la suite, sauf mention explicite du contraire, $m$ et $n$ désignent deux entiers naturels non tous nuls.
+\subsubsection{Définition}
+Soient $I$ et $J$ deux ensembles d’indices. Une matrice $A$ est une application : $$\begin{array}{ccc}A :\; I \times J & \mapsto & \mathbb{K} \\ (i, j) & \mapsto & a_{ij}\end{array}$$
+où $\mathbb{K}$ est l’ensemble de scalaires. Dans toute la suite, sauf mention explicite du contraire, les ensembles $I$ et $J$ sont finis et sont respectivement $\{1, 2, \cdots , m \} et \{1, 2, \cdots , n \}$. Dans ce cas, on représentera la matrice A comme un tableau rectangulaire de dimension $m \times n$ dont les $mn$ élémentssont des scalaires. Les nombres des lignes et des colonnes sont respectivement $m$ et $n$. On note $A$ par : $$A = (a_{ij})_{1 \leq i \leq m,1 \leq j \leq n}.$$
+où $a_{ij}$ sont des scalaires; ou simplement par $$A = (a_{ij})$$ s’il n’y a pas de confusion. Le scalaire $a_{ij}$ se trouve ainsi sur la $i$-ème ligne et la $j$-ème colonne dela matrice $A$. Les n-tuplets $(a_{i1} \cdots a_{in})$ sont appelés les vecteurs lignes de $A$ tandis que les vecteurs de $\mathbb{K}^{m},\; \left(\begin{array}{c} a_{1j} \\ \vdots \\ a_{mj}\end{array}\right)$ sont appelés les vecteurs colonnes de $A$.
+Si de plus, $n = m$, on dit que la matrice $A$ est une matrice carrée de dimension n. On notera par $M_{n}(\mathbb{K})$ l’ensemble des matrices carrées de dimension n (à coefficients dans $\mathbb{K}$). Par définition, on peut considérer comme des matrices, les éléments de $\mathbb{R}^{n}$ ou $\mathbb{C}^{n}$. Ainsi, les vecteurs colonnes de $\mathbb{R}^{n}$ ou $\mathbb{C}^{n}$ sont des matrices de dimension $n \times 1$, tandis que les vecteurs lignes sont de dimension $1 \times n$. Comme dans le cas de ces vecteurs, on a l’addition et la multiplication par un scalaire entre les matrices. Par exemple :
+$$\left(\begin{array}{cc} 0 & 1 \\ 2 & 1 \\ 1 & 3\end{array}\right) + \left(\begin{array}{cc} 2 & 1 \\ 0 & 0 \\ 1 & 1\end{array}\right) = \left(\begin{array}{cc} 2 & 2 \\ 2 & 1 \\ 2 & 4\end{array}\right), \; -2\left(\begin{array}{cc}0 & 1 \\ 2 & 1 \\ 1 & 3\end{array}\right) = \left(\begin{array}{cc} 0 & -2 \\ -4 & -2 \\ -2 & -6\end{array}\right)$$
+Par conséquent :
+
+\subsubsection{Définition (Addition de deux matrices et Multiplication par un scalaire)}
+L’addition de deux matrices est bien définie si les deux matrices ont la même dimension. Ainsi, si $A = (a_{ij})$ et $B = (b_{ij})$ sont des matrices de dimension $m \times n$, on définit $A + B$ par : $$A + B = ( a_{ij} + b_{ij} ).$$
+Si $k$ est un scalaire, on définit $kA$ par : $$kA = (ka_{ij}).$$
+
+\subsubsection{Définition (Multiplication de deux Matrices)}
+Soient $A$ et $B$ deux matrices de dimensions respectives $m \times n$ et $q \times p$. La multiplication $A \times B$ ou simplement $AB$ est bien définie si le nombre de colonnes de $A$ est égal au nombre de ligne de $B$, i.e, $n = q$. Ainsi, on définit $AB$ par : $$Ab=(Ab_{1} \; \cdots \; Ab_{p}).$$
+Ou bien : $$AB = (a_{i} \cdot b_{j})_{1 \leq i \leq m,1 \leq j \leq p}$$ où $A = \left(\begin{array}{c} a_{1} \\ \vdots \\ a_{m} \end{array}\right)$ avec $(a_{i})_{1 \leq i \leq m}$ sont les vecteurs lignes de $A$.
+On remarque ainsi que chaque vecteur colonne de $AB$ est une combinaison linéaire des colonnes de $A$. Mais encore, on a : $$(i-\mbox{ème ligne de AB }) = (i-\mbox{ème ligne de A }) \times B$$ et $$j-\mbox{ème colonne de AB } = A \times  (j-\mbox{ème colonne de B }).$$
+
+\subsubsection{Proposition (Linéarité de la multiplication par une matrice)}
+Soit $A$ une matrice dans $M_{n}(\mathbb{K})$.
+Considérons trois vecteurs colonnes $u$, $v$ et $w$ de $\mathbb{K}_{n}$ tels que $w = au + bv$ où $a$ et $b$ sont des scalaires. Alors on a : $$Aw = aAu + bAv.$$
+
+\subsubsection{Proposition}
+Soient $A$, $B$ et $C$ trois matrices et $k$ un scalaire. On a :
+\begin{enumerate}
+    \item $A+B = B+A$ (Commutativité de l'addition)
+    \item $k (A + B) = kA + kB$ (Distributivité de la multiplication par un scalaire)
+    \item $A + (B + C ) = (A + B) + C$  (Associativité de l'addition)
+    \item $AB \not= BA$ (Non commutativité de la numltication)
+    \item $C (A + B) = CA + CB$ (Distributivité à gauche de la multiplication)
+    \item $(A + B)C = AC + BC$ (Distributivité à droite de la multiplication)
+    \item $A(BC) = (AB)C$ (Associativité de la multiplication)
+\end{enumerate}
+
+\subsubsection{Définition}
+La matrice de $M_{n}(\mathbb{K})$, qu’on notera par $I_{n}$ (ou par $I$ s’il n’y a pas de confusion), définie par : $$I_{n} = (a_{ij})$$ où $$a_{ij} = \left\{ \begin{array}{ll}1 & \mbox{si i =j} \\ 0  & \mbox{sinon} \end{array}\right.$$ est appelée la matrice identité.
+
+\subsubsection{Remarque}
+On remarque que la matrice $I$ commute avec toutes les matrices dans $M_{n}(\mathbb{K})$, i.e, pour toute matrice $A$ dans $M_{n}(\mathbb{K})$, on a : $$I A = AI.$$ Ainsi, si $k$ est un scalaire, la matrice $kI$ commute, elle aussi, avec toute les éléments de $M_{n}(\mathbb{K})$.\\ D’où la question suivante :
+
+\subsubsection{Question}
+Peut-on trouver d’autres matrices (autres que $kI$) qui pourraient commuter avec toute les éléments de $M_{n} (\mathbb{K})$ ?\\ Une dernière chose (importante) concernant la multiplication des matrices est ce qu’on appelle la décomposition d’une matrice en blocs. Considérons par exemple une décomposition de la matrice $A$ en blocs suivante :
+$$ A = \left(\begin{array}{cccccc} 1 & 0 & 0 & 1 & 0 & 0 \\ 0 & 1 & 0 & 0 & 1 & 0 \\ 0 & 0 & 1 & 0 & 0 & 1 \\ 0 & 0 & 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 0 & 0  & 1\end{array}\right) = \left(\begin{array}{ccc|c} 1 & 0 & 0 &  \\ 0 & 1 & 0 & B \\ 0 & 0 & 1 &  \\ \hline  & O & & C\end{array}\right)$$ où
+$$ B = \left(\begin{array}{ccc} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1\end{array}\right), \; O = \left(\begin{array}{ccc} 0 & 0 & 0 \\ 0 & 0 & 0 \end{array}\right), \; C = \left(\begin{array}{ccc} 0 & 1 & 0 \\ 0 & 0 & 1\end{array}\right)$$
+
+\subsubsection{Proposition}
+Soient $A$ et $B$ deux matrices décomposées en blocs des matrices. Si le nombre des blocs sur une ligne de $A$ est égal au nombre des blocs sur une colonne de $B$, la multiplication de $A \times B$ peut se faire blocs par blocs (suivant la règle de multiplication de deux matrices).
+Ainsi, on obtient une troisième manière de multiplier deux matrices qui suit :
+
+\subsubsection{Corollaire}
+Soient $A$ et $B$ deux matrices tels que $AB$ est bien défini. Pour tout $i = 1, 2, \cdots , n$, notons respectivement par $a_{i}$ et $b_{i}$ les vecteurs colonnes de A et les vecteurs lignes de B. Alors, on a : $$AB = a_{1} b_{1} + \cdots + a_{n} b_{n}$$
+Voir un exemple : $$\left(\begin{array}{cc}3 & 1 \\ 1 & 1 \end{array}\right) \left(\begin{array}{cc} -1 & 1 \\ 1 & 0 \end{array}\right) = \left(\begin{array}{c} 3 \\ 1\end{array}\right)(-1 \; 1) + \left(\begin{array}{c} 1 \\ 1\end{array}\right)(1 \; 0) = \left(\begin{array}{cc}- 3 & 3 \\ - 1 & 1 \end{array}\right) + \left(\begin{array}{cc}1 & 0 \\ 1 & 0\end{array}\right) = \left(\begin{array}{cc} -2 & 3 \\ 0 & 1\end{array}\right)$$
+
+\subsubsection{Inverses}
+Soit A une matrice dans $M_{m \times n} (\mathbb{K})$. On dit que la matrice $A$ admet un inverse à gauche (resp. à droite) s’il existe une matrice $G$ (resp. une matrice $D$) dans $M_{n \times m} (\mathbb{K})$ tel que : $$GA = I_{n} (resp. AD = I_{m} ).$$ Noter qu’en général (dans le cas où $m \not= n$), on peut vérifier que $G \not= D$.
+
+\subsection{Proposition}
+Soit $A$ une matrice inversible dans $M_{n} (\mathbb{K})$. Notons respectivement par $G$ et $D$ un inverse à gauche et un inverse à droite de $A$. Alors : $$G = D.$$ De plus, l’inverse de $A$ est unique qu’on notera par $A^{-1}$. Ainsi, $A$ est l’inverse de $A^{-1}$.\\
+\textit{Preuve: }\\ Par définition, on a $GA = I_{n}$. En multipliant cet égalité à droite par $D$, on a $(GA) D = D$. Puisque la multiplication des matrices est associative, on a $(GA)D = G(AD) = G(I_{n}) = G$. D’où, $G = D$.\\ Maintenant, soient $B_{1}$ et $B_{2}$ deux inverses (à droite et à gauche) de $A$. D’après le résultat précédent, on peut considérer $_{1}$ comme inverse à droite et $_{2}$ comme inverse à gauche. D’après ce même résultat, on conclut que $B_{1} = B_{2}$
+Dans toute la suite, quand on parle des inverses de matrices, on ne s’intéressera qu’au cas où la matrice est carrée. Ainsi, on notera par $GL_{n} (\mathbb{K})$, le sous-ensemble des matrices inversibles de $M_{n} (\mathbb{K})$.
+
+\subsubsection{Proposition}
+Soient $A$ et $B$ des matrices dans $GL_{n} (\mathbb{K})$. On a :
+\begin{itemize}
+    \item[-] La matrice $AB$ est aussi dans $GL_{n}(\mathbb{K})$ (Stabilité par la multiplication) ;
+    \item[-] L’inverse de $AB$ est $B^{-1} A^{-1}$ .
+\end{itemize}
+
+\subsubsection{Proposition}
+Soit $A$ une matrice dans $M_{n} (\mathbb{K})$. La matrice A est inversible si et seulement si pour tout vecteur $b$ de $\mathbb{K}^{n}$ , il existe un unique solution dans Kn de l’équation : $$Ax = b$$.
+\textit{Preuve: }\\ Supposons que $A$ est inversible. Soit $b \in \mathbb{K}^{n}$ et considérons l’équation $Ax = b$. Donc, le vecteur $x = A^{-1} b$ est une solution. Si $x^{'}$ est une solution de l’équation, on a $Ax^{'} = b$. En multipliant cet équation par $A^{-1}$, on a $x^{'} = A^{-1} b = x$. Puisque $A^{-1}$ est unique, d’où l’unicité de la solution. Inversement, supposons maintenant que pour tout vecteur $b$ de $\mathbb{K}^{n}$ , il existe un unique solution dans $\mathbb{K}^{n}$ de l’équation :
+Pour tout $i = 1, 2, \cdots , n$, notons par $b_{i}$ le $i$-ième colonne de la matrice identité $I_{n}$ . Par hypothèse, il existe un unique $x_{i}$ dans $\mathbb{R}^{n}$, solution de l’équation $$Ax = b_{i}$$ pour tout $i = 1, 2, \cdots , n$. D’où :$$A^{-1}=(x_{1} \; x_{2} \; \cdots \; x_{n})$$ est l’inverse de $A$.
+
+\subsubsection{Remarque}
+On a, dans la preuve de la proposition précédente, une méthode pour calculer l’inverse d’une matrice. On verra plus tard dans ce cours, des critères pour qu’une matrice soit inversible, ainsi que d’autres méthodes pour calculer l’inverse d’une matrice.
+
+\subsubsection{Dépendances et Indépendances}
+On a vu au tout début de ce cours, la définition d’une combinaison linéaire. Soient $u_{1}, u_{2}, \cdots, u_{r}$, $r$ vecteurs de $\mathbb{K}^{n}$, on se demandait si un vecteur $w$ dans $\mathbb{K}^{n}$ est une combinaison linéaire de ces $r$ vecteurs. Maintenant, en particulier, on se demande s’il existe (au moins) un vecteur parmi les $u_{i}$ qui soit (ou non) une combinaison linéaire des autres.
+
+\subsubsection{Définition}
+Soient $u_{1}, u_{2}, \cdots, u_{r}$, $r$ vecteurs de $\mathbb{K}^{n}$. On dit que ces vecteurs sont linéairement dépendants s’ils existent $x_{1}, x_{2} , \cdots , x_{r}$ scalaires non tous nuls tels que : $$x_{1} u_{1} + x_{2} u_{2} + \cdots + x_{r} u_{r} = 0.$$ Ils sont dits linéairement indépendants dans le cas contraire.
+
+\subsubsection{Proposition}
+Soit $A$ une matrice dans $M_{n} (\mathbb{K})$. La matrice $A$ est inversible si et seulement si les vecteurs colonnes de $A$ sont linéairement indépendants.\\
+\textit{Preuve :}\\
+Pour tout $i = 1, 2, \cdots, n$, notons par $u_{i}$ le $i$-ième colonne de $A$. D’après Proposition 2.3.16, l’équation $Ax = x_{1} u_{1} + x_{2} u_{2} + \cdots + x_{n} u_{n} = 0$ admet un unique solution. Or, le vecteur nul dans $\mathbb{K}^{n}$ est une solution de cet équation. D’où le résultat.
+
+\subsubsection{Théorème}
+Soit $A$ une matrice dans $M_{n} (\mathbb{K})$. Les vecteurs colonnes de A sont linéairement indépendants si et seulement si les vecteurs lignes de $A$ le sont aussi.\\
+\textit{Preuve :}\\
+Notons par $u_{1} , u_{2} , \cdots , u_{n}$ les vecteurs lignes de $A$. Supposons que les vecteurs colonnes de $A$ sont linéairement indépendants. D’après la proposition 2.3.19, la matrice $A$ est inversible. Ainsi, en multipliant à droite par $A^{-1}$, l’équation $$xA = x_{1} u_{1} + x_{2} u_{2} + \cdots + x_{n} u_{n} = 0$$ où $x = ( x_{1} , x_{2} , \cdots , x_{n} )$ admet un unique solution (qui est le vecteur nul). D’où les vecteurs lignes sont aussi linéairement indépendants. La réciproque se démontre de la même manière.
+
+\subsubsection{Proposition}
+Soit $A \in M_{n} (\mathbb{K})$. L’équation
+$$Ax = 0$$
+admet plusieurs (au moins deux) solutions si et seulement si $A$ n’est pas inversible. Dans ce cas, on dit que
+la matrice $A$ est singulière
+
+\subsubsection{Transpositions et Permutations}
+Dans ce paragraphe, on va introduire deux opérateurs (importants) opérant sur les matrices à savoir : la Transposition et la Permutation.
+
+\subsubsection{Définition 2.3.22} 
+Soit $A$ une matrice. La matrice dont les colonnes sont respectivement les vecteurs lignes de $A$ est appelée la transposée de $A$ (qu’on notera par $A^{T}$ ). Plus précisément : $$(A^{T})_{ij} = A_{ji}.$$ En particulier, si $A \in M_{m \times n} (\mathbb{K})$, la matrice $A^{T}$ est dans $M_{n \times m} (\mathbb{K})$.
+
+\subsubsection{Exemples}
+Si $A = \left(\begin{array}{ccc}1 & 2 & 3 \\ 4 & 5 & 6\end{array}\right)$, la transposée de A est $A^{T} = \left(\begin{array}{cc} 1 & 4 \\ 2 & 5 \\ 3 & 6\end{array}\right)$
+
+\subsubsection{Proposition}
+Soient $A$ et $B$ deux matrices. Alors :
+\begin{itemize}
+    \item[(i)] $(A + B)^{T} = A^{T} + B^{T}$ ;
+    \item[(ii)] $(AB)^{T} = B^{T} A^{T}$ ;
+    \item[(iii)] Si $A$ est inversible, alors $A^{T}$ est aussi inversible avec $(A^{T})^{-1} = ( A^{-1})^{T}$.
+    \item[(iv)] $(( A)^{T})^{T} = A$.
+\end{itemize}
+
+\subsubsection{Remarque}
+Soient $A$ une matrice dans $M_{n} (\mathbb{K})$ et $x$ un vecteur colonne de $\mathbb{K}^{n}$ . Le vecteur $Ax$ est une combinaison linéaire des vecteurs colonnes de $A$ tandis que $x^{T} A$ est celle des vecteurs lignes de $A$. Dans toute la suite, sauf mention explicite du contraire, tout vecteur de $\mathbb{K}^{n}$ sera considérer comme un vecteur colonne.
+
+\subsubsection{Remarque}
+Soient $x$ et $y$ deux vecteurs de $\mathbb{K}^{n}$. Alors on a : $$x \cdot y = x^{T} y.$$ Si de plus, $A$ est une matrice dans $M_{n} (\mathbb{K})$, on a : $$(Ax)^{T}y = x^{T}(A^{T}y).$$ Maintenant on va introduire quelques importantes classes de matrices.
+
+\subsubsection{Définition}
+Soient $A$ une matrice dans $M_{n} (\mathbb{K})$. On dit que $A$ est une matrice triangulaire supérieure (resp. inférieure) si $a_{ij} = 0$ pour $i > j$ (resp. pour $i < j$).
+Il est important de souligner que les matrices triangulaires (supérieures ou inférieures) joueront un très grand rôle dans la résolution des équations linéaires du type : $$Ax = b$$ où $A$ une matrice carrée, $b$ un élément de $\mathbb{K}^{n}$ et $x$ dans $\mathbb{K}^{n}$ est l’inconnu.
+
+\subsubsection{Remarque}
+Si $A$ est une matrice triangulaire supérieure, sa transposée $A^{T}$ est une matrice triangulaire inférieure, et inversement. La classe des matrices suivante est l’une des plus importantes :
+
+\subsubsection{Définition}
+Soit $A = ( a_{ij} )$ une matrice dans $M_{n} (\mathbb{K})$. La matrice est dite symétrique si $A^{T} = A$, i.e, $a_{ij} = a_{ji}.$ Il est clair que si $A$ est une matrice symétrique et inversible, alors l’inverse est aussi une matrice symétrique.
+
+\subsubsection{Proposition}
+Soit $A$ une matrice dans $M_{m \times n} (\mathbb{K}).$ La matrice $A^{T}A$ dans $M_{n} (\mathbb{K})$ est une matrice symétrique.
+
+\subsection{Définition}
+Soit $A = ( a_{ij} )$ une matrice dans $M_{n} (\mathbb{K})$. La matrice est dite antisymétrique si
+$A^{T} = - A$, i.e, $a_{ij} = - a_{ji}$.
+On verra plus tard (plus loin) l’importance de ces classes de matrices. Soit $A$ une matrice dans $M_{n}(\mathbb{K})$. Notons par $u_{1}, u_{2}, \cdots, u_{n}$ les vecteurs ligne de $A$. Une question que l’on peut se poser est la suivante : Existe-t-il une matrice $P$ qui permute (ou échange) deux ou plusieurs vecteurs lignes de $A$ en la multipliant par $P$ ? La réponse est OUI !
+Par définition, la matrice identité In ne change rien sur $A$, i.e, $I_{n} A = A$. Par contre si $P_{21}$ est la matrice qu’on obtient en permutant la première et la deuxième ligne de la matrice $I_{n}$, on a : $$P_{21}A=\left(\begin{array}{c} u_{1} \\ u_{2} \\ \vdots \\ u_{n}\end{array}\right)$$
+
+De manière générale, la matrice $P_{ij}$ obtenue de la matrice identité après avoir permuté la $i$-ème ligne et la $j$-ème ligne permute la $i$-ème et la $j$-ème ligne de la matrice $A$. Ainsi :
+
+\subsubsection{Définition}
+Une matrice $P$ est dite une matrice de permutation si $P$ est le produit de matrices de type $P_{ij}$. L’ensemble des matrices de permutations dans $M_{n} (\mathbb{K})$ est noté par $P_{n}$ .
+
+\subsubsection{Proposition 2.3.33}
+Soit $P$ une matrice dans $P_{n}$ . Alors :
+\begin{itemize}
+    \item[(i)] La matrice $P$ est inversible avec $P^{-1} = P^{T}$. En particulier, $P^{-1}$ est aussi une matrice de permutation ;
+    \item[(ii)] $P_{n} = I_{n}$ ;
+    \item[(iii)] Le cardinal de l’ensemble $P_{n}$ est $n!$.
+\end{itemize}
+
+
+\subsection{Equations Linéaires}
+Avant de passer aux choses sérieuses, illustrons cette section avec l’un des fondations (Si ce n’est la fondation) de l’algèbre linéaire à savoir : La résolution d’un système d’équations linéaires. Considérons le système suivant : $$\left\{\begin{array}{ccc} 2x - y + z & = & 1 \\ x + y + z & = & 0 \\ x + y - 2z = -1 \end{array}\right.$$ où $(x, y, z) \in \mathbb{K}^{3}$ est l’inconnu. En utilisant la méthode d’élimination, on peut avoir le système réduit (qui est plus facile à résoudre) qui suit : $$\left\{\begin{array}{ccc} 2x - y + z & = & 1 \\  -3y - z & = & 1 \\ -6z & = &  2 \end{array}\right.$$
+D’où : $$\left\{\begin{array}{ccc} x & = & \frac{1}{9} \\ y & = & -\frac{4}{9} \\ z = \frac{1}{3} \end{array}\right.$$ Maintenant l’idée est de ”revisiter” cette méthode en utilisant les matrices. La méthode est bien connue sous le nom : La méthode de pivot de Gauss.
+Reprenons l’exemple ci-dessus :
+Considérons l’équation linéaire suivante : $$Ax = b$$ où $x \in \mathbb{K}^{3}$ est l’inconnu avec : $$A = \left(\begin{array}{ccc} 2 & -1 &  1 \\ 1 & 1 & 1 \\ 1 & 1 -2 \end{array}\right), \; b=\left(\begin{array}{c} 1 \\ 0 \\ -1\end{array}\right)$$
+
+\subsubsection{Définition}
+Soit $A = ( a_{ij} )$ une matrice dans $M_{n} (\mathbb{K})$. Une matrice $E_{ij}$ vérifiant les deux propriétés suivantes :
+\begin{itemize}
+    \item[(i)] La multiplication à gauche de $A$ par $E_{ij}$ ne change que la $i$-ième ligne de $A$;
+    \item[(ii)] La $(i, j)$ position de la matrice $E_{ij} A$ est zéro ;
+    est appelée une matrice d’élimination du coefficient $a_{ij}$ de $A$.
+\end{itemize}
+
+\subsubsection{Proposition}
+Soient $A = ( a_{ij} )$ une matrice dans $M_{n} (\mathbb{K})$ et $i, j \mbox{ et } k$ trois entiers entre 1 et n avec $k < i$. Supposons que $a_{kj}$ et $a_{ij}$ sont non nuls. Alors, la matrice déduite de la matrice identité $I_{n}$ en remplaçant seulement la $(i, k )$ position par $-\frac{a_{ij}}{a_{kj}}$ , est une matrice d’élimination du coefficient $a_{ij}$ de $A$. On notera cette matrice par $E_{ij}$. De plus, La $i$-ième ligne de la matrice $E_{ij} A$ est égal à  $-\frac{a_{ij}}{a_{kj}} L_{k} + L_{i}$ où $L_{k}$ et $L_{i}$ sont respectivement la $k$-ième ligne et la $i$-ième ligne de la matrice $A$.
+
+\subsubsection{Proposition}
+Les matrices d’éliminations sont inversibles. De plus, si $E = (e_{kl})$ est une matrice
+d’élimination de la $(i, j)$ position d’une matrice donnée, la matrice inverse $E^{-1}$ se déduit de la matrice $E$ en
+remplaçant seulement la $(i, j)$ position par $-e_{ij}$ .
+
+En revenant à notre exemple, l’équation peut se réduire à : $$A^{'} x = b^{'}$$ où
+$$ A^{'} = E_{32} E_{31} E_{21} A = \left(\begin{array}{ccc}2 & -1 & 1 \\ 0 & \frac{3}{2} & \frac{1}{2} \\ 0 & 0 & -3 \end{array}\right), \; b^{'} = E_{32} E_{31} E_{21} b = \left(\begin{array}{c} 1 \\ -\frac{1}{2} \\ -1 \end{array}\right)$$ avec $$E_{21} = \left(\begin{array}{ccc} 1 & 0 & 0 \\ -\frac{1}{2} & 1 & 0 \\ 0 & 0 & 1 \end{array}\right), \; E_{31} = \left(\begin{array}{ccc} 1 & 0 & 0 \\ 0 & 1 &  0 \\ -\frac{1}{2} & 0 & 1 \end{array}\right), \; E_{32}\left(\begin{array}{ccc} 1 & 0 & 0 \\ 0 & 1 & 0\\ 0 & -1 &  1 \end{array}\right)$$
+Par conséquent, on retrouve le résultat :
+$$\left\{ \begin{array}{ccc} x & = & \frac{1}{9} \\ y & = & -\frac{4}{9} \\ \frac{1}{3}\end{array}\right.$$
+
+Remarquons ainsi que, $A$ se factorise comme suit : $$A = LU$$ où $L$ et $U$ sont respectivement une matrice triangulaire inférieure et une matrice triangulaire supérieure, avec : $$L = E_{21}^{-1} E_{31}^{-1} E_{32}^{-1}$$ où $$E_{21}^{-1} = \left(\begin{array}{ccc} 1 & 0 & 0 \\ \frac{1}{2} & 1 & 0 \\ 0 & 0 & 1 \end{array}\right), \; E_{31}^{-1} = \left(\begin{array}{ccc} 1 & 0 & 0 \\ 0 & 1 &  0 \\ \frac{1}{2} & 0 & 1 \end{array}\right), \; E_{32}^{-1} = \left(\begin{array}{ccc} 1 & 0 & 0 \\ 0 & 1 & 0\\ 0 & 1 &  1 \end{array}\right)$$
+
+\subsubsection{Remarque}
+En général, dans le procédé de la méthode d’élimination de la Proposition 2.4.2, si le coefficient $a_{ij}$ qu’on veut éliminer est déjà zéro, on ne fait rien, on passe au suivant qui est généralement $a_{(i+1) j}$ ou $a_{(i+1)(j+1)}$ . Mais, plus important encore, on peut pas éliminer si $a_{kj} = 0$. Si c’est le cas, on permute les lignes de $A$ jusqu’à ce qu’on obtienne un premier coefficient qui est non nul. On commence souvent par $a_{11}$.
+D’où le résultat suivant :
+
+\subsection{Théorème (Factorisation LU)}
+Soit $A$ une matrice carrée. Alors il existe une matrice de permutation $P$ tel que $A$ se factorise comme suit : $$PA = LU$$ où $L$ et $U$ sont respectivement une matrice triangulaire inférieure et une matrice triangulaire supérieure.
+
+
+\subsubsection{Remarque}
+Maintenant, on sait que toute matrice carré A peut s’écrire de la forme : $$PA = LU$$ comme l’indique le précédent théorème. Si de plus, la matrice $A$ est inversible, il sera facile de trouver son inverse en utilisant cette factorisation en utilisant le fait qu’il est ”facile” de trouver les inverses des matrices d’élimination ainsi que les matrices triangulaires.
+
+\end{document}

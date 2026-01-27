@@ -1,0 +1,267 @@
+\documentclass[a4paper,12pt,french]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=2cm]{geometry}
+\usepackage{amsfonts}
+\usepackage{babel}
+
+\date{\today}
+\author{}
+\title{RÉDUCTION DES MATRICES}
+
+\begin{document}
+\maketitle
+\section{Rappels et notations}
+Dans toute la suite, $\mathbb K$ designe un corps commutatif.
+
+\subsection{Définition}
+Une matrice $m \times n$ est un tableau $M$ forme de m lignes et n colonnes formes par les éléments de $\mathbb K$.\\
+Si on note $a_{i,j}$ la coefficient de la $i$-ème lignes et $j$-ème colonnes de la matrice $M$, on note $M=(a_{i,j})$ pour $1 \leq i \leq m$ et $1 \leq j \leq n$.
+On désigne par $M_{m,n}(\mathbb K)$ la matrice $m \times n$ a coefficient dans $\mathbb K$. Muni de l'addition et de la multiplication externe, $M_{m,n}(\mathbb K)$ est un espace vectoriel sur $\mathbb K$.
+
+\subsection{Définition(\textbf{Produit de deux matrices})}
+Soit $A \in M_{m,n}(\mathbb K)$ et $B \in M_{p,q}(\mathbb K)$. Le produit de $AB$ n'est définie que si $n=p$ et dans ce cas $AB$ est la matrice $c_{ij} \in M_{m,q}(\mathbb K)$ définie par: pour tout $1 \leq i \leq m$ et $1 \leq j \leq q$ 
+$$ c_{i,j}=a_{i,1}b_{1,j}+a_{i,2}b_{2,j}+\cdots+a_{i,n}b_{n,j}= (a_{i,1} \; a_{i,2} \; \cdots \; a_{i,n})\left(\begin{array}{c} b_{1,j} \\ b_{2,j} \\ \vdots \\ b_{n,j} \end{array}\right) $$
+Si $m=n$, on note $M_{n}(\mathbb K)$ au lieu de $M_{n,n}(\mathbb K)$.
+
+\subsection{Définition}
+Soit $A=(a_{i,j})_{1 \leq i,j \leq n} \in M_{n}(\mathbb K)$. On dit que $A$ est :
+\begin{itemize}
+    \item[-] diagonale si $a_{i,j}=0$ si $i \not= j$;
+    \item[-] triangulaire supérieur (resp. triangulaire inférieur) si tous les coefficient en dessous (resp. au dessus) du diagonal sont nuls, c-à-d, $a_{i,j} = 0$ si $i>j$ (resp. $i<j$); 
+    \item[-] triangulaire si elle est triengulaire supérieur ou inférieur.
+\end{itemize}
+
+\subsection{Définition}
+Le déterminant d'une matrice diagonale ou triangulaire est égale au produit de ses éléments diagonaux.
+
+\subsection{Définition}
+Soit $E$ un $\mathbb K$ev de dimension n, $\mathcal{B} =(b_{1},b_{2},\cdots,b_{n})$ une base de E et $u$ un endomorphisme de $E$. Si $u(b_{j})= \sum_{k=1}^{n}a_{k,j}b_{k} \; (1 \leq j \leq n)$, la matrice $A=(a_{i,j})_{1 \leq i,j \leq n}$ 
+est appelée la matrice de u dans $\mathcal{B}\;:\;A=Mat(u,\mathcal{B})$.\\
+Soit $A=(a_{i,j})_{1 \leq i,j \leq n} \in M_{n}(\mathbb K)$ et $(e_{1},e_{2},\cdots,e_{n})$ la base canonique de $M_{n,1}(\mathbb K)$, c-à-d,
+$$ e_{1}=(1\;0\;\cdots\;0)^{t},e_{1}=(0\;1\;\cdots\;0)^{t},\cdots,e_{n}=(0\;0\;\cdots\;1)^{t} \mbox{ où } (a_{1}\;a_{2}\;\cdots\;a_{n})^{t}= \left(\begin{array}{c} a_{1} \\ a_{2} \\ \vdots \\ a_{n} \end{array}\right)$$
+Si on $A_{j}$ le produit $Ae_{j}$, alors $A_{j}$ est la $j$-ème vecteurs colonnes de $A$ et on note $A=[A_{1}A_{2}\cdots A_{n}]$
+
+\section{Résolution de système d'équation linéaire par la méthode de pivot de Gauss}
+Commençons par un exemple. Résolvons le système d'équation suivant:\\
+$ (S_1)\left\lbrace\begin{array}{ccc} 
+    2x_{1}+x_{2}+x_{3}+3x_{4} &=& 5 \; (E_{1}) \\
+    3x_{1}+2x_{2}-x_{3}+2x_{4} &=& 4 \; (E_{2}) \\
+    x_{1}+x_{2}-2x_{3}-x_{4} &=& -1 \; (E_{2}) \\
+    \end{array}\right.$ \\
+Sous forme matricielle, on a $\left(\begin{array}{cccc} 2 & 1 & 1 & 3 \\ 3 & 2 & -1 & 2 \\ 1 & 1 & -2 & -1\end{array}\right) \left(\begin{array}{c}x_{1} \\ x_{2} \\ x_{3} \\ x_{4} \end{array}\right)=\left(\begin{array}{c} 5 \\ 4 \\ -1 \end{array}\right)$ \\
+Utilisons la méthode par élimination. Commençons par éliminer $x_{3}$ par exemple. Gardons l'équation $(E_{1})$, remplaçons $(E_{2})$ par $(E_{1})+(E_{2})$ et $(E_{3})$ par $2(E_{1})+(E_{3})$. On a le système équivalent suivant:\\
+$ (S_{2})\left\lbrace\begin{array}{ccc}
+    2x_{1}+x_{2}+x_{3}+3x_{4} &=& 5 \; (E_{4}) \\
+    5x_{1}+3x_{2}+0x_{3}+5x_{4} &=& 9 \; (E_{5}) \\
+    5x_{1}+3x_{2}+0x_{3}+5x_{4} &=& 9 \; (E_{6}) \\
+    \end{array}\right.$ \\
+Sous forme matricielle, on a $\left(\begin{array}{cccc} 2 & 1 & 1 & 3 \\ 5 & 3 & 0 & 5 \\ 5 & 3 & 0 & 5 \end{array}\right) \left(\begin{array}{c}  x_{1} \\ x_{2} \\ x_{3} \\ x_{4} \end{array}\right)=\left(\begin{array}{c} 5 \\ 9 \\ 9 \end{array}\right)$ \\
+Puis éliminons $x_{2}$. Gardons l'équation $(E_{5})$, remplaçons $(E_{4})$ par $3(E_{4})-(E_{5})$ et $(E_{6})$ par $(E_{6})-(E_{5})$. On a le système équivalent suivant :\\
+$ (S_{3})\left\lbrace\begin{array}{ccc}
+    x_{1}+0x_{2}+3x_{3}+4x_{4} &=& 6 \; (E_{7}) \\
+    5x_{1}+0x_{2}+0x_{3}+5x_{4} &=& 9 \; (E_{8}) \\
+    0x_{1}+0x_{2}+0x_{3}+0x_{4} &=& 0 \; (E_{9}) \\
+    \end{array}\right.$ \\
+Sous forme matricielle, on a $\left(\begin{array}{cccc} 1 & 0 & 3 & 4 \\ 5 & 3 & 0 & 5 \\ 0 & 0 & 0 & 0\end{array}\right)\left(\begin{array}{c}x_{1} \\ x_{2} \\ x_{3} \\ x_{4} \end{array}\right)=\left(\begin{array}{c} 6 \\ 9 \\ 0 \end{array}\right)$ \\
+On a donc exprimer $x_{2}$ et $x_{3}$ en fonction de $x_{1}$ et $x_{4}$. On a : \\
+$ \left\lbrace\begin{array}{ccc} 3x_{2} &=& 9-5x_{1}-5x_{4} \\ 3x_{3} &=& 6-x_{1}-4x_{4} \end{array}\right. \mbox{ ou encore } \left\lbrace\begin{array}{ccc} x_{2} &=& 3-5/3x_{1}-5/3x_{4} \\ x_{3} &=& 2-1/3x_{1}-4/3x_{4} \end{array}\right.$ \\
+$\left(\begin{array}{cccc} 1 & 0 & 3 & 4 \\ 5 & 3 & 0 & 5 \\ 0 & 0 & 0 & 0 \end{array}\right) \mbox{ est appelée une matrice écholonnée réduite de } \left(\begin{array}{cccc} 2 & 1 & 1 & 3 \\ 3 & 2 & -1 & 2 \\ 1 & 1 & -2 & -1 \end{array}\right)$
+
+\subsection{Définition}
+Soit $A=(a_{i,j})$ une matrice. On dit qu'un certain coefficient $a_{i_{0},j_{0}}$ est un pivot de $A$ si tous les coefficient se trouvant sur la $j_{0}$-ème colonne sont nuls sauf $a_{i_{0},j_{0}}$ qui est non nul. De plus s'il y a une coefficient non nul se trouvant sur la $i_{0}$-ème ligne possédant 
+la meme propriété que $a_{i_{0},j_{0}}$, ce coefficient ne peut plus être considérer comme pivot de $A$.
+
+\subsection{Définition}
+Une matrice $A$ est dite une matrice échelonnée reduite si chaque ligne non nul de $A$ contient un pivot.\\
+\textbf{Remarque:}
+\begin{itemize}
+    \item[-] Chaque ligne non nul d'un matrice échelonnée réduite contient un pivot et un seul.
+    \item[-] Chaque colonne d'une matrice échelonnée réduite contient au plus un pivot.
+    \item[-] Le rang d'une matrice échelonnée réduite est le nombre de pivot de cette matrice.
+\end{itemize}
+
+\subsection{Définition}
+Échelonnne une matrice $A=(a_{i,j})$ sous forme réduite, c'est la transformer en un matrice échelonnée réduite qui s'obtient par combinaison linéaire (et si nécessaire par permutation) des lignes de $A$.
+
+\section*{Méthode pour échelonnée une matrice sous forme réduite}
+Soit $A=(a^{0}_{i,j})$ une matrice.
+\begin{enumerate}
+    \item On choisit un coefficient non nul $a^{0}_{i_{0},j_{0}}$ de $A$;
+    \item On transforme $A$ en une matrice $A_{1}=a^{1}_{i,j}$ comme suit: $$ a^{1}_{i_{0},j_{0}}=a^{0}_{i_{0},j_{0}} \; \; a^{1}_{i,j}=a^{0}_{i_{0},j_{0}}a^{0}_{i_{0},j}-a^{0}_{i,j_{0}}a^{0}_{i_{0},j} \; \; (i,j) \not= (i_{0},j_{0}) $$
+    $a^{1}_{i,j}$ est un déterminant issu de $a^{0}_{i_{0},j_{0}}$
+    \item Si $A_{1}$ contient une ligne non nul autre que la $i_{0}$-ème ligne, on applique les étapes $(1)$ et $(2)$ a $A_{1}$ et on obtient une matrice $A_{2}=a^{2}_{i,j}$. \\ 
+    On continue jusqu'a ce qu'on obtient une matrice échelonnée réduite. 
+\end{enumerate}
+
+\textbf{NB:} À la fin, on peut permuter les lignes pour que la premier pivot le plus a gauche se trouve sur la premier ligbne, le deuxieme pivot le plus a gauche a la deuxieme ligne et ainsi de suite. Si c'est necessaire on rend 1 tous les pivots.
+
+\section*{Application: Recherche de l'inverse d'une matrice inversible}
+Soit $A$ une matrice inversible. On échelonne sous forme réduite la matrice $A|I$ dite matrice augmenté au lieu de $A$ seulement, ou $I$ est une matrice unité de même ordre que $A$ (les pivots doit être dans $A$). En tenant compte de la remarque précèdente, on obtient une matrice $I|B$. Alors $B=A^{-1}$.\\
+\textbf{Exemple:} Cherchons la matrice inverse de $A=\left(\begin{array}{ccc} 2 & 3 & -1 \\ -3 & -4 & 2 \\ 1 & 2 & 1\end{array}\right)$\\
+On a $A|I=\left(\begin{array}{rrr} 2 & 3 & -1  \\ -3 & -4 & 2 \\ 1 & 2 & 1\end{array} \left|\begin{array}{rrr} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{array}\right .\right) \equiv \left(\begin{array}{ccc} 2 & 3 & -1  \\ -1 & -2 & 0 \\ -3 & -5 & 0\end{array} \left| \begin{array}{ccc} 1 & 0 & 0 \\ -2 & -1 & 0 \\ -1 & 0 & -1 \end{array}\right .\right)$ \\ 
+    $\equiv \left(\begin{array}{rrr} 0 & 1 & 1  \\ -1 & -2 & 0 \\ 0 & -1 & 0\end{array} \left| \begin{array}{rrr} 3 & 2 & 0 \\ -2 & -1 & 0 \\ -5 & -3 & 1 \end{array}\right .\right) \equiv \left(\begin{array}{ccc} 0 & 0 & -1  \\ 1 & 0 & 0 \\ 0 & -1 & 0\end{array} \left| \begin{array}{ccc} 2 & 1 & -1 \\ -8 & -5 & 2 \\ -5 & -3 & 1 \end{array}\right .\right)$ \\
+    $\equiv \left(\begin{array}{rrr} 1 & 0 & 0  \\ 0 & 1 & 0 \\ 0 & 0 & 1\end{array} \left| \begin{array}{rrr} -8 & -5 & 2 \\ 5 & 3 & -1 \\ -2 & -1 & 1 \end{array}\right .\right)$ \\
+Donc $A^{-1}=\left(\begin{array}{rrr} -8 & -5 & 2 \\ 5 & 3 & -1 \\ -2 & -1 & 1 \end{array}\right)$
+
+\section{Matrices semblables}
+\subsection{Définition} 
+Soit $A,B \in M_{n}(\mathbb K)$. On dit qu'elles sont semblabes s'il existe une matrice inversible $P \in M_{n}(\mathbb K)$ telle que $B=P^{-1}AP$.
+
+\subsection{Proposition}
+$A$ et $B$ sont semblables $ssi$ il existe une base $\mathcal{B}$ de $\mathbb K$ et un endo $u$ de $\mathbb{K}^{n}$ tels que $A=Mat(u,\mathcal{B}_{0}) \; et \; B=Mat(u,\mathcal{B})$. $\mathcal{B}_{0}$ étant la base canonique de $\mathbb{K}^{n}$.
+
+\subsection{Proposition}
+Si $A$ et $B$ sont semblables, alors $A^{p}$ et $B^{p}$ ($p \in \mathbb N$) sont égalemnet semblables.
+
+\subsection{Proposition}
+Soit $\mathcal{B}=(b_{1},b_{2},\cdots,b_{n})$ une base de $M_{n,1}(\mathbb K)$ et $A \in M_{n}(\mathbb K)$. Si $Ab_{j}=\sum_{k=1}^{n}\beta_{k,j}b_{k} \; (1 \leq j \leq n)$, alors $B=(\beta_{i,j})$ est semblable a $A$.\\ \\\textit{Preuve: } \\Soit $\mathcal{B}_{0} =(e_{1},e_{2},\cdots,e_{n})$ la base canonique de $M_{n,1}(\mathbb{K})$. Posons $b_{j}=\sum_{k=1}^{n}p_{k,j}e_{k}$.\\ $P=(p_{i,j})$ est la matrice de passage de $\mathcal(B)_{0}$ vers $\mathcal{B}$. \\Avec la notation précèdente on a $P=[b_{1},b_{2},\cdots,b_{n}]$. On a alors $APe_{j}=Ab_{j}$ pour tout $j$. \\D'autre part, $PBe_{j}=\sum_{i=1}^{n}(\sum_{k=1}^{n}p_{i,k}\beta_{k,j})e_{i}=\sum_{k=1}^{n}\beta_{k,j}\sum_{i=1}^{n}p_{i,k}e_{i}=\sum_{k=1}^{n}\beta_{k,j}^{k}$. \\Il en resulte que $APe_{j}=PBe_{j}$ pour tout $j$. Par suite $AP=PB$ ou encore $B=P^{-1}AP$.
+
+
+\section{Polynôme de matrice}
+\subsection{Définition}
+Soit $A \in M_{n}(\mathbb{K})$ et $P(t)=\sum_{i=0}^{n}a_{i}t^{i} \in \mathbb{K}[t]$. On appelle polynôme de $A$ associée à la polynôme $P(t)$ la matrice $P(A)=\sum_{i=0}^{n}a_{i}A^{i}$ où $A^{0}=I$.
+
+\subsection{Proposition}
+Soit $P(t),Q(t)$ 2 polynôme, $A$ une matrice carrée d'ordre n et $\lambda$ un scalaire. On a:
+\begin{enumerate}
+    \item $(P+Q)(A)=P(A)+Q(A)$
+    \item $(PQ)(A)=P(A)Q(A)$
+    \item $(\lambda P)(A)=\lambda P(A)$
+\end{enumerate}
+En d'autres termes, l'application $\varphi_{A}:\mathbb{K}(t) \mapsto \mathbb{K}(A),P(t) \mapsto P(A)$ est une morphisme d'algèbres. De plus si $A \not= 0$, $Ker\,\varphi_{A}$ est un idéal de $\mathbb{K}[t]$ engendré par un polynôme non constant unitaire $w_{A}(t)$: 
+$$ w_{A}(A)=0 \mbox{ et } ker\,\varphi_{A}=\{P(t)=w_{A}(t)Q(t)/Q(t) \in \mathbb{K}[t]\}.$$
+
+\subsection{Définition}
+Le polynôme unitaire $w_{A}(t)$ (c-à-d, le coefficient de plus haut degré est egale à 1) est appelée la polynôme minimal de $A$.e
+
+\subsection{Définition}
+Tout polynôme non nul $P(t)$ tel que $P(A)=0$ est appelée polynome annulateur de $A$.\\ Tout polynôme annulateur de $A$ est donc divisible par $w_{A}(t)$.\\ Par exemple, $t^{2}-1$ est un polynôme annulateur de $A=\left(\begin{array}{cc} 0 & 1 \\ 1 & 0\end{array}\right)$ car $A^{2}-1=0$, et c'est le polynôme minimal.
+
+\section{Théorème de décomposition des noyaux}
+\subsection{Théorème}
+Soit $P,Q$ 2 polynôme de $\mathbb{K}[t]$ premier entre eux et $A \in M_{n}(\mathbb{K})$. Alors $$ Ker\,PQ(A)=Ker\,P{A} \oplus Ker\,Q(A).$$
+Plus généralement, si $P_{1},P_{2},\cdots,P_{m}$ sont des polynôme deux a deux premiers entre eux, alors $$Ker\,P_{1}P_{2}\cdots,P_{m}(A)=Ker\,P_{1}(A) \oplus Ker\,P_{2}(A) \oplus \cdots \oplus Ker\,P_{m}(A).$$
+
+\section{Polynôme caracteristique}
+\subsection{Définition}
+Soit $A \in M_{n}(\mathbb{K})$. On appelle polynôme caracteristique de $A$ et on note $\chi_{A}(t)$ le déterminant de la matrice $A-tI_{n}$ où $I_{n}$ est la matrice unité d'ordre n: $$ \chi_{A}(t)=|A-tI_{n}|.$$
+
+\subsection{Proposition}
+On a :
+\begin{itemize}
+    \item[(i)] Si $A \in M_{n}(\mathbb K)$, $\chi_{A}(t)$ est un polynôme de degré n. De plus, si $\chi_{A}(t)=\sum_{i=0}^{n}\alpha_{i}(t^{i})$, alors $\alpha_{n}=(-1)^{n},\; \alpha_{n-1}=(-1)^{n-1}tr(A) \mbox{ et } \alpha_{0} = |A|$ où $tr(A)$ est la somme des éléments diagonaux de $A$ appelée trace de $A$.
+    \item[(ii)] Si $A$ et $B$ sont semblables, $\chi_{A}(t)=\chi_{B}(t)$.
+\end{itemize}
+
+\section{Valeurs propres et vécteurs propres d'une matrice}
+
+\subsection{Définition}
+Soit $\lambda \in \mathbb{K}$. On dit $\lambda$ est une valeur propres de $M_{n}(\mathbb{K})$, s'existe un vecteur non nul $X \in M_{n,1}(\mathbb{K})$ tel que $AX=\lambda X$. Un tel vecteur $X$ est appelé vecteur propre da $A$ associée a $\lambda$.\\ \\Si $\lambda$ est une valeur propre de $A$, on note $Ker(A-\lambda I)$ l'ensemble de tous les vecteurs $X$ tels que $AX=\lambda X$.
+
+\subsection{Théorème}
+Soit $\lambda$ une valeur propre de $A$. Alors $Ker(A-\lambda I)$ est un $sev$ de $M_{n,1}(\mathbb{K})$ appelé sous espace propre de $M_{n,1}(\mathbb{K})$ associée à $\lambda$. En outre, $\forall X \in Ker(A-\lambda I),\; AX \in Ker(A-\lambda I)$.
+
+
+\subsection{Théorème}
+Soit $A \in M_{n}(\mathbb{K})$. Alors $\lambda$ est une valeur propre de $A \mbox{ ssi } A-\lambda I$ n'est pas inversible.
+
+\subsection{Théorème}
+Soit $\lambda_{1},\lambda_{2},\cdots,\lambda_{k}$ k valeurs propres distincts de $A,\; X_{1},X_{2},\cdots,X_{k}$ k vecteurs propres associée respectivement a $\lambda_{1},\lambda_{2},\cdots,\lambda_{k}$. Alors ces k vecteurs sont linéairement indépendants. De plus, si $E:=Ker(A-\lambda_{1} I)+\cdots+Ker(A-\lambda_{k} I)$, alors $E=Ker(A-\lambda_{1} I) \oplus \cdots \oplus Ker(A-\lambda_{k} I)$.
+
+\subsection{Proposition}
+$\lambda$ est un valeur propre de $A, \; ssi \; \chi_{A}(\lambda)=0$.
+
+\subsection{Proposition}
+Si $A$ est d'ordre n, alors $A$ a au plus n valeurs propres.
+
+\subsection{Définition}
+Soit $\lambda$ une valeur propre de $A$. On appelle ordre de multiplicité de $\lambda$ le plus grand entier $m$ tel que $(t-\lambda)^{m}$ divise $\chi_{A}(t)$.
+
+\subsection{Proposition}
+Soit $\lambda$ une valeur propre de $A$ d'ordre de multiplicité $m$. Alors $$1 \leq dim\,Ker(A-\lambda I) \leq m.$$
+
+\subsection{Définition}
+On dit que $\chi_{A}$ est scindé dans $\mathbb{K}$ si $\chi_{A}$ a toutes ses racines dans $\mathbb{K}$. 
+
+\section{Diagonalisation}
+\subsection{Définition}
+On dit qu'une matrice carrée $A$ est diagonalisable s'il existe une matrice diagonale $B$ semblable à $A$.
+
+\subsection{Théorème}
+$A$ est diagonalisable $ssi, \; \chi_{A}$ est scindé dans $\mathbb{K}$ et $dim\,Ker(A-\lambda I)=m$ pour tout racine $\lambda$ de $\chi_{A}$ d'ordre de multiplicité $m$.
+
+\subsection{Proposition}
+Soit $w_{A}(t)$ un polynôme minimal de $A$. Si $\lambda$ est un valeur propre de $A$, alors $w_{A}(\lambda)=0$.
+
+\subsection{Théorème}
+A est diagonalisable $ssi, \;w_{A}$ a toute ses racines dans $\mathbb{K}$ et chaque racines sont simples.
+
+\section{Trigonalisation}
+Soit $A \in M_{n}(\mathbb{K})$
+
+\subsection{Définition}
+On dit que $A$ est triangularisable (ou Trigonalisable) s'il existe un matrice triangulaire $B$ semblable à $A$.
+
+\subsection{Théorème}
+Si $\chi_{A}$ est scindé dans $\mathbb{K}$, alors $A$ est triangularisable. De plus,si $B$ est une matrice triangulaire semblable a $A$, alors les éléments diagonaux de $B$ sont les valeurs propres de $A$.
+
+\subsection{Théorème (Théorème de Cayley Hamilton)}
+Si $\chi_{A}$ est scindé dans $\mathbb{K}$, alors $\chi_{A}(A)=0$.
+
+\subsection{Corollaire}
+Pour toute matrice $A \in M_{n}(\mathbb{R})$, $\chi_{A}(A)=0$.
+
+\subsection{Corollaire}
+Si $\chi_{A}$ est scindé dans $\mathbb{K}$ et $\chi_{A}(t)=(-1)^{n}(t-\lambda_{1})^{m_{1}}\cdots (t-\lambda_{q})^{m_{q}}$, alors $$M_{n,1}(\mathbb{R})=Ker\,(A-\lambda_{1} I)^{m_{1}} \oplus \cdots \oplus Ker\,(A-\lambda_{q} I)^{m_{q}}.$$
+Dans la section suivante $A$ est supposé Trigonalisable, $\lambda$ une valeur propre de $A \in M_{n}(\mathbb{R})$ d'ordre de multiplicité $m$.
+
+
+\section{Recherche d'une base de $E_{\lambda}=Ker(A-\lambda I)^{m}$}
+Soit $A$ ue matrice carrée d'ordre n et $\lambda$ une valeur propre d'ordre de multiplicité $m$.\\ Notons $N_{i}=N_{i}(\lambda)=Ker(A-\lambda I)$ et $n_{i}=dim\,N_{i}$. Soit $k$ le plus petit entier tel que $n_{k}=m \; (k \leq m)$. \\ On a $N_{1} \subset N_{2} \subset \cdots \subset N_{k} = N_{m}$ et $n_{1} < n_{2} < \cdots < n_{k}$. \\De plus, en posant $d_{1}=n_{1}$ et $d_{i}=n_{i}-n_{i-1}$ pour $2 \leq i \leq k$, on a $d_{1} \geq d_{2} \geq \cdots \geq d_{k} \geq 1$. \\ \\Notons $F_{1}=N_{1}$ et pour $2 \leq i \leq k$, le sous espace supplémentaire de $N_{i-1}$ dans $N_{i}$ : $N_{i}=N_{i-1} \oplus F_{i}$. \\ \\Donc $E_{\lambda}=F_{1} \oplus F_{2} \oplus \cdots \oplus F_{k}$ avec $dim\,F_{i}=d_{i}$.\\ Ainsi pour avoir une base de $E_{\lambda}$, on cherche une base de $F_{i}$, une base de $F_{2}, \ldots $, une base de $F_{k}$.
+
+\subsection*{1-ère étape: Recherche d'une base de $F_{1}$}
+Pour cela échelonner sous forme réduite (ou pivoter) la matrice augmenté $(A-\lambda I)^{t}|I$ où $I$ est la matrice unité d'ordre n. On obtient une matrice échelonnée reduite $\left(\begin{array}{c|c} A_{1} & C_{1} \\ \hline 0 & B_{1} \end{array}\right)$
+\begin{itemize}
+    \item[-] aucune ligne de $A_{1}$ n'est nulle;
+    \item[-] 0 est la matrice nulle et $d_{1}$ n'est autre que le nombre de ses lignes;
+    \item[-] $B_{1}$ est une matrice $d_{1} \times n$.
+\end{itemize}
+Notons $b_{1}$ la vecteur transpose du premier vecteur ligne de $B_{1}$, $b_{2}$ le vecteur transposé du deuxième ligne de $B_{1}, \; \cdots b_{d_{1}}$ le vecteur transposé du dernier vecteur ligne de $B_{1}$. Si $d_{1} = m, \; (b_{1},b_{2}, \cdots ,b_{d_{1}})$ est une base de $E_{\lambda}$. Sinon, on passe à l'étape suivante.
+
+\subsection*{2-ème étape: Recherche d'une base de $F_{2}$}
+Pour cela échelonner sous forme réduite la matrice augmenté $\left(\begin{array}{c|c|c} A_{1} & C_{1} & 0 \\ \hline B_{1} & 0 & -I_{d_{1}}\end{array}\right)$.\\ On obtient la matrice échelonnée réduite $\left(\begin{array}{c|c|c} A_{2} & C_{2} & E_{2} \\ \hline 0 & B_{2} & D_{2}\end{array}\right)$:
+\begin{itemize}
+    \item[-] $d_{2}$ est égal au nombre de lignes de la matrice nulle 0;
+    \item[-] $B_{2}$ est la matrice d'ordre $d_{2} \times n$.
+\end{itemize}
+Soit $b_{d_{1}+1}$ le vecteur transposé du premier vecteur ligne de $B_{2},\, \cdots$, $b_{d_{1}+d_{2}}$ le vecteur transposé du dernier vecteur ligne de $B_{2}$.\\ Alors ces nouveaux vecteurs forment une base de $F_{2}$.\\ De plus, si $D_{2}=\left(\begin{array}{cccc} \alpha_{1,1} & \alpha_{1,2} & \cdots & \alpha_{1,d_{1}} \\ \vdots & \vdots & \vdots & \vdots \\ \alpha_{d_{2},1} & \alpha_{d_{2},2} & \cdots & \alpha_{d_{2},d_{1}}\end{array}\right)$, alors \\ $ \left\{ \begin{array}{ccc} (A-\lambda I)b_{d_{1}+1} & = & \alpha_{1,1}b_{1}+\alpha_{1,2}b_{2}+\cdots+\alpha_{1,d_{1}}b_{d_{1}} \\ (A-\lambda I)b_{d_{1}+2} & = & \alpha_{2,1}b_{1}+\alpha_{2,2}b_{2}+\cdots+\alpha_{2,d_{1}}b_{d_{1}} \\ \vdots &  & \vdots \\ (A-\lambda I)b_{d_{1}+d_{2}} & = & \alpha_{d_{2},1}b_{1}+\alpha_{d_{2},2}b_{2}+\cdots+\alpha_{d_{2},d_{1}}b_{d_{1}}\end{array}\right.$
+\\Si $d_{1}+d_{2}=m, \, (b_{1},b_{2},\cdots,b_{d_{1}+d_{2}})$ est une base de $E_{\lambda}$. Sinon, on passse a l'etape suivante.
+
+\subsection*{3-ème étape: Recherche d'une base de $F_{3}$}
+Comme précédement chelonner sous forme réduite la matrice augmenté $\left(\begin{array}{c|c|cc} A_{2} & C_{2} & E_{2} & 0 \\ \hline B_{2} & 0 & 0 & -I_{d_{2}}\end{array}\right)$ \\ 
+On obtient une matrice réduite $\left(\begin{array}{c|c|c}A_{3} & C_{3} & E_{3} \\ \hline 0 &  B_{3} & D_{3}\end{array}\right)$:
+\begin{itemize}
+    \item[-] $d_{3}$ est égal au nombre de lignes de la matrice nulle 0,
+    \item[-] $B_{3}$ est une matrice d'ordre $d_{3} \times n$.
+\end{itemize}
+Soit $b_{d_{1}+d_{2}+1}$ le vecteur transposé du premier vecteur ligne $B_{3}, \, \cdots b_{d_{1}+d_{2}+d_{3}}$ le vecteur transposé du dernier vecteur ligne de $B_{3}$.\\ Alors ces nouveaux vecteurs forment une base de $F_{3}$.\\ De plus, si 
+$D_{3}=\left(\begin{array}{cccc} \alpha_{1,1} & \alpha_{1,2} & \cdots & \alpha_{1,d_{1}+d_{2}} \\ \vdots & \vdots & \vdots & \vdots \\ \alpha_{d_{3},1} & \alpha_{d_{3},2} & \cdots & \alpha_{d_{3},d_{2}+d_{1}}\end{array}\right)$, alors \\ $ \left\{ \begin{array}{ccc} (A-\lambda I)b_{d_{1}+d_{2}+1} & = & \alpha_{1,1}b_{1}+\alpha_{1,2}b_{2}+\cdots+\alpha_{1,d_{1}+d_{2}}b_{d_{1}+d_{2}} \\ (A-\lambda I)b_{d_{1}+d_{2}+2} & = & \alpha_{2,1}b_{1}+\alpha_{2,2}b_{2}+\cdots+\alpha_{2,d_{1}+d_{2}}b_{d_{1}+d_{2}} \\ \vdots &  & \vdots \\ (A-\lambda I)b_{d_{1}+d_{2}+d_{3}} & = & \alpha_{d_{3},1}b_{1}+\alpha_{d_{3},2}b_{2}+\cdots+\alpha_{d_{3},d_{2}+d_{1}}b_{d_{1}}+d_{d_{2}}\end{array}\right.$
+\\Si $d_{1}+d_{2}+d_{3}=m, \, (b_{1},b_{2},\cdots,b_{d_{1}+d_{2}+d_{3}})$ est une base de $E_{\lambda}$. Sinon, on continue jusqu'à ce que l'on obtienne au total m vecteurs qui forment une base de $E_{\lambda}$.
+
+\section{Recherche d'une matrice triangulaire}
+Soit $A$ une matrice triangulaire : $ \chi_{A}=(-1)^{n}(t-\lambda_{1})^{m_{1}} \cdots (t-\lambda_{p})^{m_{p}}$. Par la méthode utilisé à la secction précédente, on obtient la base $(b_{1},\cdots ,b_{m_{1}}) \mbox{ de } E_{\lambda_{1}}$, une base $(b_{m_{1}+1}, \cdots ,b_{m_{1}+m_{2}}) \mbox{ de } E_{\lambda_{2}}$ et ainsi de suite. On obtient alors la nouvelle base $(b_{1}, \cdots , b_{n}) \mbox{ de } M_{n,1}(\mathbb{R})$.\\ \\Grâce à la méthode précédente qui nous permet de calculer $(A-\lambda I)b_{j}$ ($b_{j}$ etant un vecteur associé à $\lambda$) et en Utilisant la prop 3.4, on obtient une matrice triangulaire semblable à $A^{n}$ pour tout n et également une matrice triangulaire semblable à $e^{A}$.\\ \\ \textbf{NB:} Pour chaque $\lambda$, il faut dresser un tableau $((A-\lambda I)^{k}b_{j})_{k,j}$ sur tous les vecteurs $b_{j}$ associé à $\lambda$.
+
+\section{Applications}
+\subsection{Calcul de l'exponentielle d'une matrice}
+\subsubsection{Définition}
+On appelle exponentielle d'une matrice carrée $A$ la matrice $e^{A}=\sum_{k=1}^{n}\frac{1}{k!}A^{k}$.\\Soit $A$ la matrice triangulaire dans $\mathbb{R}$ et $(b_{1}, \cdots ,b_{n})$ une base de $M_{n,1}(\mathbb{R})$ obtenu en utilisant la section 10.\\Si $\lambda$ est la valeur propre associé à $b_{j}$, on a: $$e^{A}b_{j}=e^{(A-\lambda I) + \lambda I}b_{j}=e^{\lambda}\sum_{k}\frac{1}{k!}(A-\lambda I)^{k}b_{j}=\sum_{k}\beta_{k,j}b_{k}.$$
+En posant $P=[b_{1}b_{2}\cdots b_{n}] \mbox{ et } B =(\beta_{k,j})$, alors la prop 3.4 implique que $$e^{A}=PBP^{-1}.$$ 
+
+\subsection{Résolution d'un système d'equation differentielles linéaires}
+On constate le système differentiel $$ \sum_{j=1}^{n}a_{i,j}x_{j}(t)=x_{i}^{'}(t) \; (1 \leq i \leq n) $$ Ce systeme s'ecrit $$AX(t)=X^{'}(t)$$ où $A=(a_{i,j}) \mbox{ et } X(t)=(x_{1}(t)x_{2}(t) \cdots x_{n}(t) )^{t}$.
+
+\subsubsection{Proposition}
+Le systeme $AX(t)=X^{'}(t)$ a pour solution générale $X(t)=e^{tA}X_{0} \mbox{ où } X_{0}$ est un vecteur arbitraire.\\ Si $A$ est diagonalisable, le calcul de $e^{tA}$ se fait comme $e^{A}$.
+\end{document}

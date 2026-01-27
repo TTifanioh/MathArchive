@@ -1,0 +1,179 @@
+\documentclass[a4paper,12pt,french]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsfonts}
+\usepackage[margin=2cm]{geometry}
+\usepackage[french]{babel}
+
+\date{}
+\author{}
+\title{EXERCICES D"ALGEBRE 1}
+
+\begin{document}
+\maketitle
+
+\section{Théorie Naïve des ensemble}
+\subsection{Exercice} 
+\begin{enumerate}
+    \item Considérons les ensembles suivants : $A = \{1, 13, 25\} ; B = \{\{1, 13\} , 25\} ; C = \{\{1, 13, 25\}\} ; D = \{, 1, 13, 25\} ; E = \{25, 1, 13\} ; F = \{\{1, 13\} , \{25\}\} ; G = \{\{25\} , \{1, 13\} , 25\} ; H = \{\{1\} , \{13\} , 25\}.$
+    \begin{itemize}
+        \item [(a)] Quelles sont les relations (d’égalité ou d’inclusion) qui existent entre ces ensembles ?
+        \item[(b)] Déterminer $A \cap B; \; G \cup H; \; E \backslash G; \; C_{D}^{A}$
+    \end{itemize}
+    \item Soient $A$, $B$ et $C$ trois parties d’un ensemble $E$ :
+    \begin{itemize}
+        \item[(a)] Montrer que :
+                $$( A \cap B) \cup B^{c} = A \cup B^{c} \\ ( A \backslash B) \backslash C = A \backslash ( B \cap C ) \\A \backslash ( B \cap C ) = ( A \backslash B ) \cup ( A \backslash C ).$$
+        \item[(b)]Simplifier : $( A \cup B)^{c} \cap (C \cup A^{c} )^{c} ;( A \cap B)^{c} \cup (C \cap A^{c} )^{c}$ .
+    \end{itemize}
+    \item Démontrer la Proposition 1.3.
+\end{enumerate}
+
+\subsection{Exercice}
+Construisez des applications :
+\begin{itemize}
+    \item[-]Injective mais pas surjective ;
+    \item[-]Surjective mais pas injective ;
+    \item[-]Bijective ;
+    \item[-]Ni injective ni surjective.
+\end{itemize}
+
+\subsection{Exercice}
+$E = [0, 1] ; \; F = [-1, 1] ; \; G = [0, 2].$
+Soient $f$ et $g$ deux applications définies respectivement par :
+$$\begin{array}{ccc} f :E & \mapsto & G \\ x & \mapsto & 2 - x\end{array}; \begin{array}{ccc}g :F & \mapsto & G \\ x & \mapsto & x^{2} + 1\end{array}.$$
+\begin{itemize}
+    \item[(a)] Déterminer $f (\left\{ \frac{1}{2}\right\}), \; f^{-1}(\{0\}), \; g([1, -1]), \; g^{-1}([0,2])$
+    \item[(b)] Les applications $f$ et $g$ sont-elles bijectives ? Justifier votre réponse.
+\end{itemize}
+
+\subsection{Exercice}
+\begin{enumerate}
+    \item Montrer que $\mathbb{Z}$ est dénombrable.
+    \item Montrer que $\mathbb{N} \times \mathbb{N}$ est dénombrable. En déduire que le produit d’un nombre fini d’ensembles dénombrables est dénombrable.
+    \item Montrer que $\mathbb{Q}$ est dénombrable.
+    \item Soit $( E_{n} )_{n \in \mathbb{N}}$ une famille dénombrable de sous ensembles dénombrables d’un ensemble $E$. Montrer que la réunion $\cup_{n \in \mathbb{N}} E_{n}$ est dénombrable.
+    \item Montrer que l’ensemble des polynômes à coefficients entiers est dénombrable. En déduire que l’ensemble des sous-ensembles finis de $\mathbb{N}$ est dénombrable.
+    \item On dit qu’un nombre (réel ou complexe) est algébrique s’il est une racine d’un polynôme à coefficients entiers. Montrer que l’ensemble des nombres algébriques est dénombrable.
+    \item Existe-il une bijection entre $\mathbb{Q} \cap [0, 1]$ et $\mathbb{Q} \cap  ] 0, 1 [ $ ? 
+\end{enumerate}
+
+\subsection{Exercice}
+\begin{enumerate}
+    \item En s’inspirant de la preuve du théorème 1.19, expliciter une bijection entre les intervalles $[ a, b[$ et $] a, b[$.
+    \item Montrer que l’ensemble $\mathbb{N}^{\mathbb{N}}$ des suites d’entiers est équipotent à $\mathbb{R}$.
+    \item Montrer que l’ensemble des parties de $\mathbb{R}$ n’est ni dénombrable, ni équipotent à $\mathbb{R}$.
+    \item Montrer que l’ensemble $\mathbb{R}^{R}$ n’est ni dénombrable, ni équipotent à $\mathbb{R}$.
+\end{enumerate}
+
+\subsection{Exercice}
+\begin{enumerate}
+    \item Montrer que les relations suivantes sont des relations d’équivalences :
+    \begin{itemize}
+        \item[(i)] Le parallélisme sur l’ensemble des droites de $\mathbb{R}^{2}$ ou de $\mathbb{R}^{3}$;
+        \item[(ii)] Sur $\mathbb{R}^{2}, \; (x, y)\mathcal{R}( x^{'}, y^{'})$ si et seulement si $x + y = x^{'} + y^{'}$.
+    \end{itemize}
+    \item Montrer que les relations suivantes sont des relations d’ordres partiels :
+    \begin{itemize}
+        \item[(i)] L’inclusion sur l’ensemble des parties $P(E)$ d’un ensemble $E$ ;
+        \item[(ii)] La divisibilité sur l’ensemble des entiers $\mathbb{Z}$;
+        \item[(iii)] Sur $\mathbb{R}^{2}, \; (x, y)\mathcal{T}( x^{'} , y^{'})$ si et seulement si $| x^{'} - x | \leq y^{'} - y$.
+    \end{itemize}
+    \item Soit $E = \mathbb{R}^{2} \backslash \{(0, 0)\}$. Considérons la relation binaire $\mathbb{R}$ sur $E$ définie comme suit : Pour tout $a$ et $b$ dans $E$, $a\mathcal{R}b$ si et seulement si $a$ et $b$ appartiennent à une droite passant par (0, 0).
+    \begin{itemize}
+        \item[(i)] Soient $(x, y)$ et $(x^{'}, y^{'})$ deux éléments de $E$. Montrer que $(x, y)\mathcal{R}( x^{'}, y^{'})$ si et seulement si il existe un nombre réel non nul $\lambda$ tel que $(x, y) = \lambda( x^{'}, y^{'})$.
+        \item[(ii)] Montrer que $\mathcal{R}$ est une relation d’équivalence.
+        \item[(iii)] Notons par $[x, y]$ la classe d’équivalence d’un élément $(x, y)$ de $E$. Vérifier qu’on a $[x, 1] = [y, 1]$ si et seulement si $x = y$.
+        \item[(iv)] Montrer qu’on a : $E/\mathcal{R} = \{[ x, 1] : x \in \mathbb{R}\} \cup \{[1, 0]\}$
+    \item (\textbf{Important.}) Soit $f$ une application d’un ensemble $E$ dans un ensemble $F$. On sait que la relation $\mathcal{R}$ définie pour tout $a$ et $b$ dans $E$, par : $$a\mathcal{R}b \Leftrightarrow f (a) = f(b)$$ est une relation d’équivalence.
+    \end{itemize}
+    \begin{itemize}
+        \item[(i)] Montrer que l’application $\bar{f}$ de $E/ \mathcal{R}$ dans $F$ définie par $\bar{f} (\dot{a}) = f (a)$ est bien définie et est injective.
+        \item[(ii)] En déduire qu’on a $f = \bar{f} \circ g$ où l’application $g$ est la projection canonique de $E$ dans $E/\mathbb{R}$.
+        \item[(iii)] Montrer que si $f$ est surjective, alors il existe une bijection entre $E/ \mathbb{R}$ et $F$.
+    \end{itemize}
+\end{enumerate}
+
+\section{Equation linéaire et matrice}
+\subsection{Exercice}
+\begin{enumerate}
+
+    \item 
+    \begin{itemize} 
+        \item[(a)] Déterminez si le vecteur $(1, 3, 5) \in \mathbb{R}^{3}$ est une combinaison linéaire de $(0, 1, 0), (1, 4, 1) \mbox{ et } (1, 0, 1)$.
+        \item[(b)] Déterminez si le vecteur $(1, 1) \in \mathbb{R}^{2}$ est une combinaison linéaire de $(0, 1), (1, 4)$ et $(1, 0)$. Dans le cas où la réponse est affirmative, est-ce que la représentation en tant que combinaison linéaire est unique ?
+    \end{itemize}
+    \item Décrivez le sous-ensemble de R3 formé par toutes les combinaisons linéaires des vecteurs $u = (1, 1, 0)$ et $v = (0, 1, 1)$. Trouvez un vecteur qui n’est pas combinaison linéaire de $u$ et $v$.
+    \item Soient $u = (\pi, 0)$ et $v = (0, 2)$. Décrivez les sous ensembles de $\mathbb{R}^{2}$ suivants :
+    \begin{itemize}
+        \item[(a)]. $\{cu|c \in \mathbb{N}\}$.
+        \item[(b)]. $\{cu|c \geq 0\}$.
+        \item[(c)]. $\{cu + dv|c \in \mathbb{N} \mbox{ et } d \in \mathbb{R}\}$.
+    \end{itemize}
+    \item Est-ce que le vecteur $w = (1, 0)$ est une combinaison linéaire des vecteurs $u = (2, -1)$ et $v = (-1, 2)$ ?
+    \item Si $u + v = ( 12 , 4, 1)$ et $u - 2v = (1, 0, 2)$, calculez $u$ et $v$.
+    \item Montrez que pour tout vecteur $u$, $0u = 0$.
+    \item Pour deux vecteurs $u$ et $v \in \mathbb{R}^{2}$, quand est-ce qu’on a l’égalité $|u \cdot v| = \|u\|v\|$ ? l’égalité $\|u + v\| = \|u\| + \|v\|$ ?
+    \item Montrez que pour $z$, $w \in \mathbb{C}^{n}$ et $k \in \mathbb{K}$ on a :
+    \begin{itemize}
+        \item[(a)] $z \cdot w = w \cdot z$.
+        \item[(b)] $(kz) \cdot w = z \cdot (kw)$.
+        \item[(c)] $z \cdot (kw) = k (z \cdot w)$.
+        (Comparer avel le cas réel).
+    \end{itemize}
+    \item
+    \begin{itemize}
+        \item[(a)] Soient $u = (a, b)$ et $v = (c, d)$ deux vecteurs du plan. Trouver une condition nécessaire et suffisante pour que tout élément de $\mathbb{R}^{2}$ soit une combinaison linéaire de $u$ et $v$.
+        \item[(b)] Trouver quatre vecteurs de $\mathbb{R}^{4}$ tels que tout vecteur de $\mathbb{R}^{4}$ soit une combinaison linéaire de ces vecteurs.
+    \end{itemize}
+    \item Si $\|u\| = 5$ et $\|v\| = 3$, quelles sont la plus petite et la plus grande valeurs de $\|u - v\|$ ? Même question pour $u \cdot v$.
+    \item Est-il possible d’avoir trois vecteurs du plan dont les produits scalaires (deux à deux) sont tous strictement négatifs ? Quand est-il dans $\mathbb{R}^{3}$ ?
+    \item Soient $x$, $y$ et $z$ trois nombres réels tels que $x + y + z = 0$. Trouver l’angle que les vecteurs $u = (x, y, z)$ et $v = (z, x, y)$ font entre eux.
+\end{enumerate}
+
+\subsection{Exercice}
+Dans toute la suite, sauf mention explicite du contraire, $\mathbb{K}$ désignera le corps des nombres réels $\mathbb{R}$ ou le corps des nombres complexes $\mathbb{C}$.
+\begin{enumerate}
+    \item Ecrire les deux problèmes suivants sous la forme $Ax = b$ où $A$ est une matrice $2 \times 2$, puis donner une solution à chaque problème :
+        \begin{itemize}    
+            \item[(a)] Alice est deux fois plus jeune que Bob et la somme de leur age est 33 ;
+            \item[(b)] Les deux points $(2, 5)$ et $(3, 7)$ appartiennent à une droite d’équation $y = mx + c$. Trouver $m$ et $c$.
+        \end{itemize}
+    \item Pour chacune des matrices suivantes, trouver le scalaire $a$ pour que la matrice soit singulière (non inversible) : $$\left(\begin{array}{ccc} 1 & 3 & 5 \\1 & 2 & 4 \\ 1 & 1 & a \end{array} \right), \; \left(\begin{array}{ccc} 1 & 0 & a \\ 1 & 1 & 0 \\ o & 1 & 1 \end{array}\right), \;
+    \left(\begin{array}{ccc}a & a & a \\ 2 & 1 & 5 \\ 3 & 3 & 6\end{array}\right)$$
+    \item Soit $A$ une matrice dans $M_{3} (\mathbb{K})$ telle qu’il existe un vecteur colonne non nul $x$ dans $\mathbb{K}^{3}$ vérifiant $Ax = 0$.
+        \begin{itemize}    
+            \item[(a)] Montrer que les vecteurs colonnes de $A$ forment un plan $P$ dans $\mathbb{K}^{3}$ .
+            \item[(b)] Montrer que $P$ et $x$ sont perpendiculaires.
+        \end{itemize}
+    \item Soit un système d’équations linéaires dans $\mathbb{K}^{3}$.
+        \begin{itemize}
+            \item[(a)] Montrer que ce système ne peut pas avoir exactement deux solutions.
+            \item[(b)] Si $(x, y, z)$ et $(u, v, w)$ sont deux solutions du système, pouvez vous trouver un autre ?
+        \end{itemize}
+    \item Trouver les matrices matrices E et L telles que l’on ait : $$ EP_{3} = P_{2}, \; LP_{3} = I_{4}$$  où $$ P_{3} = \left(\begin{array}{cccc} 1 & 0 & 0 & 0 \\ 1 & 1 & 0 & 0 \\ 1 & 2 & 1 & 0 \\ 1 & 3 & 3 & 1 \end{array}\right), \;
+    \left(\begin{array}{cccc} 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 1 & 1 & 0 \\ 0 & 1 & 2 & 1 \end{array}\right)$$
+    \item considérons les matrices suivantes : $$ E_{1} = \left(\begin{array}{cccc} 1 & 0 & 0 & 0 \\ a & 1 & 0 & 0 \\ b & 0 & 1 & 0 \\ c & 0 & 0 & 1 \end{array}\right), \; E_{1} = \left(\begin{array}{cccc} 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & d & 1 & 0 \\ 0 & e & 0 & 1 \end{array}\right), \;
+    E_{3} = \left(\begin{array}{cccc} 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & f & 1 \end{array}\right)$$ Montrons que ; $$ L = E_{1}E_{2}E_{3} = E_{1} = \left(\begin{array}{cccc} 1 & 0 & 0 & 0 \\ a & 1 & 0 & 0 \\ b & d & 1 & 0 \\ c & e & F & 1 \end{array}\right)$$
+    \item Calculons les inverses des trois matrices suivantes : $$ A = \left(\begin{array}{cccc} 1 & -a & 0 & 0 \\ 0 & 1 & -b & 0 \\ 0 & 0 & 1 & -c \\ 0 & 0 & 0 & 1 \end{array}\right); \; B = \left(\begin{array}{cccc} 2 & -1 & 0 & 0 \\ -1 & 2 & -1 & 0 \\ 0 & -1 & 2 & -1 \\ 0 & 0 & -1 & 1 \end{array}\right); \;
+    K = \left(\begin{array}{cccccc} 2 & -1 & 0 & 0 & 0 & 0\\ -1 & 2 & -1 & 0 & 0 & 0\\ 0 & -1 & 2 & -1 & 0 & 0\\ 0 & 0 & -1 & 2 & -1 & 0 \\ 0 & 0 & 0 & -1 & 2 & -1 \\ 0 & 0 & 0 & 0 & -1 & 2\end{array}\right)$$ Calculer $4K^{-1}$ et $7K^{-1}$.
+    \item Soit $A$ et $B$ deux matrices carrées de même dimension.
+        \begin{itemize}    
+            \item[(a)] Montrer que $A( I + BA) = ( I + AB) A$.
+            \item[(b)] En déduire que $I + BA$ est inversible si et seulement si $I + AB$ l’est aussi.
+        \end{itemize}
+    \item Un sous ensemble de $M_{n} (\mathbb{K})$ est appelé un groupe de matrices si pour toutes $A$ et $B$ deux matrices de l’ensemble, on a : le produit $AB$ et l’inverse de chaque élément sont dans l’ensemble.
+        \begin{itemize}
+            \item[(a)] Montrer que si $G$ est un groupe de matrices, la matrice identité $I_{n}$ est automatiquement dans $G$;
+            \item[(b)] Montrer que : l’ensemble des matrices triangulaires inférieures telles que $a_{ii} = 1$; l’ensembles des matrices symétriques ; l’ensemble des matrices de permutations sont des groupes de matrices.
+            \item[(c)] Donner plus de groupes de matrices.
+        \end{itemize}
+    \item Ecrire une matrice dans $M_{3} (\mathbb{K})$ de votre choix.
+            \begin{itemize}
+                \item[(a)] Trouver deux matrices $B$ et $C$ telles que : $A = B + C$ et $B$ et $C$ soient respectivement symétrique et anti-symétrique.
+                \item[(b)] Ré-écrire $B$ et $C$ en fonction de $A$ et $A^{T}$.
+            \end{itemize}
+    \item Factoriser les matrices suivantes (de la forme $A = LU$ ou $PA = LU$) :
+\end{enumerate}
+\end{document}

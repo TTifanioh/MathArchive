@@ -1,0 +1,44 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[francais]{label}
+
+\begin{document}
+\section*{Résolution d'equation non linéaire}
+Le but est de decrire des algo pour résoudre des éauqtion non liniéaire de type $f(x)=0$.
+
+\subsection{Séparation des zéros}
+Le prémier travail consiste à determiner des intervalles $[a_{i},b_{i}]$ tel que f possède une solution et un seul dans chaque intervalle.\\ La méthode la plus simple est d'utiliser une fonction continue strictement monotone sur  $[a_{i};b_{i}]$ tel que $f(a_{i})f(b_{i})<0$.(On suppose que f est continue et dérivable des fois)
+
+\subsection*{Quelques algo classique}
+\subsubsection{La méthode de dichotomie (ou bissection)}
+Supposons que l'on a un zéros dans un intervalle $[a,b]$ (ie $f(a)f(b)<0$).
+\begin{itemize}
+    \item[-] Si $f(\frac{a+b}{2})=0$, on a trouve le zeros.
+    \item[-] Sinon le zeros se trouve dans $[a , \frac{a+b}{2}]$ soit dans $[\frac{a+b}{2} , b]$.
+\end{itemize}
+Il est clair qu'une répetition de ce procédée donne un encadrement de plus en plus precis du zéros chérché et fournit donc un algo de calcul du zéros.
+
+\textbf{Algo} (dichotomie)
+Soit $$f:[a_{0},b_{0}] \rightarrow(R)$$ continue monotone tel que $f(a_{0})f(b_{0})<0$.\\ Pour $m=0,1,2,.....,N$ faire :\\ $$m=\frac{a_{n}+b_{n}}{2}$$
+\begin{itemize}
+    \item[-] Si $$f(a_{n})f(m)<=0$$, $$a_{n+1}=a_{n}, b_{n+1}=m$$
+    \item[-] Sinon $$a_{n+1}=m, b_{n+1}=b_{n}$$
+\end{itemize}
+On a :\\ $$a_{n+1}-b_{n+1}=\frac{a_{n}-b_{n}}{2}$$\\ Soit $$a_{n}-b_{n}=\frac{a_{0}-b_{0}{2^{n}}} \rightarrow(0)$$ On peut choisir le temps d'arrêt $N$ pour que :\\ $$\frac{a_{0}-b_{0}}{2^{N}} < \varepsilon}$$
+
+\subsubsection{Méthode de la sécante}
+Soit $f$ adméttant un zéro dan sl'intervalle $[x_{-1},x_{0}]$. Pour obtenir une prèmiere approximation $x_{1}$ de ce zéro,l'idée est de remplacer f par son interpolée linéaire sur $[x_{-1},x{0}]$.\\ Soit par $$Y(x)=f(x_{0})+(x-x_{0})*(\frac{f(x_{0})-f_(x_{-1})}{x_{0}-x_{-1}})$$\\ L'approximation $x_{1}$ est obtenu en résolvant $Y(x_{1})=0$ ie \\$$x_{1}=x_{0}-\frac{f(x_{0})(x_{0}-x_{-1})}{f(x_{0})-f(x_{-1})}$$
+Pour trouver une meilleur approximation, il suffit de répeter ce procédée a l'aide des points $(x_{n},x_{n+1})$\\
+\textbf{Algo}: \\Pour $n=0,1,2,.....$ \\$$x_{n+1}=x_{n}-\frac{f(x_{n})(x_{n}-x_{n-1})}{f(x_{n})-f(x_{n-1})}$$
+
+\subsubsection*{Critère d'arrêt}
+Une critère d'arrêt souvent utilisée consiste à choisir une tolérence $\varepsilon$ à terminer l'algo lorsque $|x_{n+1}-x_{n}|<\varepsilon$
+
+\subsubsection{Méthode de Newton}
+Ici au lieu d'assimiler la courbe $y=f(x)$ à une sécante, on l'assimile à une tangente en un point $(x_{n},f(x_{n}))$, soit la droite d'équation $$Y=f(x_{0})+f'(x_{n})(x-x_{n})$$
+\newline \textbf{Algo} \\Pour n=0,1,2,..... \\ $$x_{n+1}=x_{n}-\frac{f(x_{n})}{f'(x_{n})}$$
+
+\subsubsection{Methode de point fixe}
+Elle consiste d'abord à remplacer l'équation $f(x)=0$ par une équation $g(x)=x$ ayant même solution.
+\newline \textbf{Algo} \\Pour n=0,1,2,..... \\$x_{n+1}=g(x_{n})$
+\end{document}

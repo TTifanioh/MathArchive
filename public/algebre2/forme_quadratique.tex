@@ -1,0 +1,164 @@
+\documentclass[a4paper,12pt,french]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[margin=2cm]{geometry}
+\usepackage{amsfonts}
+\usepackage[french]{babel}
+
+\date{}
+\author{}
+\title{FORME QUADRATIQUE}
+
+\begin{document}
+\maketitle
+
+\section{Dual d'un espace vectoriel}
+Soit $E$ un espace vetoriel sur $\mathbb{K} \; (\mathbb{K}=\mathbb{R} \mbox{ ou } \mathbb{C})$.
+
+\subsection{Définition}
+On appelle forme linéaire $(fl)$ sur $E$ toute application lineaire f de $E$ vers $\mathbb{K}$, c-à-d, $f(\alpha X + y)=\alpha f(x)+f(y)$, pour tout $(x,y) \in E^{2}$ et $\alpha \in \mathbb{K}$. Muni de l'addition des applications et des multiplications par des scalaires, l'ensemble de toute les formes linéaire sur $E$ est un espace vectoriel sur $\mathbb{K}$, appelé dual de $E$ noté $E^{*}$. Le dual de $E^{*}$ est appele bidual de $E$ noté $E^{**}$.\\
+\textbf{Exemple de fl: } Soit $E$ l'ensemble des fonctions réels continue sur $[0,1]$.\\ E un espace vectoriel sur $\mathbb{R}$ et l'application $\varphi$ définie par $\varphi(f)=\int_{0}^{1}f(x)dx$ est une $fl$ sur $E$.
+
+\subsection{Proposition}
+Soit $E$ de dimension finie $n$ et $(b_{1},\cdots,b_{n})$ une base de $E$. Pour tout $i$, l'application $b_{i}^{*} : E \mapsto \mathbb{K}$ définie par $$\forall x = \sum_{j=1}^{n}x_{j}b_{j}, \; b_{i}^{*}(x)=x_{i}$$ est une $fl$ sur $E$.\\ De plus, $b_{1}^{*},\cdots,b_{n}^{*}$ forment une base de $E^{*}$.\\
+\textit{Démostration: }
+\begin{itemize}
+    \item[(a)] Soient $x=\sum_{j=1}^{n} x_{j}b_{j}$ et $y=\sum_{j=1}^{n}$ des éléments de $E$, et $\lambda \in \mathbb{K}$. $\lambda x + y = \sum_{(\lambda x_{j} + y_{j})b_{j}}$, on a $b_{i}^{*}(\lambda x + y)=\lambda x_{i} + y_{i}=\lambda b_{i}^{*}(x) + b_{i}^{*}(y)$. Ainsi $b_{i}^{*}(\lambda x + y)=\lambda b_{i}^{*}(x) + b_{i}^{*}(y)$, d'où $b_{i}^{*}$ est une forme linéaire.
+    \item[(b)] Montrons que $(b_{1}^{*}, \cdots , b_{n}^{*})$ est base de $E^{*}$.\\ Soit $\lambda_{1},\lambda_{2},\cdots,\lambda_{n} \in \mathbb{K}$ tel que $\lambda_{1} b_{1}^{*} + \cdots + \lambda_{n} b_{n}^{*}=0$. On a pour tout $i$, $(\lambda_{1} b_{1}^{*} + \cdots + \lambda_{n} b_{n}^{*})b_{i}=\lambda_{i}=0$. Ainsi $b_{1}^{*}, \cdots, b_{n}^{*}$ est une base de $E^{*}$.
+\end{itemize}
+\textbf{Remarque: } Par construction pour tout $i$ et pour tout $j$, $b_{i}^{*}(b_{j})=\delta_{i,j} \mbox{ où } \delta_{i,j}=1 \mbox{ et } i = j \mbox{ et } 0 \mbox{ sinon.}$
+
+\subsection{Corollaire}
+Si $E$ est de dimension finie, alors $dim\,E=dim\,E^{*}$.
+
+\subsection{Proposition}
+La base $(b_{1}^{*},\cdots,b_{n}^{*})$ de $E$ définie précédement est appelé base dual de $(b_{1},\cdots,b_{n})$.
+
+\subsection{Définition}
+Soit $E_{1}$ un sev de $E$. On appelle orthogonale de $E_{1}$ (au sens du dual) le sev $E^{\bot}$ de $E^{*}$ définie par: $$\forall f \in E^{*},(f \in E_{1}^{\bot} \Leftrightarrow \forall x \in E_{1},f(x)=0).$$ Autrement dit, $E_{1}^{\bot}=\left\{f \in E^{*}; \; f/E_{1}=0\right\}.$\\
+\textit{Exemple: }Considérons l'espace $E=\mathbb{R}^{3}$. Soit $(e_{1},e_{2}.e_{3})$ une base de $E$ et $E_{1}$ un sev de $E$ engendré par $e_{1}+e_{2}$. Soit $f = x_{1}e_{1}^{*}+x_{2}e_{2}^{*}+e_{3}^{*} \in E^{*}$. On a: $ f \subset E_{1}^{\bot} \Leftrightarrow f(e_{1}+e_{2}) = 0 \Leftrightarrow x_{1}+x_{2} = 0 \Leftrightarrow f = x_{1}(e_{1}^{*}-e_{2}^{*})+x_{3}e_{3}^{*}.$\\ Donc $E_{1}^{\bot}=<e_{1}^{*}-e_{2}^{*},e_{3}^{*}>$.
+\subsection{Proposition}
+On a:
+\begin{itemize}
+    \item[(i)] $0^{\bot}=E^{*}$ et $E^{\bot}=0$;
+    \item[(ii)] Pour tout sev $E_{1}$ et $E_{2}$ de $E$,
+    \begin{itemize}
+        \item[-] Si $E_{1} \subset E_{2}$, alors $E_{2}^{\bot} \subset E_{1}^{\bot}$;
+        \item[-] $E_{1}^{\bot}+E_{2}^{\bot} \subset (E_{1} \cap E_{2})^{\bot}$, On a l'égalité si $E$ est de dimension finie.
+        \item[-] $(E_{1}+E_{2})^{\bot}=E_{1}^{\bot} \cap E_{2}^{\bot}$
+    \end{itemize}
+\end{itemize}
+
+\subsection{Proposition}
+Si $E$ est de dimension finie $n$ et $F$ un sev de $E$, alors $$dim\,F^{\bot}=n-dim\,F.$$
+\textit{Démostration: }\\
+D'après la proposition précédente, cette proposition est vrai si $F=0$ ou $F=E$. Supposons que $F$ soit propre et $dim\,F=p (1 \leq p \leq n)$. Soit $(a_{1},a_{2},\cdots,a_{n})$ une base de $E$ tel que $(a_{1},a_{2},\cdots,a_{p})$ soit la base de $F$. Soit $(a_{1}^{*},a_{2}^{*},\cdots,a_{n}^{*})$ la base duale de $(a_{1},a_{2},\cdots,a_{n})$. Pour prouver la proposition, il suffit de montrer que $(a_{p+1},\cdots,a_{n})$ est une base de $F^{\bot}$. 
+Pour tout $x=a_{1}x_{1}+\cdots+a_{n}x_{n}=0$ et $\forall i > j, \; a_{j}^{*}(x)=x_{1}a_{j}^{*}(a_{1})+\cdots+x_{n}a_{j}^{*}(a_{n})=x_{j}=0$. Ce qui prouve que $\forall j > p$, on a $a_{j}^{*} \in F^{\bot}$.\\ D'autre part, soit $f \in F^{\bot}$. Comme $(a_{1}^{*},\cdots,a_{n}^{*})$ est une base $E^{*}$, $f$ peut s'écrire $f=\sum_{j=1}^{n}\alpha_{j}a_{j}^{*}$, on a $\forall i \leq p, \; f(a_{i})=\alpha_{i}=0$. Donc $(a_{p+1, \cdots , a_{n}})$ est une base de $F^{\bot}$. 
+
+\section*{Détermination d'ue base duale et de l'orthogonal d'un sev}
+Soit $E$ un ev de dimension $n$ muni de la base $(e_{1},e_{2},\cdots,e_{n})$ et $v_{1},v_{2},\cdots,v_{p}$ p vecteurs de $E$ linéairement indépendants.\\ On note $[v_{1} \, v_{2} \, \cdots \, v_{n}]$ la matrice d'ordre $n \times p$ dont la $j$-ème colonne est formé par les composants du vecteur $v_{j}$ dans la base $(e_{1},e_{2},\cdots,e_{n})$. Pour simplifier, on pose $A=[v_{1} \, v_{2} \, \cdots \, v_{n}]$.\\ On échelonné la matrice augmentée $(A|I_{n})$ sous forme réduite.
+\begin{itemize}
+    \item[(i)] Si $p=n$, on obtient la matrice augmentée $(I_{n}|A^{-1})$.\\
+Si $(v_{1}^{*},v_{2}^{*},\cdots,v_{n}^{*})$ est une base dual de $(v_{1},v_{2},\cdots,v_{n})$, alors $$[v_{1}^{*} \, v_{2}^{*} \, \cdots \, v_{n}^{*}]=(A^{-1})^{t}$$ c-a-d, les coefficient de la $j$-ème colonne de $A^{-1}$ sont les composant du vecteur $v_{j}^{*}$ dans la base dual $(e_{1}^{*},e_{2}^{*},\cdots,e_{}^{*})$.
+    \item[(ii)] Si $p < n$, on obtient la matrice échelonné réduite de la forme $\left(\begin{array}{c|c}I_{p} & B_{1} \\ \hline 0 & B_{2} \end{array}\right)$.\\
+Si $F=<v_{1},v_{2},\cdots,v_{n}>$ et si on pose $(B_{2})^{t}=[f_{1}\,f_{2},\cdots,f_{n-p}],$ alors $$F^{\bot}=<f_{1},f_{2},\cdots,f_{n-p}>.$$ c-à-d, les composants du vecteur $f_{j}$, dans la base duale $(e_{1}^{*},e_{2}^{*},\cdots,e_{n}^{*})$ sont les coefficients de la $j$-ème colonne de $(B_{2})^{t}$.
+\end{itemize}
+
+\section{Forme bilinéaire symetrique}
+Soit $E$ un ev sur $\mathbb{R}$ et $f : E \times E \mapsto \mathbb{R}$ une application.\\ Pour tout $x \in E \mbox{(resp. $y \in E$)}$, on note $f_{x.} \mbox{(resp. $f_{.y})$}$ l'application de $E$ vers $\mathbb{R}$ définie par $f_{x.}(y)=f(x,y) \mbox{(resp. $f_{.y}(x)=f(x,y))$}$.
+
+\subsection{Définition}
+$f$ est dite une forme bilinéaire sur $E$ si:
+\begin{itemize}
+    \item[-] $\forall x \in E, \mbox{ $f_{x.}$ est une fl sur E;}$
+    \item[-] $\forall y \in E, \mbox{ $f_{.y}$ est une fl sur E.}$ 
+\end{itemize}
+On dit que $f$ est symetrique si $\forall (x,y) \in E \times E,f(x,y)=f(y,x).$\\ Notons que si $f$ est symetrique, alors $f_{x.}=f_{.x}$. Dans ce cas, on écrit simplement $f_{x}$.
+
+\subsection{Définition (Noyau d'une fbs)}
+Soit $f$ une fbs sur $E$. On appelle noyau de $f$ le sev $Ker\,f=\left\{ x \in E; \; f_{x}=0\right\}=\left\{x \in E; \forall y \in E; \; f(x,y)=0\right\}.$
+
+\subsection{Définition}
+Soit $E$ de dimension $n$, $(b_{1},\cdots,b_{n})$ une base de $E$ et $f$ une fbs sur $E$. On appelle matrice $f$ rélativement à la base $(b_{1},\cdots,b_{n})$ la matrice $A=(a{i,j}) \mbox{ où } a_{ij}=f(b_{i},b_{j})$.\\ Comme $f$ est symetrique, on $a_{ij}=a_{ji} \forall (i,j)$.
+
+\subsection*{Expression de $f(x,y)$ dans la base $(b_{i})_{i}$,}
+Soit $A=(a_{i,j})$ la matrice de  $f$ rélativement à la base $(b_{1},\cdots,b_{n})$.\\ Si $x = \sum_{i} x_{i}b_{i} \mbox{ et } y = \sum_{j} y_{j}b_{j}$, alors $$f(x,y)=\sum_{i}x_{i}\sum_{j}f(b_{i},b_{j})y_{j}=\sum_{i,j}f(b_{i},b_{j})x_{i}y_{j}.$$ Ainsi $$f(x,y)=\sum_{i,j} a_{ij}x_{i}y_{j}.$$ Sous forme matricielle, on a $f(x,y)=X^{t}AY \mbox{ où } X = (x_{1},\cdots,x_{n})^{t},Y=(y_{1},\cdots,y_{n})^{t}.$
+
+\subsection{Définition}
+Le rang de la matrice $A$ est appelé le rang de $f$: $$rang(f)=dimE-dim(Ker\,f)=dimE-dim(Ker\,A).$$
+
+\subsection{Proposition}
+Soit $(b_{i}) \mbox{ et } (b_{i}^{'})$ deux base de $E$, $f$ une fbs sur $E, \; A = Mat(f,(b_{i})) \mbox{ et } A^{'}= Mat(f,(b_{i}^{'}))$. Si $P$ est la matrice de passage de $b_{i}$ vers $b_{i}^{'}$, alors $$A^{'}=P^{t}AP.$$
+
+\subsection{Définition}
+On dit qu'une fbs est non dégenerée, si $Ker\,f=0$. Dans la cas contraire, on dit qu'elle est dégenerée.
+
+\subsection{Proposition}
+Si $E$ est de dimension finie, alors $f$ est non dégenerée $ssi$ sa matrice est inversible.
+
+\subsection{Définition}
+On dit que les vecteurs $x,y$ sont orthogonaux rélativement à $f$ si $f(x,y)=0$
+
+\subsection{Définition}
+Soit $X$ une partie non vide de $E$. On appelle orthogonal de $X$ rélativement à $f$ le sev de $E$ forme des vecteurs orthogonaux à tous les vecteurs de $X$, noté $X^{\bot}$: $$X^{\bot}=\left\{y \in E/ \forall x \in X, \; f(x,y)=0\right\}.$$ On note $v^{\bot}$ l'orthigonal de $\{v\}$ rélativement à $f$.
+
+\subsection{Définition}
+Soit $\mathcal{B}=(b_{1},\cdots,b_{n})$ une base de $E$ et $f$ une fbs de $E$. On dit que $\mathcal{B}$ est une base orthogonale relativement à $f$ ou simplement une base $\mbox{ f-orthogonale  si } f(b_{i},b_{j})=0$ pour tout couple $(i,j)$ tel que $i \not= j$.\\ On dit qu'elle est  $f$-orthonormale si elle est $f$-orthogonale et si  $f(b_{i},b_{i})=1$ pour tout $i$.
+
+\section{Forme quadratique}
+\subsection{Définition}
+On appelle forme quadratique (fq) sur une $\mathbb{R}ev \; E$ toute application $q : E \mapsto \mathbb{R}$ vérifiant les conditions suivantes:
+\begin{enumerate}
+    \item $\forall x \in E, \; \forall \lambda \in \mathbb{R}, \; q(\lambda x)=\lambda^{2}q(x)$;
+    \item L'application $f : E \times E \mapsto \mathbb{R}$ définie par: $$\forall (x,y) \in E \times E, f(x,y)=\frac{1}{2}[q(x+y)-q(x)-q(y)]$$ est une fbs sur E.
+\end{enumerate}
+$f$ est appelé la forme polaire associée à $q$, et $q$ la fq associée à $f$; $$\forall x \in E,q(x)=f(x,x).$$ Si $(a_{ij})=Mat(f,(b_{i}))$, dans la base $(b_{i}),\;q(x)$ a pour expression: $$q(x)=\sum_{i=1}^{n}a_{i}x_{i}^{2} + 2\sum_{1 \leq i < j \leq n} a_{ij}x_{i}x_{j}.$$ \\
+\textbf{NB: } Si $f$ est une forme polaire de $q$, $f(x,y)$ se deduit de $q(x)$ en remplaçant $a_{i}x_{i}^{2}$ par $a_{i}x_{i}y_{i}$ pour tout $i$, et $2a_{ij}x_{i}x_{j}$ par $a_{ij}x_{i}y_{j}+a_{ji}x_{j}y_{i} \mbox{ pour tout i < j.}$
+
+\subsection{Définition}
+Une fq positive si $q(x) \geq 0$ pour tout $x$.
+
+\subsection{Proposition}
+Si $q$ est une fq positive sur $E$ de forme polaire $f$, alors $$\forall (x,y) \in E^{2}(f(x,y))^{2} \leq q(x)q(y).$$
+
+\section{Réduction(ou décomposition en carrée) d'une forme quadratique}
+Soit $E$ un $\mathbb{R}ev$ de dimension n, $(e_{1},\cdots,e_{n})$ une base de $E$.
+Soit $q$ une fq non nulle. Dans cette base $q$ est définie par $$\forall x=\sum_{1 \leq i \leq n} x_{i}e_{i}, \; q(x)=\sum_{1 \leq i \leq n} a_{i}x_{i} + 2 \sum_{1 < i,j < n} a_{ij}x_{i}x_{j};$$
+
+\subsection{Théorème}
+Il existe des fl $l_{1}, \cdots ,l_{n}$ linéairement indépendants telle que $$q(x)=\alpha_{1}l_{1}^{2}(x)+\cdots+\alpha_{r}l_{r}^{2}(x).$$ où $1 \leq r \leq n$ et tous les $\alpha_{i}$ sont tous non nul.
+
+\subsection{Définition}
+Réduire une fq $q$, c'est transformer $q(x)$ sous la forme $$q(x)=\alpha_{1}l_{1}^{2}(x)+\cdots+\alpha_{r}l_{r}^{2}(x).$$ appelé forme réduite de $q$, les $\alpha_{i}$ étant tous non nul et les $l_{i}$ sont linéairement indépendants.
+
+\subsection{Proposition}
+Soit $q(x)=\alpha_{1}l_{1}^{2}(x)+\cdots+\alpha_{r}l_{r}^{2}(x)$ une forme réduite de $q$. Alors $$Ker\,f-\left\{x \in E; \; l_{1}(x)=\cdots=l_{r}=0\right\}$$
+
+\subsection{Proposition}
+Soit $q(x)=\alpha_{1}l_{1}^{2}(x)+\cdots+\alpha_{r}l_{p}^{2}(x).$ une forme réduite de $q$. Alors $rang(q)=p$.
+
+\subsection{Proposition}
+Soit $f$ une fbs non nulle sur $E$ de dimesion finie. Alors $E$ admet une base $f$-orthogonale.
+
+\subsection{Proposition}
+Soit $f$ une fbs non nul sur $E$ de dimension n, de fq $q$ et de rang $p$. Alors il existe une base $f$-orthogonale et unique couple d'entier $(r,s)$ tels que $r+s=p$ et dans cette base, $q(x)=\sum_{i=1}^{r} x_{i}^{2} - \sum_{i=r+1}^{p} x_{i}^{2}$.\\ $(r,s)$ est appelé signature de $f$ ou de $q$.
+
+\subsection{Proposition}
+Si $f$ est une fbs non dégenerée et positive, alors $E$ admet une base $f$-orthonormale.
+
+\subsection{Proposition}
+$E$ admet une base $f$-orthonormale $ssi$ $f$ a pour signature $(n,0)$, n étant la dimension de $E$.
+
+\subsection{Recherche d'une base $f$-orthogonale et d'une base de $Ker\,f$}
+Soit $f$ une fbs sur $E$ de dimension n, $(e_{i})$ une base de $E$ et $q$ la fq dont la forme réduite est $q(x)=\alpha_{1}l_{1}^{2}(x)+\cdots+\alpha_{p}l_{p}^{2}(x).$\\ On resout le systeme d'equation linéaires $(S)=\left\{\begin{array}{ccc} l_{1}(x) & = & t_{1} \\ \vdots &  & \vdots \\ l_{p}(x) & = & t_{p}\end{array}\right.$\\ où $t_{1},\cdots,t_{p}$ sont des variables.\\
+Sous forme matricielle, on a $AX=T$ où $A$ est une matrice d'ordre $p \times n,X=(x_{1} \, x_{2} \, \cdots \, x_{n})^{t}$ et $(t_{1} \, t_{2} \, \cdots \, t_{p})^{t}$ avec $x=x_{1}e_{1}+\cdots+x_{n}e_{n}$.\\ On resout $(S)$ par la methode de pivot de Gauss.
+\begin{itemize}
+    \item[-] On échelonne la matrice augmentée $(A|I_{p})$ sous forme réduite. On obtient $(B|Q)$.
+    \item[-] Comme $(S)$ devient $BX=QT$, alors on peut exprimer $p$ variables $x_{i_{1}},\cdots,x_{i_{p}}$ en fonction de $n-p$ autres variables $x_{j_{1}},\cdots,x_{j_{n-p}}$ et des variables $t_{1},t_{2},\cdots,t_{p}$. Alors $(S)$ a pour solution $$X=x_{j_{1}}b_{1}+x_{j_{2}}+\cdots+x_{j_{n-p}}b_{n-p}+t_{1}b_{n-p+1}+\cdots+t_{p}b_{n}.$$ 
+    $(b_{1},b_{2},\cdots,b_{n})$ est une base $f$-orthogonale et $(b_{1},b_{2},\cdots,b_{n-p})$ est une base de $Ker\,f$.
+\end{itemize}
+
+\section*{Autres méthode de Recherche d'une base $f$-orthogonale et d'une base de $Ker\,f$}
+Posons $A=[l_{1}\,l_{2}\,\cdots\,l_{p}]$\\ On échelonne la matrice augmentée $(A|I_{n})$ sous forme réduite.\\ On obtient une matrice echelonne reduite de la forme $\left(\begin{array}{c|c} I_{p} & B_{1} \\ \hline 0 & B_{2}\end{array}\right).$\\ En posant $B_{1}^{t}=[b_{1} \cdots b_{p}]$ et $B_{2}^{t}=[b_{1} \cdots b_{n}]$, alors $(b_{1},b_{2},\cdots,b_{n})$ est une base $f$-orthogonale de $E$ et $(b_{p+1},\cdots,b_{n})$ est une base de $Ker\,f$. 
+\end{document}
