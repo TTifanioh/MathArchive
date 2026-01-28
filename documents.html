@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PDF Explorer</title>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="topbar-left">
+      <a href="/" class="home-btn">← Accueil</a>
+      <h1>📚 PDF Explorer</h1>
+    </div>
+
+    <input
+      type="text"
+      id="search"
+      placeholder="Rechercher une leçon…"
+    />
+  </header>
+
+  <main class="container" id="tex-container"></main>
+
+  <footer class="footer">
+    © 2026 <span>MathArchive</span> — Tous droits réservés
+  </footer>
+
+
+  <script type="module" src="/src/documents.ts"></script>
+</body>
+</html>

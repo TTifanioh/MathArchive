@@ -32,7 +32,7 @@
 │   └── favicon.ico          # Icône du site
 ├── src/                     # Code source transformé par le compilateur
 │   ├── style/               
-│   │   ├── style.css        # (Corrigé 'syle.css' -> 'style.css')
+│   │   ├── style.css     
 │   │   └── explorer.css
 │   ├── data/               
 │   │   └── pdfs.json        # Importé via 'import data from "./data/pdfs.json"'
