@@ -5,6 +5,10 @@
   --text: #e5e7eb;
   --muted: #94a3b8;
   --radius: 14px;
+  --primary-second: #2563eb;
+  --primary-dark: #1e40af;
+  --link-color: grey;
+  --card: #ffffff;
 }
 
 * {
@@ -164,7 +168,68 @@ body {
   );
 }
 
+/* =========
+   LIST LINK 
+   ========= */
+li a {
+	font-size: clamp(1.3rem, 2vw, 1rem);
+	text-decoration: none;
+	margin-bottom: 20px;
+	padding: 10px;
+	color: grey;
+	list-style: none;
+	position: relative;
+}
+
+li a:hover{
+	text-decoration: underline;
+	font-style: italic;
+	color: var(--primary-second);
+}
+
+/* =====
+   TITLE
+   ===== */
+.grid h1 {
+	font-size: clamp(2.5rem, 4vw, 3.5rem);
+	font-weight: 600;
+	margin-bottom: 20px;
+	color: var(--primary-dark);
+}
+
+
+/* ====
+   GRID
+   ==== */
+.grid{
+	max-width: 920px;
+	width: 100%;
+	margin: 30px;
+	display: grid;
+	gap:20px;
+	background: var(--card);
+	border-radius: var(--radius);
+	box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+	padding: 40px;
+	background: linear-gradient(135deg, #eef2ff, #f8fafc)
+}
+
+.grid h2{
+	margin: 0 0 12px;
+}
 .footer span {
   color: var(--text);
   font-weight: 600;
 }
+
+
+
+/* =================
+   RESPONSIVE DESIGN
+   ================= */
+@media (max-width: 600px) {
+  .grid {
+    padding: 28px;
+  }
+
+} 
