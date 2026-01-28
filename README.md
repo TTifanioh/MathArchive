@@ -20,23 +20,29 @@
 ## 📂 Structure du Projet
 
 ```text
+## 📂 Structure du Projet
+
+```text
 .
-├── public/                  # Assets statiques (CSS, pdfs.json, pdf, tex, et assets)
-│   ├── algebre1/            # Fichiers .tex sources par sujet
-│   │   ├── EquationLineaireEtMatrice.pdf
-│   │   └── TheorieNaiveEnsemble.pdf
-│   └── algebre2/            
-│       ├── espaces_quotients.pdf
-│       └── forme_quadratique.pdf
-├── src/                     # Logique TypeScript (main.ts, explorer.ts)
-│   ├── explorer.ts          # TypeScript pour générer la liste dynamique
-│   └── pdf-list.json        # JSON des fichiers PDF
-├── index.html               # Page d’accueil
-├── explorer.html            # Interface de l'explorateur
-├── style.css                # Styles globaux et pour l’explorateur
-├── package.json             # Dépendances et scripts
-├── tsconfig.json
-└── README.md
+├── public/                  # Ressources brutes (copiées telles quelles dans dist/)
+│   ├── algebre1/            # PDFs et sources .tex
+│   ├── algebre2/            
+│   ├── CalculNum/           
+│   ├── Exercice/            
+│   └── favicon.ico          # Icône du site
+├── src/                     # Code source transformé par le compilateur
+│   ├── style/               
+│   │   ├── style.css        # (Corrigé 'syle.css' -> 'style.css')
+│   │   └── explorer.css
+│   ├── data/               
+│   │   └── pdfs.json        # Importé via 'import data from "./data/pdfs.json"'
+│   ├── explorer.ts          # Logique de la page explorer.html
+│   └── main.ts              # Logique de la page index.html
+├── index.html               # Point d'entrée principal
+├── explorer.html            # Point d'entrée secondaire
+├── package.json             # Scripts et dépendances
+├── tsconfig.json            # Configuration TypeScript
+└── vite.config.ts           # Configuration multi-pages
 ```
 
 ---

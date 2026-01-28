@@ -1,7 +1,10 @@
+import './style/explorer.css'; 
+import data from './data/pdfs.json';
+
 const container = document.getElementById("pdf-container") as HTMLDivElement;
 const searchInput = document.getElementById("search") as HTMLInputElement;
 
-let pdfList: string[] = [];
+const pdfList: string[] = data;
 
 function formatPdfName(path: string): string {
   const fileName = path.split("/").pop() || "";
@@ -25,11 +28,7 @@ function formatPdfName(path: string): string {
   return formatted;
 }
 
-
-
-async function loadPDFs() {
-  const res = await fetch("pdfs.json");
-  pdfList = await res.json();
+function init() {
   renderPDFs(pdfList);
 }
 
@@ -71,4 +70,4 @@ searchInput.addEventListener("input", () => {
   renderPDFs(filtered);
 });
 
-loadPDFs();
+init();

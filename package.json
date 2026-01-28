@@ -10,6 +10,7 @@
   },
   "devDependencies": {
     "@types/katex": "^0.16.8",
+    "@types/node": "^25.0.10",
     "typescript": "~5.9.3",
     "vite": "^7.2.4"
   },
