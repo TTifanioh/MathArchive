@@ -1,47 +1,64 @@
 import './style/explorer.css';
-import data from './data/topics.json';
+import 'katex/dist/katex.min.css'; 
+
+// @ts-ignore
+import renderMathInElement from 'katex/dist/contrib/auto-render';
+import dataRaw from './data/topics.json';
 
 const container = document.getElementById("tex-container") as HTMLDivElement;
 const searchInput = document.getElementById("search") as HTMLInputElement;
+const texList: string[] = dataRaw as string[];
+const LATEX_PREVIEW_LIMIT = 300; // Augmenté pour un meilleur aperçu
 
-const reader = document.getElementById("reader") as HTMLDialogElement;
-const content = document.getElementById("content") as HTMLDivElement;
-const closeBtn = document.getElementById("close") as HTMLButtonElement;
-
-const lessonList: string[] = data;
-
-/* =========================
-   Utils
-========================= */
-
-// Convertit le chemin (/algebre1/Equation) en nom lisible (Equation)
-function formatName(path: string): string {
+function formatLatexName(path: string): string {
   const fileName = path.split("/").pop() || "";
-
-  // Gère snake_case et CamelCase
-  let formatted = fileName.replace(/_/g, " ");
-  formatted = formatted.replace(/([a-z])([A-Z])/g, "$1 $2");
-  formatted = formatted.toLowerCase();
-  
+  let formatted = fileName.replace(/[_-]/g, " ").replace(/([a-z])([A-Z])/g, "$1 $2").toLowerCase();
   return formatted.charAt(0).toUpperCase() + formatted.slice(1);
 }
 
-// Transforme le chemin du JSON en fichier .tex
-function toTexPath(basePath: string): string {
-  return `${basePath}.tex`;
+async function renderLatexContent(path: string, element: HTMLElement) {
+  try {
+    const response = await fetch(path);
+    if (!response.ok) throw new Error("Erreur");
+    
+    let texCode = await response.text();
+
+    // 1. Extraction du corps du document
+    if (texCode.includes("\\begin{document}")) {
+      texCode = texCode.split("\\begin{document}")[1].split("\\end{document}")[0];
+    }
+
+    // 2. Nettoyage des commandes LaTeX structurelles pour l'affichage HTML
+    let cleanText = texCode
+      .replace(/\\maketitle/g, '')
+      .replace(/\\section\{([^}]+)\}/g, '<h3 style="margin:10px 0">$1</h3>')
+      .replace(/\\subsection\{([^}]+)\}/g, '<h4 style="margin:5px 0">$1</h4>')
+      .replace(/\\\\/g, '<br>');
+
+    // 3. Tronquer proprement
+    const isTruncated = cleanText.length > LATEX_PREVIEW_LIMIT;
+    const finalContent = isTruncated ? cleanText.substring(0, LATEX_PREVIEW_LIMIT) + "..." : cleanText;
+
+    // 4. Injection du texte nettoyé
+    element.innerHTML = finalContent;
+
+    // 5. Utilisation de l'extension auto-render pour transformer les $...$
+    renderMathInElement(element, {
+      delimiters: [
+        {left: '$$', right: '$$', display: true},
+        {left: '$', right: '$', display: false},
+        {left: '\\(', right: '\\)', display: false},
+        {left: '\\[', right: '\\]', display: true}
+      ],
+      throwOnError: false
+    });
+
+  } catch (error) {
+    element.innerHTML = `<span style="color: #ff6b6b;">⚠ Impossible de charger l'aperçu</span>`;
+  }
 }
 
-/* =========================
-   Init
-========================= */
-function init() {
-  renderLessons(lessonList);
-}
-
-/* =========================
-   Render
-========================= */
-function renderLessons(list: string[]) {
+function renderLatexs(list: string[]) {
   if (!container) return;
   container.innerHTML = "";
 
@@ -50,73 +67,32 @@ function renderLessons(list: string[]) {
     return;
   }
 
-  list.forEach((basePath) => {
-    const title = formatName(basePath);
-    const texPath = toTexPath(basePath);
+  list.forEach((path) => {
+    const displayName = formatLatexName(path);
+    const realPath = path.endsWith('.tex') ? path : `${path}.tex`;
 
     const card = document.createElement("div");
-    card.className = "lesson-card";
-
+    card.className = "pdf-card";
     card.innerHTML = `
-      <div class="lesson-preview">
-        \\(${title}\\)
+      <div class="latex-display" style="padding: 15px; min-height: 120px; background: #222; color: #fff; overflow: hidden; text-align: left; font-family: serif;">
+        <div class="loading-placeholder">Chargement de l'aperçu...</div>
       </div>
-
-      <div class="lesson-info">
-        <span class="lesson-name">${title}</span>
-        <button class="read-btn">Lire</button>
+      <div class="pdf-info">
+        <span class="pdf-name">${displayName}</span>
+        <a class="download-btn" href="${realPath}">Lire</a>
       </div>
     `;
 
-    card.querySelector(".read-btn")!
-      .addEventListener("click", () => openLesson(texPath));
-
     container.appendChild(card);
+    const displayElement = card.querySelector(".latex-display") as HTMLElement;
+    renderLatexContent(realPath, displayElement);
   });
 }
 
-/* =========================
-   Reader
-========================= */
-async function openLesson(texPath: string) {
-  try {
-    const res = await fetch(texPath);
-
-    if (!res.ok) {
-      content.innerHTML = `<p class="error">❌ Impossible de charger le fichier .tex</p>`;
-      reader.showModal();
-      return;
-    }
-
-    const tex = await res.text();
-    content.innerHTML = `\\(${tex}\\)`;
-    reader.showModal();
-
-    // Rendu mathématique via MathJax
-    // @ts-ignore
-    if (window.MathJax) {
-       // @ts-ignore
-      MathJax.typesetPromise();
-    }
-  } catch (err) {
-    content.innerHTML = `<p class="error">❌ Erreur réseau</p>`;
-    reader.showModal();
-  }
-}
-
-closeBtn?.addEventListener("click", () => reader.close());
-
-/* =========================
-   Search
-========================= */
 searchInput?.addEventListener("input", () => {
   const query = searchInput.value.toLowerCase();
-
-  const filtered = lessonList.filter(path =>
-    formatName(path).toLowerCase().includes(query)
-  );
-
-  renderLessons(filtered);
+  const filtered = texList.filter(path => formatLatexName(path).toLowerCase().includes(query));
+  renderLatexs(filtered);
 });
 
-init();
+renderLatexs(texList);
