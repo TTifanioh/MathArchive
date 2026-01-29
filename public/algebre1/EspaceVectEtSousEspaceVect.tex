@@ -1,0 +1,271 @@
+\documentclass[a4paper, 12pt, french]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=2cm]{geometry}
+\usepackage{amsfonts}
+\usepackage[french]{babel}
+
+\begin{document}
+\section{Espaces Vectoriels et Sous-Espaces Vectoriels}
+Dans ce chapitre, nous allons étudier l’une des structures mathématiques fondamentales, étroitement liées à l’algèbre linéaire : les espaces vectoriels. Les espaces vectoriels fournissent un cadre général, et plus abstrait, pour l’étude des équations linéaires, des applications linéaires et des matrices entre autres. Dans le premier chapitre, on a vu quelques exemples d’espaces vectoriels, notemment $\mathbb{R}^{n}$ et $\mathbb{C}^{n}$ , ainsi que quelques propriétés de ces derniers. Certaines de ces propriétés vont nous servir comme point de départ pour définir abstraitement ce qu’est un espace vectoriel (cf. Théorème
+2.1.4), et de ce fait formeront les axiomes de base d’un espace vectoriel. Dans tout ce chapitre, on fixe un ”corps” des scalaires $\mathbb{K}$ (pour l’instant, $\mathbb{R}$ ou $\mathbb{C}$).
+
+\subsection{Espaces Vectoriels}
+Soit $V \not= \emptyset$ un ensemble non vide. Une loi de composition interne sur $V$ est une application $ \oplus : V \times V \rightarrow V$ qui à chaque pair d’éléments $(u, v)$ de $V$ associe un élément $\oplus(u, v)$ de $V$, que l’on notera $u \oplus v$. La loi $\oplus$ sera appelée l’addition de $V$. On dit que $V$ est munie d’une multiplication par les scalaires de $\mathbb{K}$ s’il existe une application $ \odot : K \times V \rightarrow V$ qui à tout pair d’éléments $(k, v)$ de $K \times V$ associe un élément $(k, v)$ de $V$, que l’on notera $k v$.
+
+\subsubsection{Définition}
+Un espace vectoriel sur $\mathbb{K}$ ou $\mathbb{K}$-espace vectoriel est un ensemble non vide $V$ possédant un élément spécial $0$ qu’on apellera naturellement le zéro de $V$, muni d’une loi de composition interne $\oplus$ et d’une multiplication par les scalaires de $\mathbb{K}$ , satisfaisant les axiomes suivantes : quels que $u, v, w \in V$ et quels que soient $k, l \in \mathbb{K}$, on a
+\begin{itemize}
+    \item[(i)] $(u \oplus v) \oplus w = u \oplus (v \oplus w)$ (Associativité de l’addition)
+    \item[(ii)] $u \oplus v = v \oplus u$ (Commutativité de l’addition)
+    \item[(iii)] $u \oplus \mathbf{0} = \mathbf{0} \oplus u = u$ ($\mathbf{0}$ est l’ élément neutre de l’addition)
+    \item[(iv)] Il existe un élément $-u \in V$ tel que $u \oplus (-u) = \mathbf{0}$ ($-u$ est l’inverse additive de $u$)
+    \item[(v)] $k \odot (u + v) = k \odot u + k \odot v$ (Distributivité de la multiplication par un scalaire par rapport à l'addition)
+
+    \item[(vi)] $(k + l ) \odot u = (k \odot u) \oplus (l \odot u)$ (la premiere addition est une addition dans $\mathbb{K}$, tadis que la seconde est celle dans $V$)
+    \item[(vii)] $(kl) \odot u = k \odot (l \odot u)$
+    \item[(viii)] $1 \odot u=u$
+\end{itemize}
+
+\subsubsection{Remarque}
+Il faut prendre garde à ne pas confondre le zéro du corps de base $\mathbb{K}$, qu’on écrira $0_{\mathbb{K}}$ ou simplement 0, avec le zéro de $V$ que l’on écrira $\mathbf{0}$ (le chiffre 0 en gras).
+
+\subsubsection{Remarque}
+Dans la définition précédente, on a utilisé les notations $\oplus$ et pour que l’on comprenne que l’addition dans un espace vectoriel n’est pas toujours l’addition usuelle ans $\mathbb{R}$ ou $\mathbb{C}$, de même pour la multiplication par les scalaires. Cependant, pour la commodité, on convient dans toute la suite d’écrire $u + v$ au lieu de $u \oplus v$ et $kv$ au lieu de $k \odot v$ du moment qu’aucune confusion n’est á craindre.\\
+Les quatres premiers axiomes font de $(V, \oplus)$ ce qu’on appelle un groupe abélien ou groupe commutatif. L’axiome d’associativité de l’addition nous permet d’écrire une somme quelconque d’éléments de $V$ de la forme $$u_{1} + u_{2} + \cdots + u_{n}$$ sans écrire les parenthèses, et la commutativité implique que l’ordre de sommation n’est pas important.
+
+\subsubsection{Proposition}
+L’élément neutre $\mathbf{0}$ est unique et pour tout $u \in \mathbb{K}$, l’opposé $-u$ de $u$ est unique.\\ On peut donc définir la soustraction dans $V$ par : $u - v = u + (-v)$.
+
+\subsubsection{Corollaire (Régularité de l’addition)}
+Soient $u, v, w \in \mathbb{K}$ tels que $u + v = u + w$, donc $v = w$.\\ On a les propriétés simple suivantes
+
+\subsubsection{Théorème}
+Soit $V$ un $\mathbb{K}$-espace vectoriel.
+\begin{itemize}
+    \item[(i)] Pour tout $k \in \mathbb{K}, k\mathbf{0} = \mathbf{0}$.
+    \item[(ii)] Pour tout $u \in V$, $0u = \mathbf{0}$.
+    \item[(iii)] Si $ku = 0$ avec $k \in \mathbb{K}$ et $u \in V$, alors $k = 0$ ou $u = \mathbf{0}$.
+    \item[(iv)] Pour tout $k \in \mathbb{K}$ et pour tout $u \in V$, $(-k )u = k (-u) = -(ku)$.
+\end{itemize}
+\textit{Preuve:}
+\begin{itemize}
+    \item[(i)] Soit $k \in \mathbb{K}$, on a $k \mathbf{0} = k  (\mathbf{0} - \mathbf{0}) = k\mathbf{0} - k\mathbf{0} = \mathbf{0}$.
+    \item[(ii)] Soit $u \in V$, on a $0u = (0 - 0)u = 0u - 0u = 0$.
+    \item[(iii)] Soient $k \in \mathbb{K}$ et $u \in V$ tels que $ku = \mathbf{0}$. Si $k \not= 0$, alors $\frac{1}{k} (ku) = 1k(\mathbf{0}) = \mathbf{0}$. De plus, on a
+$(\frac{1}{k} k)u = 1u = u$. Donc $u = 0$.
+    \item[(iv)] Il suffit d’appliquer l’axiome (vii) avec $l = -1$ et utiliser la commutativité de la multiplication dans $\mathbb{K}$.
+\end{itemize}
+Nous allons maintenant voir quelques exemples d’espace vectoriels.
+
+\subsubsection{Exemples}
+Soit $\mathbb{K} = \mathbb{R} \mbox{ ou } \mathbb{C}$ (ou un corps quelconque). On vérifie facilement que l’ensemble $\mathbb{K}^{n}$ des n-tuples d’éléments de $\mathbb{K}$ muni de l’addition et de la multiplication par les scalaires fait composantes par composantes est un espace vectoriel. Lélément neutre de l’addition est $\mathbf{0} = (0, 0, \cdots , 0)$ et bien sur $-( a_{1} , a_{2} , \cdots , a_{n} ) = (- a_{1} , - a_{2} , \cdots , - a_{n})$.
+
+\subsubsection{Exemples}
+On vérifie que $M_{m \times n} (\mathbb{K})$ muni de l’addition des matrices et de la multiplication des matrices par un scalaire est un espace vectoriel. La matrice nulle où toutes les entrées sont 0 est lélément 0 et l’opposé se déduit facilement.
+
+\subsubsection{Exemples}
+Soit $V = \mathbb{K}[ X ] := \{ a_{0} + a_{1} X + a_{2} X^{2} + \cdots + a_{n} X^{n} | n \in \mathbb{N}, a_{0} , \cdots , a_{n} \in \mathbb{K}\}$ l’ensemble des polynômes en la variable X et á coefficients dans $\mathbb{K}$. Alors $V$ muni de l’addition des polynômes (on additionne les coefficients correspondant aux mêmes puissances de X) et de la multiplication par un scalaire (multiplier les coefficients par le scalaire) est un espace vectoriel.
+
+\subsubsection{Exemples}
+Soit $E$ un ensemble non vide et soit $F ( E, \mathbb{K})$ l’ensemble de toutes les applications de $E$ dans $\mathbb{K}$. On munit $F ( E, \mathbb{K})$ de l’addition des applications et de la multiplication par un scalaire comme suit : pour tout $f , g \in F ( E, \mathbb{K})$ et $k \in \mathbb{K}$, on définit $f + g$ par $$( f + g )( x ) = f ( x ) + g( x )$$ et $k f$ par $$(k f )( x ) = k f ( x )$$. L'élément $\mathbf{0}$ est l’application nulle qui à chaque $x \in E$ associe $\mathbf{0}$. La vérification de ces exemples est un exercice facile laissé aux étudiants.
+
+\subsection{Sous-Espaces Vectoriels}
+\subsubsection{Définition}
+Un sous-ensemble non vide $W \subseteq V$ contenant $\mathbf{0}$ est un sous-espace vectoriel de $V$ si $W$ lui-même est un espace vectoriel par rapport aux lois d’addition et de multiplication par un scalaire de $V$.
+
+\subsubsection{Théorème}
+$W \subseteq V$ est un sous-espace vectoriel de $V$ si et seulement si :
+\begin{itemize}
+    \item[(i)] $W \not= \emptyset$,
+    \item[(ii)] $W$ est fermé pour l’addition : $v, w \in W$ implique $v + w \in W$,
+    \item[(iii)] $W$ est fermé pour la multiplication par un scalaire : $w \in W$ et $k \in \mathbb{K}$ implique $kw \in W$.
+\end{itemize}
+
+\subsubsection{Corollaire}
+$W$ est un sous-espace vectoriel de $V$ si et seulement si
+\begin{itemize}
+    \item[(i)] $\mathbf{0} \in W$ (ou bien $W \not= \emptyset$) et
+    \item[(ii)] Pour tout $v, w \in W$ et pour tout $k, l \in \mathbf{K}, vk + wl \in W$.
+\end{itemize}
+En particulier, $\{0\}$ et $V$ sont des sous-espaces vectoriels de $V$ dites triviaux. On laisse le soin de vérifier les quelques exemples suivant aux lecteurs :
+
+\subsubsection{Exemples}
+Soit le $\mathbb{R}$-espace vectoriel $V = \mathbb{R}^{3}$. L’ensemble $W$ des vecteurs dont la dernière composante est 0 est un sous-espace vectoriel de $V$.
+
+\subsubsection{Exemples}
+L’ensemble des matrices symétriques de $M_{n} (\mathbb{K})$ est un sous-espace vectoriel de $M_{n} (\mathbb{K})$.
+
+\subsubsection{Exemples}
+Soit $V = \mathbb{K}[ X ]$ l’ensemble des polynômes à coefficients dans $\mathbb{K}$. Le sous-ensemble des polynômes de degré inférieur ou égale à n est un sous-espace vectoriel de $V$.
+
+\subsubsection{Théorème}
+L’intersection se sous-espaces vectoriels d’un espace vectoriel $V$ est un sous-espace vectoriel de $V$. En particulier, toute intersection finie.
+
+\subsubsection{Remarque}
+La réunion de deux sous-espaces vectoriels n’est pas forcément un espace vectoriel.
+
+\subsection{Combinaisons Linéaires et Générateurs}
+On a déja vu la notion de combinaison linéaire dans $\mathbb{K}^{n}$, il s’avère que cette notion peut se généraliser dans le cas d’un espace vectoriel quelconque. Soit $V$ un $\mathbb{K}$-espace vectoriel et $v_{1}, v_{2} , \cdots , v_{n} \in V$.
+Un vecteur de la forme $a_{1} v_{1} + a_{2} v_{2} + \cdots + a_{n} v_{n}$ où les $a_{i} \in \mathbb{K}$ est appelé une combinaison linéaire de $v_{1} , v_{2} , \cdots , v_{n}$.
+
+\subsubsection{Définition}
+Soit $S \not= \emptyset$ un sous-ensemble non vide de $V$. Le plus petit sous-espace vectoriel de $V$ contenant $S$, qu’on notera désormais $L(S)$ (une autre notation est $Vect(S)$), est appelé le sous-espace de $V$ engendré par $S$. 
+On dit que $S$ est un système générateur ou une famille génératrice de $L(S)$, ou encore, que les éléments de $S$ sont des générateurs de $L(S)$. Lorsque $S = {u_{1} , u_{2} , \cdots , u_{m} }$, on écrira $L(S) = L(u_{1} , u_{2} , \cdots , u_{m} )$ s’il n’y a pas risque de confusion. On convient que $L(\emptyset) = \{0\}$.
+
+\subsubsection{Définition (Espace vectoriel de type fini)}
+Un espace vectoriel $V$ est dit de type fini s’il peut être engendré par un nombre fini d’éléments.
+
+\subsubsection{Théorème}
+Soit $S \subseteq V$ un sous-ensemble. Alors $L(S)$ est l’ensemble de toutes les combinaisons linéaires des éléments de $S$.
+
+\textit{Preuve: }\\
+Soit $W_{s}$ l’ensemble de toutes les combinaisons linéaires des éléments de $S$. D’une part,il est clair que $\mathbf{0} = 0_{s} \in W_{s} (s \in S)$. Aussi, on vérifie facilement que l’addition de deux combinaisons linéaires d’ éléments de $W_{s}$ est un élément de $W_{s}$. De même, la multiplication par un scalaire d’une combinaison linéaire d’ éléments de $W_{s}$ est un élément de $W_{s}$. Donc, $W_{s}$ est un sous-espace vectoriel de $V$ contenant $S$. Comme $L(S)$ est le plus petit sous-espace vectoriel de $V$ contenant $S$, on a $L(S) \subseteq WS_{s}$. D’autre part, $L(S)$ étant un sous-espace contenant $S$, donc $L(S)$ contient toute combinaison linéaire d’éléments de $S$.
+Donc, $W_{s} \subseteq L(S)$. Finalement, on a alors $L(S) = W_{s}$.
+
+\subsubsection{Théorème}
+Soit $S \subseteq V$ un sous-ensemble. Alors, $L(S)$ est l’intersection de toutes les sous-espaces vectoriels de $V$ contenant $S$.
+
+\subsubsection{Exemple}
+Soit le $\mathbb{R}$-espace vectoriel  $V= \mathbb{R}^{2}$ et $v \in \mathbb{R}^{2} \backslash \{ \left(\begin{array}{c} 0 \\ 0 \end{array}\right) \}$. On peut se demander quel est le sous-espace engendré par $v$, ou $L({v}$). 
+D’après Théorème 3.3.3, $L(v) = \{\lambda v| \lambda \in \mathbb{R}\}$. C’est donc la droite passant par l’origine et $v$. Soit $w \not\in L(v)$ un autre élément non null de $V$. On peut montrer que $L(v, w) = \mathbb{R}^{2}$ (que l’on fera plus tard).
+
+\subsubsection{Exemples}
+D’une manière similaire à l’exemple précédent, en prenant l’espace vectoriel $V = \mathbb{R}^{3}$, on peut montrer que si $v, w \in \mathbb{R}^{3} \backslash \{\left(\begin{array}{c} 0 \\ 0 \\ 0\end{array}\right)\}$ tel que $w \not\in L(v)$ alors $L(v, w)$ est le plan passant par l’origine et contenant $v$ et $w$.
+
+\subsubsection{Exemples}
+Soit le $\mathbb{R}$-espace vectoriel $V = \mathbb{R}^{n}$. Les vecteurs $e_{i} = (0, \cdots , 1 , \cdots , 0)$ où la ieme est composante 1 et les autres 0, pour $i = 1, 2, \cdots , n$, engendrent $V$. 
+En effet, tout élément $( a_{1} , a_{2} , \cdots , a_{n} ) \in \mathbb{R}^{n}$ s’écrit $a_{1} e_{1} + a_{2} e_{2} + \cdots + a_{n} e_{n}$. Le sous-ensemble $\{e_{1} , \cdots , e_{n}\}$ s’appelle la base canonique de $\mathbb{R}^{n}$ (on y reviendra plus tard).
+
+\subsubsection{Exemples}
+Soit le $\mathbb{R}$-espace vectoriel $V = \mathbb{C}$. On sait que tout él’ement de $\mathbb{C}$ s’écrit sous la forme $a + ib$ où $a, b \in \mathbb{R}$. Donc, $\{1, i \}$ est un système générateur de $\mathbb{C}$ en tant que $\mathbb{R}$-espace vectoriel.
+
+\subsubsection{Exemples}
+Soit $V = \mathbb{K}[ X ]$. Les polynômes $1, t, t2 , \cdots$ engendrent $V$.
+
+\subsection{Espace Colonne d’une Matrice}
+Dans le chapitre précédent, on s’est intéressé en particulier à la résolution de systèmes de $m$ équations linéaires à $n$ inconnues. A un tel système on associe une matrice $A \in M_{m \times n}(\mathbb{K})$ et on s’intéresse aux solutions de l’équation $Ax = b$, où $x = \left( \begin{array}{c} x_{1} \\ x_{2} \\ \vdots \\ x_{n} \end{array}\right)$ est l’inconnu et $b =  \left( \begin{array}{c} x_{1} \\ x_{2} \\ \vdots \\ x_{n} \end{array}\right) \in \mathbb{K}^{n}$.
+Rapellons que si $A$ admet un inverse à gauche, alors l’ équation admet au moins une solution en multipliant les membres de l’équation par une inverse de $A$ (si $m = n$, alors $A$ est inversible (avec une inverse unique) si et seulement si $Ax = b$ admet une solution unique). Une question importante s’impose : que se passe-t-il quand $A$ n’est pas inversible ?
+En général, le système peut être résolue pour certaines valeurs de $b$ et ne peut pas être résolue pour les autres. On veut caractériser les valeurs de $b$ pour lesquelles ce systême est résoluble, d’où l’importance de l’espace colonne de $A$.
+
+\subsubsection{Définition}
+L’espace colonne de la matrice $A \in M_{m \times n} (\mathbb{K})$, qu’on écrira $C(A)$, est le sous-espace de $\mathbb{K}^{m}$ engendré par les vecteurs colonnes de $A$. C’est donc l’ensemble de toutes les combinaisonslinéaires possible des vecteurs colonnes de $A$.\\
+En effet, on sait que $Ax = b$ implique que $b$ est une combinaison linéaire des colonnes de $A$.
+
+\subsubsection{Proposition}
+Le système $Ax = b$ est résoluble si et seulement si $b \in C(A)$.\\
+\textit{Preuve: }\\ 
+Si $x$ est une solution, donc $b \in C(A)$. Inversement, si $b \in C(A)$, alors $b$ est une combinaison linéaire des colonnes de $A$ et les coefficients de cette combinaison linéaire nous fournit un solution $x$ du système $Ax = b$.
+
+\subsubsection{Exemples 3.4.3}
+L’espace colonne $C(A)$ de la matrice $A = \left(\begin{array}{cc} 3 & 0 \\ 4 & 1 \\ 2 & 1\end{array}\right)$ est le sous-espace de $\mathbb{R}^{3}$ engendré par $\left(\begin{array}{c} 3 \\ 4 \\ 1 \end{array}\right)$ et $\left(\begin{array}{c} 0 \\ 1 \\ 2\end{array}\right)$, i.e. le plan contenant ces deux vecteurs. Notez bien que $A \in M_{3 \times 2} (\mathbb{R})$ et que $C (A) \subseteq \mathbb{R}^{3}$.
+Il est clair que $\mathbf{0} \in C(A)$, ce qui indique en particulier que l’équation $Ax = 0$ admet au moins une solution, à savoir au moins la solution $x = \mathbf{0}$. Les sous-espaces vectoriels formés par les solutions de telles equations tiennent une place importante dans la théorie des espaces vectoriels. On y reviendra un peu plus tard.
+
+
+\subsection{Espace Ligne d’une Matrice}
+D’une manière analogue au cas des espaces colonnes, on a
+
+\subsubsection{Définition}
+L’espace ligne de la matrice $A \in M_{m \times n} (\mathbb{K})$, qu’on écrira $R(A)$, est le sous-espace de $\mathbb{K}^{n}$ engendré par les vecteurs lignes de $A$. C’est donc l’ensemble de toutes les combinaisons linéaires possible des vecteurs lignes de $A$.
+
+\subsubsection{Remarque}
+La notation $R(A)$ vient de l’anglais ”row” qui signifie ”ligne”. Aussi, la notation $L(\cdot)$ est réservé aux sous-espaces engendrés par des éléments de l’espace vectoriel en question.
+
+\subsubsection{Théorème}
+Soient $A = ( a_{ij} ) \in M_{n} (\mathbb{K})$, Pn une matrice de permutation et $E_{ij}$ une matrice d’élimination de la composante $a_{ij}$ de $A$. Alors, $R( P_{n} A) = R(E_{ij} A) = R(A)$.
+
+\subsection{Espace Nulle d’une Matrice}
+Soit $A = ( a_{ij} ) \in M_{m \times n} (\mathbb{K})$ une matrice $m \times n$.
+
+\subsubsection{Définition}
+L’espace nulle de $A$, que l’on écrira $N(A)$, est l’ensemble des vecteurs colonnes $x = \left(\begin{array}{c} x_{1} \\ x_{2} \\ \vdots \\ x_{n} \end{array}\right) \in \mathbb{K}^{n}$ tel que $Ax=0$.
+L’espace nulle $N(A)$ est donc l’ensemble des solutions d’un système homogène (tous les monômes ont même degré) d’equations linéaires, comme on le voit $$\left(\begin{array}{ccccc} a_{11} & a_{12} & a_{13} & \cdots & a_{1n} \\ a_{21} & a_{22} & a_{23} & \cdots & a_{2n} \\ \vdots & \vdots & \vdots & \ddots & \vdots \\ a_{m1} & a_{m2} & a_{m3} &\cdots & a_{mn}\end{array}\right) \left(\begin{array}{c} x_{1} \\ x_{2} \\ \vdots \\ x_{n}\end{array}\right)= \left(\begin{array}{c} 0 \\ 0 \\ \vdots \\0 \end{array}\right)$$
+
+\subsubsection{Théorème}
+L’espace nulle $N(A)$ est un sous-espace vectoriel de $\mathbb{K}^{n}$.\\
+\textit{Preuve: }
+Il est clair que $N(A) \not= \emptyset$ car $\mathbf{0} \in N(A)$. Il suffit alors de montrer la stabilité par addition et par multiplication par un scalaire. Soient $x, y \in N(A)$. On a $A(x + y) = Ax + Ay = \mathbf{0} + \mathbf{0} = \mathbf{0}$, donc $x + y \in N(A)$. Soit $k \in \mathbb{K}$ et $x \in N(A)$. On a $A(kx) = (kA) x = k (Ax ) = k\mathbf{0} = \mathbf{0}$, donc $kx \in N(A)$.
+Une méthode, entre autres, pour montrer qu’un sous-ensemble de $\mathbb{K}^{n}$ est donc un sous-espace vectoriel est de montrer que le sous-ensemble en question est l’espace nulle d’une matrice. En général, tout sous-espace vectoriel de $\mathbb{K}^{n}$ est l’espace nulle d’une matrice. Pour l’instant, on n’a pas assez de matériels pour prouver cette derniére assertion.
+
+\subsubsection{Exemples}
+Considérons le plan de $\mathbb{R}^{3}$ d'équation $2x + y - 3z = 0$. On remarque que cette équation est equivalente à $(2 \; 1 \; -3) \left(\begin{array}{c} x \\ y \\ z\end{array}\right) = \left(\begin{array}{c} 0 \\ 0 \\ 0\end{array}\right)$, i.e. que le plan en question est l’espace nulle de la matrice $A = (2 \; 1 \; -3)$. 
+
+\subsection{Sommes et Sommes Directes}
+Soit $V$ un $\mathbb{K}$-espace vectoriel. Soient $U$ et $W$ deux sous-espaces de $V$. On définit un nouveau sous-
+ensemble de $V$.
+
+\subsubsection{Définition}
+La somme de $U$ et $W$ est le sous-ensemble de $V$ défini par
+$$U + W := \{u + w| u \in U, w \in W \}.$$
+
+\subsubsection{Théorème}
+La somme $U + W$ de deux sous-espaces $U$ et $W$ de $V$ est un sous-espace vectoriel.
+
+\subsubsection{Définition}
+On dit que la somme $U + W$ est une somme directe si pour tout $t \in U + W$, il existe un unique couple $(u, w) \in U \times W$ tel que $t = u + w$. En d’autre termes, la somme est directe si la décomposition de tout élément de $U + W$ en somme d’un élément de $U$ et d’un élément de $W$ est unique. Dans ce cas, on écrit $U \oplus W$.
+Cette définition s’étend sans aucune difficulté au cas d’un nombre fini de sous-espaces. On peut même définir la notion de somme directe d’une famille infinie, dénombrable ou non, de sous- espaces, mais on se limite au cas fini pour l’instant.
+
+\subsubsection{Théorème}
+L’espace vectoriel $V$ est la somme directe des sous-espaces $U$ et $W$ si et seulement si :
+\begin{itemize}
+    \item[(i)] $V = U + W$ et
+    \item[(ii)] $U \cap W = \{\mathbf{0}\}$.
+\end{itemize}
+\textit{Preuve: }
+Supposons que $V = U \oplus W$. Il est clair que $V = U + W$. Si $t \in U \cap W$ avec $t \not= \mathbf{0}$, alors pour $u \in U$ et $w \in W$, on a $s = u + w = (u + t) + (w - t)$ deux représentations différentes de $ s \in U + W$ en tant que somme d’un élément de $U$ et d’un élément de W et la somme ne serait pas directe.
+Donc $t = 0$ et ainsi, $U \cap W = \{0\}$. Inversement, supposons que $V = U + W$ et $U \cap W = \{0\}$. Soit $t = u_{1} + w_{1} = u_{2} + w_{2} \in U + W$. Donc, $u_{1}  u_{2} = w_{2} - w_{1}$. Ainsi, $u_{1} - u_{2} \in U \cap V = \{0\}$, ce qui implique que $u_{1} = u_{2}$. De la même manière, $w_{1} = w_{2}$ . Donc, la représentation de $t$ est unique, et ainsi la somme est directe.
+
+\subsection{Base et Dimension}
+Dans cette section, on fixe un corps K. On va aborder les notions fondamentales de base et de dimension d’un espace vectoriel.
+
+\subsubsection{Base}
+Avant de traiter le cas général, revenons d’abord au cas du $\mathbb{R}$-espace vectoriel $\mathbb{C}$. On sait que tout nombre complexe $z$ est une combinaison linéaire à coefficients réels de $1$ et de $i$, i.e. $z = a + ib$ où $a, b \in \mathbb{R}$, ou encore que $L(1, i ) = \mathbb{C}$ (i.e. $\{1, i\}$ engendre $\mathbb{C}$) en tant que $\mathbb{R}$-espace vectoriel. En plus, cette écriture est UNIQUE, ce qui revient à dire que si $z = a + ib = a^{'} + ib^{'}$ alors $a = a^{'}$ et $b = b^{'}$ (ce qui équivaut à dire que si $z = a + ib = 0$ alors $a = b = 0$). On dit que $\{1, i\}$ est une base de $\mathbb{C}$ en tant que $\mathbb{R}$-espace vectoriel. De la même manière, on voit que tout élément, disons $(a, b)$, du $\mathbb{R}$-espace vectoriel $\mathbb{R}^{2}$ s’écrit de maniére unique comme $(a, b) = ae_{1} + be_{2}$ où $e_{1} = (1, 0)$
+et $e_{2} = (0, 1)$. Dans chacun des deux cas ci-dessus, les vecteurs $1$ et $i$ pour $\mathbb{C}$ et les vecteurs $e_{1}$ et $e_{2}$ pour $\mathbb{R}^{2}$, ont les ont deux propriétés fondamentales qui incarnent la notion de base : ils suffisent pour décrire tout él’ement de l’espace ent tant que leurs combinaisons linéaires, et chaque écriture est unique. On peut faire le même exercice pour $\mathbb{C}^{n}, \mathbb{R}^{n}$ et d’autres espaces vectoriels. Dans ce paragraphe, nous allons formaliser ces notions.
+
+\subsubsection{Définition (Indépendance linéaire)}
+Soit $V$ un $\mathbb{K}$-espace vectoriel et $E \subseteq V$ un sous-ensemble (fini ou infini). On dit que les vecteurs de $E$ sont linéairement indépendants (ou, par abus, que $E$ est linéairement indépendant), ou que $E$ forme une famille libre de vecteurs, si : $$ \forall n \in \mathbb{N} \backslash \{0\}; a_{1},a_{2}, \cdots, a_{n} \in \mathbb{K} \mbox{ et } \forall v_{1}, v_{2}, \cdots, v_{n} \in E : \left(\sum_{i=1}^{n} a_{i}v_{i}=0 \Rightarrow a_{1} = a_{2} = \cdots = a_{n} = 0\cdots \right)$$
+Sinon, on dit que les vecteurs de $E$ sont linéairement dépendants (ou, par abus, que $E$ est linéairement dépendant), ou encore que $E$ forme une famille liée.
+Ainsi, $v_{1}, v_{2} , \cdots , v_{m} \in V$ sont linéairement indépendants si l’égalité $$a_{1}v_{1}+a_{2}v_{2}+ \cdots + a_{m}v_{m}; a_{1}, a_{2}, \cdots, a_{m} \in \mathbb{K},$$ implique $$a_{1} = a_{2} = \cdots = a_{m} = 0.$$
+Remarquons que si l’un des $v_{i} \in E$ est le vecteur null, alors les vecteurs de $E$ sont forcément linéairement dépendants.
+
+\subsubsection{Exemples}
+Considérons le $\mathbb{R}$-espace vectoriel $\mathbb{R}^{3}$. Soient les vecteurs $u = (1, -1, 0), \; v = (1, 3, -1) \mbox{ et } w = (5, 3, -2)$. Comme $3u + 2v - w = 0$, ces vecteurs sont linéairement dépendants.
+
+\subsubsection{Exemples}
+Soit le $\mathbb{R}$-espace vectoriel $V = \mathbb{R}[ X ]$. Soient $f ( X ) = 1 + X^{2}$ et $g( X ) = 3 + 2X^{3} + X^{5}$. Si $a_{1} , a_{2} \in  \mathbb{R}$ tels que $a_{1} f ( X ) + a_{2} g( X ) = 0$, alors $a_{1} + 3a_{2} + a_{1} X^{2} + 2a_{2} X^{3} + a_{2} X^{5} = 0$. Donc$a_{1} = a_{2} = 0$ et ainsi $f ( X )$ et $g( X )$ sont linéairement indépendants.
+
+\subsubsection{Proposition}
+Soit $m \geq 2$. Les vecteurs $v_{1}, v_{2}, \cdots, v_{m}$ sont linéairement dépendants si et seulement si l’un d’entre eux est la combinaison linéaire des autres.
+
+\subsubsection{Définition (Base)}
+On appelle un sous-ensemble $\mathcal{B}$ d’un espace vectoriel $V$ une base de $V$ si $\mathcal{B}$ engendre $V$ et si $\mathcal{B}$ forme une famille libre de vecteurs.
+
+\subsubsection{Proposition}
+Une famille $\mathcal{B}$ de vecteurs d’un espace vectoriel $V$ est une base si et seulement si tout vecteur $v \in V$ s’écrit de manière unique comme combinaison linéaire d’élements de $\mathcal{B}$ : $$v = a_{1} v_{1} + \cdots + a_{n} v_{n}.$$
+
+\subsubsection{Exemples}
+Considérons le $\mathbb{K}$-espace vectoriel $\mathbb{K}^{n}$. Soit $e_{1}, e_{2}, \cdots , e_{n}$ les vecteurs définis comme dans l’exemple 3.3.7. On vérifie facilement que $\{e_{1}, \cdots, e_{n}\}$ est une base de $V$ que l’on appelle base canonique.
+
+\subsubsection{Exemples}
+Soit le $\mathbb{K}$-espace vectoriel $V = \mathbb{K}[ X ]$. L’ensemble $\mathcal{B} = \{ X^{i} | i = 0, 1, 2, \cdots \}$ forme une base de $V$. Le théorème suivant caracterise les bases finis, auxquelles on va se réduire la plupart du temps.
+
+\subsubsection{Théorème}
+Soit $V$ un $\mathbb{K}$-espace vectoriel et $\mathcal{B} = \{v_{1} , v_{2} , \cdots , v_{n} \} \subseteq V$ un sous-ensemble fini. Les assertions suivantes sont équivalentes :
+\begin{itemize}
+    \item[(i)] $\mathcal{B}$ est une base de $V$.
+    \item[(ii)] $\mathcal{B}$ est un ensemble minimal de générateurs de $V$, i.e. : $E$ engendre $V$ mais pout tout $v \in \mathcal{B} , \mathcal{B} \backslash \{v\}$ n’engendre pas $V$.
+    \item[(iii)] Tout $v \in V$ s’ écrit comme $v = \sum_{i=1}^{n} a_{i}v_{i}$  de manière unique, i.e. avec des uniques $a_{1} , a_{2} , \cdots , a_{n}$.
+    \item[(iv)] $\mathcal{B}$ est un ensemble maximal linéairement indépendant, i.e. : les vecteurs de $\mathcal{B}$ sont linéairement indépendant mais pour tout $v \not\in \mathcal{B}$, les vecteurs de l’ensemble $\mathcal{B} \cup \{v\}$ sont linéairement dépendants.
+\end{itemize}
+
+\subsubsection{Corollaire}
+Soit $V$ un $\mathbb{K}$-espace vectoriel et $E \subseteq V$ un sous-ensemble fini qui engendre $V$. Alors, $V$ possède une base contenue dans $E$.\\
+\textit{Démonstration:} On enlève successivement des éléments de E et on utilise le théorème 3.8.9.
+
+\subsubsection{Dimension}
+La ”dimension” est un invariant fondamental des espaces vectoriels qui permet en quelque sorte de mesurer leurs ”tailles”. C’est un peu plus pertinent que la cardinalité (qui mesure la ”taille” d’un ensemble) car la dimension prends en compte la structure d’espace vectoriel.
+
+\subsubsection{Lemme}
+Soient $V$ un $\mathbb{K}$-espace vectoriel de type fini et $\mathcal{B} = \{w_{1}, w_{2}, \cdots, w_{n} \}$ une base de $V$. Soit $w = \sum_{i=1}^{n} a_{i} w_{i} \in V \; (a_{i} \in \mathbb{K})$. Si $a j \not= 0$, alors $\mathcal{B}^{'} = \{w_{1}, w_{2} , \cdots , w_{j-1}, w, w_{j+1} , \cdots , w_{n} \}$ est une base de $V$. On peut donc changer $w_{j}$ en $w$ (avec $a_{j} \not= 0$) et on obtient encore une base.
+\end{document}

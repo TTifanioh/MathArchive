@@ -8,7 +8,7 @@
 
 \date{}
 \author{}
-\title{EXERCICES D"ALGEBRE 1}
+\title{EXERCICES D'ALGEBRE 1}
 
 \begin{document}
 \maketitle
@@ -176,4 +176,67 @@ Dans toute la suite, sauf mention explicite du contraire, $\mathbb{K}$ désigner
             \end{itemize}
     \item Factoriser les matrices suivantes (de la forme $A = LU$ ou $PA = LU$) :
 \end{enumerate}
+
+\section{Espaces vectoriels et sous-espaces vectoriels}
+\subsection{Exercice}
+\begin{enumerate}
+    \item Donnez un exemple montrant que la réunion de deux sous-espaces vectoriels n’est pas forcément un espace vectoriel.
+    \item Soit $V = \mathbb{K}^{\mathbb{N}}$ l’ensemble de toutes les suites $( a_{1}, a_{2}, a_{3} , \cdots )$ d'éléments de $\mathbb{K}$ muni de l’addition par composante et de la multiplication par un scalaire par composante. Vérifiez que $V$ est un $\mathbb{K}$-espace vectoriel. Notons $\mathbb{K}^{(\mathbb{N})}$ le sous-ensemble des suites à support fini, i.e., les suites dont tous les termes sont nuls sauf un nombre fini d’entre eux. Montrez que $\mathbb{K}^{(\mathbb{N})}$ est un sous-espace vectoriel de $\mathbb{K}^{\mathbb{N}}$.
+    \item Est-ce que le sous-ensemble de $\mathbb{R}^{2}$ suivant est un espace vectoriel sur $\mathbb{R}$ ? $$E = \{( x, y) \in \mathbb{R}^{2} | x \geq 0\}$$. Expliquez.
+    \item Décidez, dans chacun des cas suivant, si $V = \mathbb{R}^{2}$ muni des lois d’additions et de multiplications par un scalaire données sont des espaces vectoriels sur R ou non (justifiez en cas de réponse négative) :
+    \begin{itemize}
+        \item[i)] $( a, b) + (c, d) = ( a + b, c + d)$ et $k ( a, b) = (ka, b)$.
+        \item[ii)] $( a, b) + (c, d) = ( a + b)$ et $k ( a, b) = (ka, kb)$.
+        \item[iii)] $( a, b) + (c, d) = ( a + b, c + d)$ et $k ( a, b) = (k^{2} a, k^{2} b)$.
+    \end{itemize}
+    \item Considérons le système d’equations linéaires en les inconnus $x_{1}, \cdots, x_{n}$ et à coefficients dans
+    $\mathbb{R}$ suivant :
+    $$\begin{array}{c}  a_{11} x_{1} + a_{12} x_{2} + \cdots + a_{1n} x_{n} = 0 \\
+                    a_{21} x_{1} + a_{22} x_{2} + \cdots + a_{2n} x_{n} = 0 \\
+                            \ldots
+                    a_{m1} x_{1} + a_{m2} x_{2} + \cdots + a_{mn} x_{n} = 0
+    \end{array}$$
+    Un tel système est dit homogène (toutes les monômes ont le même degré, ici 1). Montrez que l’ensemble de toutes les solutions de ce système forme un sous-espace vectoriel de $\mathbb{R}^{n}$. Si le systéme linéaire n’est pas homogène, est-ce que l’ensemble des solutions forme toujours un espace vectoriel ? Si oui, démontrez, si non donnez un contre-exemple.
+    
+
+    \item Soit $V = F (E, \mathbb{K})$ comme dans Exemples 3.1.10 avec $\mathbb{K} = \mathbb{R}$. Montrez que le sous ensemble $W$ de $F ( E, \mathbb{K})$ des fonctions bornées dans V est un sous-espace vectoriel. On rappelle qu’une fonction $f$ á valeur réelle est bornée s’il existe un nombre réel $M \in \mathbb{R}$ tel que $| f x | \leq M$ pour tout $x \in E$.
+    \item Donnez un système générateur de $\mathbb{C}^{2}$ en tant que $\mathbb{C}$-espace vectoriel, puis en tant que $\mathbb{R}$-espace vectoriel.
+    \item Soit $V = \mathbb{R}^{4}$ en tant que $\mathbb{R}$-espace vectoriel. Déterminez si v = (3, 9, -4, -2) appartient au sous-espace de V engendré par $u_{1} = (1, -2, 0, 3), u2 = (2, 3, 0, -1)$ et $u_{3} = (2, -1, 2, 1)$.
+    \item Décrivez les espaces colonnes des matrices suivantes :
+    \begin{itemize}
+        \item[a)] $ I_{2} = \left(\begin{array}{cc} 1 & 0 \\ 0 & 1\end{array}\right)$
+        \item[b)] $A = \left(\begin{array}{cc} 2 & 3 \\ 1 & \frac{3}{2} \end{array}\right)$
+        \item[c)] $A = \left(\begin{array}{ccc} 1 & 2 & 3 \\ 0 & 0 & 4 \end{array}\right)$
+    \end{itemize}
+    \item
+    \begin{itemize}
+        \item[a)] Décrivez un sous-espace de $M_{2} (\mathbb{R})$ contenant A = $ \left(\begin{array}{cc} 1 & 0 \\ 0 & 0\end{array}\right)$ mais pas B = $\left(\begin{array}{cc} 0 & 0 \\ 0 & -1\end{array}\right)$
+        \item[b)] Si un sous-espace de $M_{2} (\mathbb{R})$ contient $A$ et $B$, est-ce que ce sous-espace doit contenir $I_{2}$ ?
+        \item[c)] Décrivez un sous-espace de $M_{2} (\mathbb{R})$ ne contenant aucune matrice diagonale non-nulle.
+        Une matrice carée est dite diagonale si tous ses coefficients qui ne sont pas sur la diagonale sont nuls.
+    \end{itemize}
+    \item Vrai ou faux, justifiez votre réponse :
+    \begin{itemize}
+        \item[a)] L’ensemble des matrices symétriques de $M_{n} (\mathbb{K})$ forme un sous-espace vectoriel.
+        \item[b)] L’ensemble des matrices antisymétriques de $M_{n} (\mathbb{K})$ forme un sous-espace vectoriel.
+        \item[c)] L’ensemble des matrices de $M_{n} (\mathbb{K})$ qui ne sont pas symétriques forme un sous-espace vectoriel.
+    \end{itemize}
+    \item Vrai ou faux, justifiez votre réponse :
+    \begin{itemize}
+        \item[a)] Les éléments $b$ qui ne sont pas dans $C(A)$ (pour une matrice $A$) forme un sous-espace.
+        \item[b)] Si $C(A) = 0$, alors $A$ est la matrice nulle.
+        \item[c)] Soit $A \in M_{m \times n} (\mathbb{R})$, alors $C(2A) = C(A)$.
+        \item[d)] Soit $A \in M_{n} (\mathbb{K})$, alors $C(A - I_{n}) = C(A)$
+    \end{itemize}
+\end{enumerate}  
+
+\subsection{Exercice}
+\begin{enumerate}
+    \item Considérons $\mathbb{R}^{4}$ en tant que $\mathbb{R}$-espace vectoriel. Montrez que les vecteurs suivants sont indépendants : $(6, 2, 3, 4), (0, 5, -3, 1)$ et $(0, 0, 7, -2)$.
+    \item Montrez que deux vecteurs sont linéairement dépendants si et seulement si l’un d’entre eux est un multiple de l’autre.
+    \item Donnez une base du $\mathbb{R}$-espace vectoriel $V = \{( a, a, b)| a, b \in \mathbb{R}\}$.
+    \item Soit le $\mathbb{Q}$-espace vectoriel $V = \mathbb{Q}^{3}$ et $W \subseteq V$ le sous-espace engendré par $E = \{(1, 2, 3), (2, 3, 4), (3, 5, 7)\}$. Montrez que $E$ n’est pas une base de $V$ mais que $\{(1, 2, 3), (2, 3, 4)\}$ en est une.
+    \item Montrez que l’ensemble suivant est un R-espace vectoriel : $V = \{ f : \mathbb{N} \rightarrow \mathbb{R} | \exists S \subseteq \mathbb{N} \mbox{ fini, pour tout } n \in \mathbb{N} \backslash S, f (n) = 0\}$. Trouvez une base de $V$.
+\end{enumerate}
 \end{document}
+
