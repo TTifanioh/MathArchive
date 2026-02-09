@@ -56,7 +56,7 @@ Assurez-vous d'avoir installé Node.js (version LTS recommandée).
 1. Cloner le dépôt :
 
 ```bash
-git clone https://github.com/TTifanioh/MathArchive.git
+git clone https://github.com/TifaniohMF/MathArchive.git
 cd MathArchive
 ```
 
